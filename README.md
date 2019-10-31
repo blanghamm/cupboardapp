@@ -13,7 +13,7 @@ Node_Modules installed so far:
 
 //Navigation//
 
-Recommended naviagtion extension for react-native
+Recommended navigation extension for react-native
 
 npm install react-navigation 
 npm install react-native-reanimated
@@ -27,6 +27,11 @@ Feather icon pack, has to be used in conjunction with vector icons module.
 npm install --save react-native-vector-icons
 npm install --save feather-icons-react
 
+//Design//
+
+Currently only snap carousel is included but not displayed will update soon.
+
+npm install --save react-native-snap-carousel
 
 
 
