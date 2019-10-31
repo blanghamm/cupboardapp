@@ -1,56 +1,37 @@
-import React from 'react';
-import { Text, View } from 'react-native';
-import { Icon } from 'react-native-vector-icons/FontAwesome';
-import { createAppContainer } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
-class HomeScreen extends React.Component {
+import Navigation from './navigation';
+import { ScrollView } from 'react-native-gesture-handler';
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
   render() {
+    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
+    }
+
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Home!</Text>
+      <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20}}>
+        <View style={{ height: 130, marginTop: 20 }}>
+          <ScrollView>
+            <Text style={{ fontSize: 24,fontWeight: '700'}}>
+              What on earth
+              </Text>           
+            </ScrollView>
+
+
+
+        </View>
+        <Navigation />
       </View>
     );
   }
 }
 
-class SettingsScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings!</Text>
-      </View>
-    );
-  }
-}
-
-const nav = createBottomTabNavigator(
-  {
-    HomeScreen: {
-      screen: HomeScreen,
-      navigationOptions: {
-        tabBarLabel:"HOME",
-        tabBarIcon: ({ tintColor }) => (
-          <Icon name="home" size={24} color="#900" />
-        )
-      },
-    },
-  },
-);
-
-export default createAppContainer(
-  createBottomTabNavigator(
-    {
-      Home: { screen: HomeScreen },
-      Settings: { screen: SettingsScreen },
-    },
-    {
-      tabBarOptions: {
-        showIcon: 'true',
-        showLabel: 'true',
-        activeTintColor: 'tomato',
-        inactiveTintColor: 'gray',
-      },
-    },
-  )
-);
+const styles = StyleSheet.create({
+});
