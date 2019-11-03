@@ -13,6 +13,7 @@
     "@paraboly/react-native-card": "^0.2.11",
     "feather-icons": "^4.24.1",
     "feather-icons-react": "^0.3.2",
+    "firebase": "^7.2.3",
     "install": "^0.13.0",
     "npm": "^6.12.1",
     "react": "16.9.0",
