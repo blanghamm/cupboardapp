@@ -12,6 +12,7 @@ https://github.com/jacklam718/react-native-button-component
 https://github.com/mrlaessig/react-native-autocomplete-input
 https://github.com/react-native-community/art
 https://github.com/hectahertz/react-native-typography
+https://www.npmjs.com/package/react-native-typeform-embed
 
 
 Just a few to consider for implentation, not sure all are a must but a number of them are perfect. React-native-art seems like the perfect solution for our welcome screen graphics, there are a few preset libraries for stat wheel graphics. Hopefully we would use these in combination with the modal extension which is for improved animations.
