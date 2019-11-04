@@ -14,11 +14,8 @@
     "feather-icons": "^4.24.1",
     "feather-icons-react": "^0.3.2",
     "firebase": "^7.2.3",
-<<<<<<< HEAD
-=======
     "install": "^0.13.0",
     "npm": "^6.12.1",
->>>>>>> 3b7d069dda301826f5e8894ec9a6f140d71bc496
     "react": "16.9.0",
     "react-native": "0.61.3",
     "react-native-gesture-handler": "^1.5.0",
