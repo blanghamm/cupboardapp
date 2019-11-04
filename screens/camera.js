@@ -10,7 +10,9 @@ import {
 export default class camera extends Component {
   state = {
     textInputs: [],
+    
   };
+  
 
   render() {
     return (

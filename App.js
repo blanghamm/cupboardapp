@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
-
 import Navigation from './navigation';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -17,8 +15,8 @@ export default class App extends Component {
     }
 
     return (
-      <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
-        <View style={{ alignItems: 'center', height: 130, marginTop: 20 }}>
+      <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 0 }}>
+        {/* <View style={{ alignItems: 'center', height: 130, marginTop: 20 }}>
           <ScrollView>
             <Text style={{ flex:1, fontSize: 24,fontWeight: '700', }}>
               What on earth?
@@ -27,11 +25,21 @@ export default class App extends Component {
 
 
 
-        </View>
+        </View> */}
         <Navigation />
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor:'#131420',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 0,
+  },
+});
 
 
