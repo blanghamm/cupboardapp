@@ -36,6 +36,7 @@ npm install --save react-native-snap-carousel
 //Firebase//
 
 npm install firebase --save
+npm install react-native-firebase 
 
 It's a lot. For windows use nodejs ver 10.16.3
 Also might have to clear npm cache (npm cache clear --force)
