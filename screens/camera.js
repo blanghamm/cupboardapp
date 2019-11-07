@@ -5,68 +5,66 @@ import {
   FlatList,
   TouchableOpacity,
   TextInput,
+  StyleSheet,
+  TouchableHighlight, 
+  Alert
 } from 'react-native';
+import firebase from '../firebase/config';
+import manualadd from './addoptions/manualadd';
+import cameraadd from './addoptions/cameraadd';
+
+let addItem = item => {
+  firebase.database().ref('/items').push({
+    name: item
+  });
+  console.log(item)
+  
+};
 
 export default class camera extends Component {
-  state = {
-    textInputs: [],
-    
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: ''
+     
+    };
+
+  }
+  handleChange = e => {
+    this.setState({
+        name: e.nativeEvent.text
+    });
   };
-  
+  handleSubmit = () => {
+    addItem(this.state.name);
+    Alert.alert('Item saved successfully');
+  };
 
   render() {
+    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
+    }
+
     return (
-      <View style={{ flex: 1, marginTop: 20 }}>
-        <FlatList
-          style={{ flex: 1 }}
-          data={[1, 2, 3, 4, 5]}
-          renderItem={({ item, index }) => {
-            return (
-              <View
-                style={{
-                  height: 40,
-                  backgroundColor: '#F0F0F0',
-                  width: 300,
-                  alignSelf: 'center',
-                  margin: 10,
-                }}
-              >
-                <TextInput
-                  style={{
-                    flex: 1,
-                    backgroundColor: '#C0C0C0',
-                  }}
-                  onChangeText={text => {
-                    let { textInputs } = this.state;
-                    textInputs[index] = text;
-                    this.setState({
-                      textInputs,
-                    });
-                  }}
-                  value={this.state.textInputs[index]}
-                />
-                <TouchableOpacity
-                  style={{
-                    backgroundColor: 'red',
-                    flex: 1,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                  onPress={() => {
-                    let { textInputs } = this.state;
-                    textInputs[index] = '';
-                    this.setState({
-                      textInputs,
-                    });
-                  }}
-                >
-                  
-                </TouchableOpacity>
-              </View>
-            );
-          }}
-        />
+      <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 0 }}>
+          <Text style={styles.title}>Add Item</Text>
+          <TextInput style={styles.itemInput} onChange={this.handleChange} placeholder="Add Item name" />
+          <TouchableHighlight
+            style={styles.button}
+            underlayColor="white"
+            onPress={this.handleSubmit}>
+          <Text style={styles.buttonText}>Add</Text>
+      </TouchableHighlight>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor:'#131420',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 0,
+  },
+});
