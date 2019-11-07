@@ -1,32 +1,38 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, Alert } from 'react-native';
 import Navigation from './navigation';
 import { ScrollView } from 'react-native-gesture-handler';
-
 import { TextInput } from 'react-native-paper';
 
-import firebase from './firebase';
+import firebase from './firebase/config';
 
-var database = firebase.database();
-
-function writeUserData(userId, name, email, imageUrl) {
-  firebase.database().ref('/users/randomtext' + userId).set({
-    username: a,
-    email: a,
-    profile_picture : a
+let addItem = item => {
+  firebase.database().ref('/items').push({
+    name: item
   });
-}
-
-console.log(firebase.name);
-console.log(firebase.database());
+  console.log(item)
+  
+};
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: ''
+      name: ''
+     
     };
+
   }
+
+  handleChange = e => {
+    this.setState({
+        name: e.nativeEvent.text
+    });
+  };
+  handleSubmit = () => {
+    addItem(this.state.name);
+    Alert.alert('Item saved successfully');
+  };
 
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
@@ -34,20 +40,14 @@ export default class App extends Component {
 
     return (
       <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 0 }}>
-        {/* <View style={{ alignItems: 'center', height: 130, marginTop: 20 }}>
-          <ScrollView>
-
-
-
-            <Text style={{ flex:1, fontSize: 24,fontWeight: '700', }}>
-              What on earth?
-              </Text>           
-
-            </ScrollView>
-
-
-
-        </View> */}
+          <Text style={styles.title}>Add Item</Text>
+          <TextInput style={styles.itemInput} onChange={this.handleChange} placeholder="Add Item name" />
+          <TouchableHighlight
+            style={styles.button}
+            underlayColor="white"
+            onPress={this.handleSubmit}>
+          <Text style={styles.buttonText}>Add</Text>
+      </TouchableHighlight>
         <Navigation />
       </View>
     );
