@@ -30,7 +30,7 @@ export default class cupboard extends React.Component {
     _renderItem({item,index}){
         return (
             <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>                 
-                <Text style={{color:'#fff'}} >{item.title}</Text>
+                <Text style={{color:'#000000'}} >{item.title}</Text>
             </View>
         )
     }
@@ -57,7 +57,7 @@ export default class cupboard extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'#131420',
+    //backgroundColor:'#131420',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 0,

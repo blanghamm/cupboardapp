@@ -2,16 +2,14 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  FlatList,
-  TouchableOpacity,
+  Button,
   TextInput,
   StyleSheet,
-  TouchableHighlight, 
+  TouchableHighlight,
   Alert
 } from 'react-native';
 import firebase from '../firebase/config';
-import manualadd from './addoptions/manualadd';
-import cameraadd from './addoptions/cameraadd';
+import OptionNavigator from './addoptions/navigationstack';
 
 let addItem = item => {
   firebase.database().ref('/items').push({
@@ -47,13 +45,22 @@ export default class camera extends Component {
     return (
       <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 0 }}>
           <Text style={styles.title}>Add Item</Text>
-          <TextInput style={styles.itemInput} onChange={this.handleChange} placeholder="Add Item name" />
+          <TextInput style={styles.itemInput} onChange={this.handleChange} placeholder="Add Item" />
           <TouchableHighlight
             style={styles.button}
             underlayColor="white"
             onPress={this.handleSubmit}>
           <Text style={styles.buttonText}>Add</Text>
       </TouchableHighlight>
+      <Text style={styles.title}>Add Item</Text>
+          <TextInput style={styles.itemInput} onChange={this.handleChange} placeholder="Add Second Item" />
+          <TouchableHighlight
+            style={styles.button}
+            underlayColor="white"
+            onPress={this.handleSubmit}>
+          <Text style={styles.buttonText}>Add</Text>
+      </TouchableHighlight>  
+      <OptionNavigator/>
       </View>
     );
   }
