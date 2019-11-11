@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, SafeAreaView, ScrollView, StyleSheet, Image } from 'react-native';
 import { Carousel } from 'react-native-snap-carousel';
-
+//add this
 export default class welcome extends Component {
   constructor(props) {
     super(props);
