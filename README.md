@@ -1,12 +1,12 @@
 # cupboardapp
 
-Follow intructions listed here until you reach create new application, you need to choose what OS you have but then follow instructions for Android: 
+Follow intructions listed here until you reach create new application, you need to choose what OS you have but then follow instructions for Android:
   https://facebook.github.io/react-native/docs/getting-started
- 
-Once you've cloned the repo into a local repo you need to install the node modules, 
+
+Once you've cloned the repo into a local repo you need to install the node modules,
 cd into the directory in terminal and run "npm install".
 
-When following the intructions for react-native, it asks if you want to use a virtual device or physical. 
+When following the intructions for react-native, it asks if you want to use a virtual device or physical.
 Following the instructions on the one you want, it doesn't matter.
 
 Node_Modules installed so far:
@@ -15,7 +15,7 @@ Node_Modules installed so far:
 
 Recommended navigation extension for react-native
 
-npm install react-navigation 
+npm install react-navigation
 npm install react-native-reanimated
 npm install react-native-gesture-handler
 npm install react-native-screens
@@ -33,12 +33,9 @@ Currently only snap carousel is included but not displayed will update soon.
 
 npm install --save react-native-snap-carousel
 
+//Firebase//
 
+npm install firebase --save
 
-
-
-
-
-
-
- 
+It's a lot. For windows use nodejs ver 10.16.3
+Also might have to clear npm cache (npm cache clear --force)

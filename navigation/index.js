@@ -18,7 +18,7 @@ const screens = createBottomTabNavigator({
       navigationOptions:{
           tabBarLabel: 'WELCOME',
           tabBarIcon: ({tintColor})=> (
-            <Icon name= 'home' color={tintColor} size={30} />
+            <Icon style={{ marginBottom: 20 }}name= 'home' color={tintColor} size={30} />
         )
       },
   },
@@ -27,7 +27,7 @@ const screens = createBottomTabNavigator({
     navigationOptions:{
         tabBarLabel: 'CAMERA',
         tabBarIcon: ({tintColor})=> (
-            <Icon name= 'camera' color={tintColor} size={30} />
+            <Icon style={{ marginBottom: 20 }}name= 'camera' color={tintColor} size={30} />
         )
     },
 },
@@ -36,23 +36,28 @@ Cupboard: {
     navigationOptions:{
         tabBarLabel: 'CUPBOARD',
         tabBarIcon: ({tintColor})=> (
-            <Icon name= 'coffee' color={tintColor} size={30} />
+            <Icon style={{ marginBottom: 20 }}name= 'coffee' color={tintColor} size={30} />
         )
     },
 },
 }, {
   defaultNavigationOptions: {
     navigationOptions: {
+      tabStyle: {
+          marginTop: 20,
+      },
       borderBottomColor: "transparent",
       elevation: 0, // for android    
     },
   },
   tabBarOptions: {
+      height: 20,
       showLabel: false,
       tintColor: '#2e4057',
       activeTintColor: '#e08dac',
       tabStyle: {
           paddingBottom: 10,
+          paddingVertical: 30,
 
       },
       style: {
@@ -61,7 +66,7 @@ Cupboard: {
           shadowOffset: { width: 5, height: 10 },
           shadowColor: 'black',
       },
-  },  
+  },
 });
 
 

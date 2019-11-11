@@ -1,20 +1,36 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { Carousel } from 'react-native-snap-carousel';
 
 
 export class MyCarousel extends Component {
 
+  constructor(props){
+    super(props);
+    this.state = {
+      item: [
+        {
+          title: 'Item 1'
+        },
+        {
+          title: 'Item 2'
+        },
+      ]
+      }
+    };
+
   _renderItem ({item, index}) {
       return (
-          <View style={styles.slide}>
+          <View style={{flex:1,justifyContent:'center',}}>
               <Text style={styles.title}>{ item.title }</Text>
           </View>
+          
       );
   }
 
   render () {
       return (
-          <Carousel
+          <Carousel 
             ref={(c) => { this._carousel = c; }}
             data={this.state.entries}
             renderItem={this._renderItem}
@@ -22,8 +38,8 @@ export class MyCarousel extends Component {
             itemWidth={itemWidth}
           />
       );
-  }
-}
+  };
+};
 
 export default class welcome extends Component {
   constructor(props) {
@@ -35,7 +51,6 @@ export default class welcome extends Component {
   render() {
     return (
       <View>
-        <Text> welcome </Text>
       </View>
     );
   }
