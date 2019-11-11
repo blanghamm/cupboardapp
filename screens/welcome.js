@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, SafeAreaView, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, StyleSheet, Image } from 'react-native';
 import { Carousel } from 'react-native-snap-carousel';
 
 export default class welcome extends Component {
@@ -11,19 +11,13 @@ export default class welcome extends Component {
 
   render() {
     return (
-        <SafeAreaView style={styles.container}>
-        <ScrollView style={styles.scrollView}>
-          <Text style={styles.text}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </Text>
-        </ScrollView>
-      </SafeAreaView>
+
+        <View style={styles.container}>
+        <Image
+          style={{width: 50, height: 50}} 
+          source={require('../assets/logo block.png')}/>  
+        <Text style={styles.text}>Hello, Ben</Text>
+      </View>
     );
   }
 }
@@ -31,10 +25,8 @@ export default class welcome extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  scrollView: {
-    backgroundColor: 'pink',
-    marginHorizontal: 20,
+    padding: 50,
+    alignItems: 'center'
   },
   text: {
     fontSize: 42,

@@ -3,7 +3,7 @@ import { StyleSheet,Text, Image, View,SafeAreaView} from 'react-native';
 
 import Carousel from 'react-native-snap-carousel';
 
-export default class cupboard extends React.Component {
+export default class cupboard extends Component {
  
     constructor(props){
         super(props);
