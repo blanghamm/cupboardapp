@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, SafeAreaView, ScrollView, StyleSheet, Image } from 'react-native';
-import { Carousel } from 'react-native-snap-carousel';
+import { View, Text, SafeAreaView, ScrollView, StyleSheet, Image, Button } from 'react-native';
 
 export default class welcome extends Component {
   constructor(props) {
@@ -12,12 +11,17 @@ export default class welcome extends Component {
   render() {
     return (
 
-        <View style={styles.container}>
+      <View style={{ flex: 1 }}>
         <Image
           style={{width: 50, height: 50}} 
           source={require('../assets/logo block.png')}/>  
         <Text style={styles.text}>Hello, Ben</Text>
+        <View style={{flex: 0.5, flexDirection: 'row', justifyContent: 'space-around', }}/>
+          <Button title='View Map' style={{ width: 50, height: 50 }}/>
+          <Button title='Shopping List'/>
       </View>
+
+
     );
   }
 }
@@ -30,6 +34,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 42,
+    paddingLeft: 50,
+    paddingTop: 20
   },
 });
 
