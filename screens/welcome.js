@@ -10,12 +10,16 @@ export default class welcome extends Component {
   }
 
   render() {
+    const { currentUser } = this.state
     return (
 
         <View style={styles.container}>
+        <Text>
+        Hi{ currentUser && currentUser.email}!
+        </Text>
         <Image
-          style={{width: 50, height: 50}} 
-          source={require('../assets/logo block.png')}/>  
+          style={{width: 50, height: 50}}
+          source={require('../assets/logo block.png')}/>
         <Text style={styles.text}>Hello, Ben</Text>
       </View>
     );
@@ -32,5 +36,3 @@ const styles = StyleSheet.create({
     fontSize: 42,
   },
 });
-
-
