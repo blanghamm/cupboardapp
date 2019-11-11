@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { StyleSheet, Platform, Image, View, Text } from 'react-native';
 import { Carousel } from 'react-native-snap-carousel';
+//import { StyleSheet, Platform, Image, Text, View } from 'react-native';
 
 
 export class MyCarousel extends Component {
@@ -24,13 +25,13 @@ export class MyCarousel extends Component {
           <View style={{flex:1,justifyContent:'center',}}>
               <Text style={styles.title}>{ item.title }</Text>
           </View>
-          
+
       );
   }
 
   render () {
       return (
-          <Carousel 
+          <Carousel
             ref={(c) => { this._carousel = c; }}
             data={this.state.entries}
             renderItem={this._renderItem}
@@ -41,7 +42,8 @@ export class MyCarousel extends Component {
   };
 };
 
-export default class welcome extends Component {
+export default class Welcome extends Component {
+  state = { currentUser: null }
   constructor(props) {
     super(props);
     this.state = {
@@ -49,11 +51,21 @@ export default class welcome extends Component {
   }
 
   render() {
+    const { currentUser } = this.state
     return (
-      <View>
+      <View style={styles.container}>
+        <Text>
+        Hi { currentUser && currentUser.email }!
+        </Text>
       </View>
     );
   }
 }
 
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})
