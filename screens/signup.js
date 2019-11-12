@@ -5,9 +5,9 @@ export default class SignUp extends React.Component {
   state = { email: '', password: '', errorMessage: null }
 
   handleSignUp = () => {
-    firebase.database().ref('/users').push({
-      Email: email,
-      Password: password
+    firebase.database().ref('/users').setValue({
+      Email: "email",
+      Password: "password"
     });
     console.log('handleSignUp')
   }
