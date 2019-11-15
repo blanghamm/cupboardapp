@@ -1106,11 +1106,6 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
 
-"@react-native-community/async-storage@^1.6.2":
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/@react-native-community/async-storage/-/async-storage-1.6.2.tgz#a19ca7149c4dfe8216f2330e6b1ebfe2d075ef92"
-  integrity sha512-EJGsbrHubK1mGxPjWB74AaHAd5m9I+Gg2RRPZzMK6org7QOU9WOBnIMFqoeVto3hKOaEPlk8NV74H6G34/2pZQ==
-
 "@react-native-community/cli-platform-android@^3.0.0-alpha.1", "@react-native-community/cli-platform-android@^3.0.0-alpha.7":
   version "3.0.0-alpha.7"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-android/-/cli-platform-android-3.0.0-alpha.7.tgz#03c3671ab72b62a8742aa71b66cb8d594171891f"
@@ -1228,11 +1223,6 @@
     "@react-native-firebase/app-types" "6.0.3"
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
-
-"@react-native-firebase/database@^6.0.3":
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/database/-/database-6.0.3.tgz#1d6540b05c4ef8f8dd1b50fbfbafb95ee757fb86"
-  integrity sha512-/ZSkQ7sjHyAJoag5NzDJ7D+RBmXFsO6ueN041CBs+Mp3MFoVAckkZY3q/q/LXzwpsUk+1ecHe1QWpRlgZRSoeg==
 
 "@react-navigation/core@^3.5.1":
   version "3.5.1"
@@ -7150,6 +7140,13 @@ react-navigation-material-bottom-tabs@^2.1.5:
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/react-navigation-material-bottom-tabs/-/react-navigation-material-bottom-tabs-2.1.5.tgz#ccf0571d042245649093b979e308995e3681dbcb"
   integrity sha512-MGoVI63ekaU6MxL2FLF9q7n0R9dSGaMzp5PGE4PQCHB3XgN9zAL+gPOWNQFivhqSXHx45sL0oPuxnNOGt9IU3Q==
+
+react-navigation-stack@^1.10.3:
+  version "1.10.3"
+  resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-1.10.3.tgz#e714e442b20427f0d2d3c18fce1f9e8cfe69be0b"
+  integrity sha512-1gksFi/g/Lg9sBhgLlD0OiEB5xnatHb4C0eNMA5tli9cTVlhq375XNPIqOiTyftibBmjdApAsZFj5srUCoOu/w==
+  dependencies:
+    prop-types "^15.7.2"
 
 react-navigation-tabs@^2.5.6:
   version "2.5.6"

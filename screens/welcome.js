@@ -14,12 +14,11 @@ export default class welcome extends Component {
     return (
 
         <View style={styles.container}>
-        <Text>
-        Hi{ currentUser && currentUser.email}!
+        <Text>{ currentUser && currentUser.email}
         </Text>
         <Image
           style={{width: 50, height: 50}}
-          source={require('../assets/logo block.png')}/>
+          source={require('../assets/icon.svg')}/>
         <Text style={styles.text}>Hello, Ben</Text>
       </View>
     );
