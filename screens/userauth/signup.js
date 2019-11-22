@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
-import firebase from '../firebase/config';
+import firebase from '../../../firebase/config';
 
 export default class SignUp extends React.Component {
   state = { email: '', password: '', errorMessage: null}
@@ -40,7 +40,7 @@ export default class SignUp extends React.Component {
           value={this.state.password} />
           <Button title="Sign Up" onPress={this.handleSignUp} />
             <Button title="Already have an account? Login" onPress={() =>
-            this.props.navigation.navigate('Login')} />
+            this.props.navigation.navigate(Login)} />
           </View>
     )
   }

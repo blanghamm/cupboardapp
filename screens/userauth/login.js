@@ -5,7 +5,11 @@ export default class Login extends React.Component {
   state = {email: '', password: '', errorMessage: null }
 
   handleLogin = () => {
-    //firebase stuff
+    firebase
+    .auth()
+    .signInWithEmailAndPassword(this.state.email, this.state.password)
+    .then(() => this.props.navigation.navigate('Welcome'))
+    .catch(error => this.setState({ errorMessage: error.message }))
     console.log('handleLogin')
   }
 
