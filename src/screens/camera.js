@@ -9,7 +9,6 @@ import {
   Alert
 } from 'react-native';
 import firebase from '../firebase/config';
-//import OptionNavigator from './addoptions/navigationstack';
 
 let addItem = item => {
   firebase.database().ref('/items').push({
@@ -60,7 +59,6 @@ export default class camera extends Component {
             onPress={this.handleSubmit}>
           <Text style={styles.buttonText}>Add</Text>
       </TouchableHighlight>  
-      {/* <OptionNavigator/> */}
       </View>
     );
   }

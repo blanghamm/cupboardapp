@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, Alert } from 'react-native';
-import Navigation from './navigation';
+import Navigation from './src/navigation';
 import { SwitchNavigator } from 'react-navigation';
 
 export default class App extends Component {
