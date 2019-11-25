@@ -17,8 +17,8 @@ export default class welcome extends Component {
         <Text>{ currentUser && currentUser.email}
         </Text>
         <Image
-          style={{width: 50, height: 50}}
-          source={require('../assets/icon.svg')}/>
+          style={styles.PngColor}
+          source={require('../assets/icon.png')}/>
         <Text style={styles.text}>Hello, Ben</Text>
       </View>
     );
@@ -34,4 +34,9 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 42,
   },
+  PngColor: {
+    tintColor: '#faf',
+    width: 50,
+    height: 50
+  }
 });
