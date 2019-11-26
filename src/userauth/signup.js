@@ -14,8 +14,9 @@ export default class SignUp extends React.Component {
         user = firebase.auth().currentUser;
         if (user) {
           user.updateProfile({
-            displayName: user.displayName,
+            displayName: displayName,
           });
+          console.log(this.state.email);
         }
       })
       .catch(error => this.setState({errorMessage: error.message}));
