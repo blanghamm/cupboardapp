@@ -8,20 +8,33 @@ import {
   Image,
 } from 'react-native';
 import {Carousel} from 'react-native-snap-carousel';
-//add this
+import firebase from '../firebase/config';
+
+var user = firebase.auth().currentUser;
+var name, email, photoUrl, uid, emailVerified;
+
 export default class welcome extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+
+    if (user != null) {
+      name = user.displayName;
+      email = user.email;
+      photoUrl = user.photoURL;
+      emailVerified = user.emailVerified;
+      uid = user.uid;
+    }
   }
 
   render() {
-    const {currentUser} = this.state;
+    const {displayName} = this.state;
+    console.log(displayName);
     return (
       <View style={styles.container}>
-        <Text>{currentUser && currentUser.email}</Text>
+        <Text>{displayName}</Text>
         <Image style={styles.PngColor} source={require('../assets/icon.png')} />
-        <Text style={styles.text}>Hello, Ben</Text>
+        {/* <Text style={styles.text}>Hello, Ben</Text> */}
       </View>
     );
   }
