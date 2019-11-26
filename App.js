@@ -1,40 +1,21 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, Alert } from 'react-native';
+import React, {Component} from 'react';
+import {StyleSheet, Text, View, TouchableHighlight, Alert} from 'react-native';
 import Navigation from './src/navigation';
-import { SwitchNavigator } from 'react-navigation';
+import NavStack from './src/userauth/navstack.js';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
-
+      name: '',
     };
-
-    // const Login = SwitchNavigator(
-    //   {
-    //     Loading,
-    //     SignUp,
-    //     Login,
-    //     Welcome
-    //   },
-    //   {
-    //     initialRouteName: 'Loading'
-    //   }
-    // );
-
   }
 
-
-
   render() {
-    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
-    }
-
     return (
-      <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 0 }}>
-        {/* <SignUp/> */}
-        <Navigation />
+      <View style={{flex: 1, backgroundColor: 'white', paddingTop: 0}}>
+        <NavStack />
+        {/* <Navigation /> */}
       </View>
     );
   }
@@ -43,7 +24,7 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'#131420',
+    backgroundColor: '#131420',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 0,

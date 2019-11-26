@@ -1,18 +1,23 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text} from 'react-native';
+import {createAppContainer} from 'react-navigation';
+import {createSwitchNavigator} from 'react-navigation';
 
-export default class navstack extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+//import Loading from './loading';
+import Login from './login';
+import Signup from './signup';
+import Welcome from '../screens/welcome';
 
-  render() {
-    return (
-      <View>
-        <Text> navstack </Text>
-      </View>
-    );
-  }
-}
+const userauth = createSwitchNavigator(
+  {
+    //Loading,
+    Login,
+    Signup,
+    Welcome,
+  },
+  {
+    initialRouteName: 'Signup',
+  },
+);
+
+export default createAppContainer(userauth);
