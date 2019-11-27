@@ -1,7 +1,7 @@
 # cupboardapp
 
 Follow intructions listed here until you reach create new application, you need to choose what OS you have but then follow instructions for Android:
-  https://facebook.github.io/react-native/docs/getting-started
+https://facebook.github.io/react-native/docs/getting-started
 
 Once you've cloned the repo into a local repo you need to install the node modules,
 cd into the directory in terminal and run "npm install".
@@ -39,3 +39,8 @@ npm install firebase --save
 
 It's a lot. For windows use nodejs ver 10.16.3
 Also might have to clear npm cache (npm cache clear --force)
+
+npm install redux
+npm install react-redux
+npm install redux-thunk
+npm install react-redux-firebase

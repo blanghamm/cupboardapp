@@ -1,25 +1,16 @@
 import React from 'react';
 import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
 import firebase from '../firebase/config';
+import {connect} from 'react-redux';
+import {signUp} from '../store/actions/authActions';
 
-export default class SignUp extends React.Component {
+class SignUp extends React.Component {
   state = {displayName: '', email: '', password: '', errorMessage: null};
 
-  handleSignUp = () => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(() => this.props.navigation.navigate('Welcome'))
-      .then(user => {
-        user = firebase.auth().currentUser;
-        if (user) {
-          user.updateProfile({
-            displayName: displayName,
-          });
-          console.log(this.state.email);
-        }
-      })
-      .catch(error => this.setState({errorMessage: error.message}));
+  handleSignUp = e => {
+    e.preventDefault();
+    this.props.signUp(this.state);
+    console.log(this.state.displayName);
   };
 
   render() {
@@ -69,6 +60,14 @@ export default class SignUp extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    signUp: credentials => dispatch(signUp(credentials)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SignUp);
 
 const styles = StyleSheet.create({
   container: {

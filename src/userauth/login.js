@@ -1,18 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
-import firebase from '../firebase/config.js';
+import {connect} from 'react-redux';
+import {signIn} from '../store/actions/authActions';
 
-export default class Login extends React.Component {
+class Login extends React.Component {
   state = {email: '', password: '', errorMessage: null};
 
-  handleLogin = () => {
-    const {email, password} = this.state;
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => this.props.navigation.navigate('Welcome'))
-      .catch(error => this.setState({errorMessage: error.message}));
-    console.log('handleLogin');
+  handleLogin = e => {
+    e.preventDefault();
+    this.props.signIn(this.state);
   };
 
   render() {
@@ -37,7 +33,11 @@ export default class Login extends React.Component {
           onChangeText={password => this.setState({password})}
           value={this.state.password}
         />
-        <Button title="Login" onPress={this.handleLogin} />
+        <Button
+          title="Login"
+          onPress={this.handleLogin}
+          onPress={() => this.props.navigation.navigate('Welcome')}
+        />
         <Button
           title="Don't have an account? Sign Up"
           onPress={() => this.props.navigation.navigate('SignUp')}
@@ -46,6 +46,14 @@ export default class Login extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    signIn: credentials => dispatch(signIn(credentials)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Login);
 
 const styles = StyleSheet.create({
   container: {
