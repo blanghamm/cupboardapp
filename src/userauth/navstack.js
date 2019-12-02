@@ -33,7 +33,11 @@ const userauth = createSwitchNavigator(
     },
   },
   {
+<<<<<<< HEAD
     initialRouteName: 'Cupboard',
+=======
+    initialRouteName: 'Loading',
+>>>>>>> upstream/master
   },
 );
 

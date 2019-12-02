@@ -1,22 +1,29 @@
 import React from 'react';
-import {View, Text, ActivityIndicator, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  StyleSheet,
+  Image,
+  Button,
+} from 'react-native';
 import firebase from '../firebase/config.js';
 import {connect} from 'react-redux';
-
-// const {auth} = this.props;
+import {signOut} from '../store/actions/authActions';
 
 class Loading extends React.Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(auth => {
-      this.props.navigation.navigate({auth} ? 'Welcome' : 'SignUp');
+      this.props.navigation.navigate({auth} ? 'Loading' : 'SignUp');
     });
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>Loading</Text>
-        <ActivityIndicator size="large" />
+        <Image style={styles.logosize} source={require('../assets/icon.png')} />
+        <Text style={styles.textformat}>CUPBOARD</Text>
+        <Button title="Sign Out" onPress={signOut} />
       </View>
     );
   }
@@ -35,5 +42,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#F3AD9F',
+  },
+  logosize: {
+    width: 52,
+    height: 52,
+    tintColor: '#FAF7F2',
+  },
+  textformat: {
+    fontFamily: 'SourceSansPro-Bold',
+    fontSize: 32,
+    margin: 15,
+    color: '#FAF7F2',
   },
 });
