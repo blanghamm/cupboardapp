@@ -19,7 +19,7 @@ class Welcome extends React.Component {
       <View style={styles.container}>
         <Text>Hello</Text>
         <Image style={styles.PngColor} source={require('../assets/icon.png')} />
-        {/* <Button title="Sign Out" onPress={props.signOut} />; */}
+
         <Button
           title="Go Back"
           onPress={() => this.props.navigation.navigate('Loading')}

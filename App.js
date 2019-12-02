@@ -8,7 +8,6 @@ import {ReactReduxFirebaseProvider, getFirebase} from 'react-redux-firebase';
 import thunk from 'redux-thunk';
 import firebase from './src/firebase/config';
 import {createFirestoreInstance, getFirestore} from 'redux-firestore';
-import {connect} from 'react-redux';
 
 const store = createStore(
   rootReducer,
@@ -38,13 +37,3 @@ export default class App extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#131420',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 0,
-  },
-});
