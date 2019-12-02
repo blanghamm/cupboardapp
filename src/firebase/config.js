@@ -1,4 +1,6 @@
 import firebase from 'firebase';
+import 'firebase/firestore';
+import 'firebase/auth';
 
 const config = {
   databaseURL: 'https://testapp-22b3d.firebaseio.com',
@@ -9,6 +11,7 @@ const config = {
 };
 
 firebase.initializeApp(config);
+firebase.firestore();
 
 export default !firebase.apps.length
   ? firebase.initializeApp(config)

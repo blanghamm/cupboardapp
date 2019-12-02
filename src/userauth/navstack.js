@@ -4,7 +4,7 @@ import {createAppContainer} from 'react-navigation';
 import {createSwitchNavigator} from 'react-navigation';
 import {connect} from 'react-redux';
 
-//import Loading from './loading';
+import Loading from './loading';
 import Login from './login';
 import Signup from './signup';
 import Welcome from '../screens/welcome';
@@ -12,11 +12,21 @@ import Main from '../screens/main';
 
 const userauth = createSwitchNavigator(
   {
-    //Loading,
-    Login,
-    Signup,
-    Welcome,
-    Main,
+    Loading: {
+      screen: Loading,
+    },
+    Login: {
+      screen: Login,
+    },
+    Signup: {
+      screen: Signup,
+    },
+    Welcome: {
+      screen: Welcome,
+    },
+    Main: {
+      screen: Main,
+    },
   },
   {
     initialRouteName: 'Signup',
@@ -26,8 +36,9 @@ const userauth = createSwitchNavigator(
 const AppContainer = createAppContainer(userauth);
 
 const mapStateToProps = state => {
-  console.log(state);
-  return {};
+  return {
+    auth: state.firebase.auth,
+  };
 };
 
 export default connect(mapStateToProps)(AppContainer);

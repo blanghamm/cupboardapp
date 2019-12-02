@@ -44,3 +44,5 @@ npm install redux
 npm install react-redux
 npm install redux-thunk
 npm install react-redux-firebase
+npm install redux-firestore --save
+npm install redux-logger

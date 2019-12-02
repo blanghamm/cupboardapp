@@ -1,6 +1,5 @@
 import React from 'react';
 import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
-import firebase from '../firebase/config';
 import {connect} from 'react-redux';
 import {signUp} from '../store/actions/authActions';
 
@@ -10,16 +9,15 @@ class SignUp extends React.Component {
   handleSignUp = e => {
     e.preventDefault();
     this.props.signUp(this.state);
-    console.log(this.state.displayName);
+    console.log(this.state);
   };
 
   render() {
+    const {authError} = this.props;
     return (
       <View style={styles.container}>
         <Text>Sign Up</Text>
-        {this.state.errorMessage && (
-          <Text style={{color: 'red'}}>{this.state.errorMessage}</Text>
-        )}
+        {authError ? <Text style={{color: 'red'}}>{authError}</Text> : null}
         <TextInput
           placeholder="Name"
           autoCapitalize="none"
@@ -61,13 +59,19 @@ class SignUp extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    signUp: credentials => dispatch(signUp(credentials)),
+    authError: state.auth.authError,
   };
 };
 
-export default connect(null, mapDispatchToProps)(SignUp);
+const mapDispatchToProps = dispatch => {
+  return {
+    signUp: newUser => dispatch(signUp(newUser)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
 
 const styles = StyleSheet.create({
   container: {

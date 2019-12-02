@@ -7,7 +7,8 @@ import {Provider} from 'react-redux';
 import {ReactReduxFirebaseProvider, getFirebase} from 'react-redux-firebase';
 import thunk from 'redux-thunk';
 import firebase from './src/firebase/config';
-import 'firebase/auth';
+import {createFirestoreInstance, getFirestore} from 'redux-firestore';
+import {connect} from 'react-redux';
 
 const store = createStore(
   rootReducer,
@@ -16,12 +17,14 @@ const store = createStore(
 
 const rrfConfig = {
   userProfile: 'users',
+  useFirestoreForProfile: true,
 };
 
 const rrfProps = {
   firebase,
   config: rrfConfig,
   dispatch: store.dispatch,
+  createFirestoreInstance,
 };
 
 export default class App extends Component {

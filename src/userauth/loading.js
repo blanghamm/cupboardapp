@@ -1,11 +1,14 @@
 import React from 'react';
 import {View, Text, ActivityIndicator, StyleSheet} from 'react-native';
 import firebase from '../firebase/config.js';
+import {connect} from 'react-redux';
 
-export default class Loading extends React.Component {
+// const {auth} = this.props;
+
+class Loading extends React.Component {
   componentDidMount() {
-    firebase.auth().onAuthStateChanged(user => {
-      this.props.navigation.navigate(user ? 'Main' : 'SignUp');
+    firebase.auth().onAuthStateChanged(auth => {
+      this.props.navigation.navigate({auth} ? 'Welcome' : 'SignUp');
     });
   }
 
@@ -18,6 +21,14 @@ export default class Loading extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    auth: state.firebase.auth,
+  };
+};
+
+export default connect(mapStateToProps)(Loading);
 
 const styles = StyleSheet.create({
   container: {
