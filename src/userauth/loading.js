@@ -23,7 +23,10 @@ class Loading extends React.Component {
       <View style={styles.container}>
         <Image style={styles.logosize} source={require('../assets/icon.png')} />
         <Text style={styles.textformat}>CUPBOARD</Text>
-        <Button title="Sign Out" onPress={signOut} />
+        <Button
+          title="Login"
+          onPress={() => this.props.navigation.navigate('Login')}
+        />
       </View>
     );
   }

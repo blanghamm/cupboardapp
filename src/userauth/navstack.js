@@ -9,7 +9,7 @@ import Login from './login';
 import Signup from './signup';
 import Welcome from '../screens/welcome';
 import Cupboard from '../screens/cupboard';
-import Main from '../screens/main';
+import Navigation from '../navigation/index';
 
 const userauth = createSwitchNavigator(
   {
@@ -22,22 +22,12 @@ const userauth = createSwitchNavigator(
     Signup: {
       screen: Signup,
     },
-    Welcome: {
-      screen: Welcome,
-    },
-    Cupboard: {
-      screen: Cupboard,
-    },
     Main: {
-      screen: Main,
+      screen: Navigation,
     },
   },
   {
-<<<<<<< HEAD
-    initialRouteName: 'Cupboard',
-=======
-    initialRouteName: 'Loading',
->>>>>>> upstream/master
+    initialRouteName: 'Main',
   },
 );
 

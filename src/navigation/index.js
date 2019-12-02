@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/Feather';
@@ -7,7 +7,7 @@ import Welcome from '../screens/welcome.js';
 import Camera from '../screens/camera.js';
 import Cupboard from '../screens/cupboard.js';
 
-const screens = createBottomTabNavigator(
+const Screens = createBottomTabNavigator(
   {
     Welcome,
     Camera,
@@ -85,4 +85,6 @@ const screens = createBottomTabNavigator(
   },
 );
 
-export default createAppContainer(screens);
+const Navigation = createAppContainer(Screens);
+
+export default Navigation;

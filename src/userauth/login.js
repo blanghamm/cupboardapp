@@ -36,7 +36,7 @@ class Login extends React.Component {
         <Button
           title="Login"
           onPress={this.handleLogin}
-          // onPress={() => this.props.navigation.navigate('Welcome')}
+          onPress={() => this.props.navigation.navigate('Welcome')}
         />
         <Button
           title="Don't have an account? Sign Up"
