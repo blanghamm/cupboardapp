@@ -57,12 +57,14 @@ export default class cupboard extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Carousel
-          data={this.state.carouselItems}
-          sliderWidth={screenWidthMargin}
-          itemWidth={screenWidthMargin}
-          renderItem={this._renderItem}
-        />
+        <View style={styles.something}>
+          <Carousel
+            data={this.state.carouselItems}
+            sliderWidth={screenWidthMargin}
+            itemWidth={screenWidthMargin}
+            renderItem={this._renderItem}
+          />
+        </View>
       </SafeAreaView>
     );
   }
@@ -71,9 +73,12 @@ export default class cupboard extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor:'#131420',
+    backgroundColor: '#131420',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 0,
+  },
+  something: {
+    height: 250,
   },
 });
