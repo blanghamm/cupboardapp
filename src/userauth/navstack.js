@@ -29,7 +29,7 @@ const userauth = createSwitchNavigator(
     },
   },
   {
-    initialRouteName: 'Signup',
+    initialRouteName: 'Loading',
   },
 );
 
