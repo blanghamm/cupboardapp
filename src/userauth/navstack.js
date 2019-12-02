@@ -27,7 +27,7 @@ const userauth = createSwitchNavigator(
     },
   },
   {
-    initialRouteName: 'Main',
+    initialRouteName: 'Loading',
   },
 );
 

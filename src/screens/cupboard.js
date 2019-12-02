@@ -21,7 +21,7 @@ export default class cupboard extends Component {
         {
           //id: (FROM DATABASE) ,
           title: 'Item 1',
-          thumbnail: '../assets/stock-image.png',
+          thumbnail: '../assets/stock.png',
         },
         {
           title: 'Item 2',
