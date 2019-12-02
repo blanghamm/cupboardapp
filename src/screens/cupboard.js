@@ -1,7 +1,17 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, Image, View, SafeAreaView} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  Image,
+  View,
+  SafeAreaView,
+  Dimensions,
+} from 'react-native';
 
 import Carousel from 'react-native-snap-carousel';
+
+const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
+const screenWidthMargin = viewportWidth - 60;
 
 export default class cupboard extends Component {
   constructor(props) {
@@ -9,7 +19,9 @@ export default class cupboard extends Component {
     this.state = {
       carouselItems: [
         {
+          //id: (FROM DATABASE) ,
           title: 'Item 1',
+          thumbnail: '../assets/stock-image.png',
         },
         {
           title: 'Item 2',
@@ -25,11 +37,18 @@ export default class cupboard extends Component {
         },
       ],
     };
+    console.log(screenWidthMargin);
   }
 
   _renderItem({item, index}) {
     return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: '#faf',
+        }}>
         <Text style={{color: '#000000'}}>{item.title}</Text>
       </View>
     );
@@ -40,8 +59,8 @@ export default class cupboard extends Component {
       <SafeAreaView style={styles.container}>
         <Carousel
           data={this.state.carouselItems}
-          sliderWidth={250}
-          itemWidth={250}
+          sliderWidth={screenWidthMargin}
+          itemWidth={screenWidthMargin}
           renderItem={this._renderItem}
         />
       </SafeAreaView>

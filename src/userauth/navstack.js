@@ -8,6 +8,7 @@ import Loading from './loading';
 import Login from './login';
 import Signup from './signup';
 import Welcome from '../screens/welcome';
+import Cupboard from '../screens/cupboard';
 import Main from '../screens/main';
 
 const userauth = createSwitchNavigator(
@@ -24,12 +25,15 @@ const userauth = createSwitchNavigator(
     Welcome: {
       screen: Welcome,
     },
+    Cupboard: {
+      screen: Cupboard,
+    },
     Main: {
       screen: Main,
     },
   },
   {
-    initialRouteName: 'Signup',
+    initialRouteName: 'Cupboard',
   },
 );
 
