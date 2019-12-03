@@ -9,6 +9,8 @@ cd into the directory in terminal and run "npm install".
 When following the intructions for react-native, it asks if you want to use a virtual device or physical.
 Following the instructions on the one you want, it doesn't matter.
 
+App.js brings in Navstack which is the main import for the entire application, Navstack is wrapped in a provider, which allows to create a redux store that encompases all of our application and allows use to access the state throughout the application.
+
 Node_Modules installed so far:
 
 //Navigation//

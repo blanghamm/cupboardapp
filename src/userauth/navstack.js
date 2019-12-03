@@ -7,8 +7,6 @@ import {connect} from 'react-redux';
 import Loading from './loading';
 import Login from './login';
 import Signup from './signup';
-import Welcome from '../screens/welcome';
-import Cupboard from '../screens/cupboard';
 import Navigation from '../navigation/index';
 
 const userauth = createSwitchNavigator(
