@@ -1,20 +1,11 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
+import {StyleSheet} from 'react-native';
+import Colors from './colors';
+import * as Layout from './layout';
+import * as Typography from './typography';
 
-class index extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  render() {
-    return (
-      <View>
-        <Text> index </Text>
-      </View>
-    );
-  }
-}
-
-export default index;
+export default StyleSheet.create({
+  demoText: {
+    color: Colors.lavender,
+  },
+});

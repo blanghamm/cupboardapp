@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   View,
   Text,
@@ -6,30 +6,31 @@ import {
   TextInput,
   StyleSheet,
   TouchableHighlight,
-  Alert
+  Alert,
 } from 'react-native';
 import firebase from '../firebase/config';
+import Styles from '../styles';
 
 let addItem = item => {
-  firebase.database().ref('/items').push({
-    name: item
-  });
-  console.log(item)
-  
+  firebase
+    .database()
+    .ref('/items')
+    .push({
+      name: item,
+    });
+  console.log(item);
 };
 
 export default class camera extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
-     
+      name: '',
     };
-
   }
   handleChange = e => {
     this.setState({
-        name: e.nativeEvent.text
+      name: e.nativeEvent.text,
     });
   };
   handleSubmit = () => {
@@ -42,23 +43,34 @@ export default class camera extends Component {
     }
 
     return (
-      <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 0 }}>
-          <Text style={styles.title}>Add Item</Text>
-          <TextInput style={styles.itemInput} onChange={this.handleChange} placeholder="Add Item" />
-          <TouchableHighlight
-            style={styles.button}
-            underlayColor="white"
-            onPress={this.handleSubmit}>
-          <Text style={styles.buttonText}>Add</Text>
-      </TouchableHighlight>
-      <Text style={styles.title}>Add Item</Text>
-          <TextInput style={styles.itemInput} onChange={this.handleChange} placeholder="Add Second Item" />
-          <TouchableHighlight
-            style={styles.button}
-            underlayColor="white"
-            onPress={this.handleSubmit}>
-          <Text style={styles.buttonText}>Add</Text>
-      </TouchableHighlight>  
+      // <View style={{flex: 1, backgroundColor: 'white', paddingTop: 0}}>
+      //   <Text style={styles.title}>Add Item</Text>
+      //   <TextInput
+      //     style={styles.itemInput}
+      //     onChange={this.handleChange}
+      //     placeholder="Add Item"
+      //   />
+      //   <TouchableHighlight
+      //     style={styles.button}
+      //     underlayColor="white"
+      //     onPress={this.handleSubmit}>
+      //     <Text style={styles.buttonText}>Add</Text>
+      //   </TouchableHighlight>
+      //   <Text style={styles.title}>Add Item</Text>
+      //   <TextInput
+      //     style={styles.itemInput}
+      //     onChange={this.handleChange}
+      //     placeholder="Add Second Item"
+      //   />
+      //   <TouchableHighlight
+      //     style={styles.button}
+      //     underlayColor="white"
+      //     onPress={this.handleSubmit}>
+      //     <Text style={styles.buttonText}>Add</Text>
+      //   </TouchableHighlight>
+      // </View>
+      <View>
+        <Text style={Styles.demoText}>HI</Text>
       </View>
     );
   }
@@ -67,7 +79,7 @@ export default class camera extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'#131420',
+    backgroundColor: '#131420',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 0,
