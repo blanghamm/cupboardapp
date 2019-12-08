@@ -29,8 +29,7 @@ class Welcome extends React.Component {
           <Text style={Styles.welcomeTextBlack}>Username</Text>
         </View>
         <View style={Styles.wideBlock}>
-          <Text style={Styles.welcomeTextGrey}>hello,</Text>
-          <Text style={Styles.welcomeTextBlack}>Username</Text>
+          <Text style={Styles.welcomeTextGrey}>You’re nearly stocked up</Text>
         </View>
         <View>
           <Button

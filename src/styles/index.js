@@ -39,7 +39,7 @@ export default StyleSheet.create({
   welcomeTextBlack: {
     color: Colors.black,
     fontSize: 40,
-    fontFamily: Typography.bodyBold,
+    fontFamily: Typography.titleRegular,
     lineHeight: 40,
   },
 });
