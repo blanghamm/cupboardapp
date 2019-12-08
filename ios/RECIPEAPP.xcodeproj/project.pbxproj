@@ -43,6 +43,9 @@
 		94BD909C072A46E7A281DF4C /* SourceSansPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9B00FADBFC42E99378D0E3 /* SourceSansPro-SemiBold.ttf */; };
 		1D7A51E34FE0419FA0F9F10E /* SourceSansPro-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD4C6F2EDD0C45EF9B39A596 /* SourceSansPro-SemiBoldItalic.ttf */; };
 		6DE0D979023E4C599DE0D378 /* SourceSansPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2BA49B52ED914497A888406C /* SourceSansPro-Bold.ttf */; };
+		F66D0954E34C4F23B2DE9254 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C0690342AAD46ABA72346E8 /* OpenSans-Bold.ttf */; };
+		880D5DEB0D684BA2A76BFEF8 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4BADCB49B10040CABB2D2C61 /* OpenSans-Regular.ttf */; };
+		C76F017F883C4B4EA99D83FD /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AA0DC3E513A445AA74A9B2E /* SourceSansPro-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +109,9 @@
 		BD9B00FADBFC42E99378D0E3 /* SourceSansPro-SemiBold.ttf */ = {isa = PBXFileReference; name = "SourceSansPro-SemiBold.ttf"; path = "../src/assets/fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		FD4C6F2EDD0C45EF9B39A596 /* SourceSansPro-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "SourceSansPro-SemiBoldItalic.ttf"; path = "../src/assets/fonts/Source_Sans_Pro/SourceSansPro-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		2BA49B52ED914497A888406C /* SourceSansPro-Bold.ttf */ = {isa = PBXFileReference; name = "SourceSansPro-Bold.ttf"; path = "../src/assets/fonts/SourceSansPro-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6C0690342AAD46ABA72346E8 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; name = "OpenSans-Bold.ttf"; path = "../src/assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4BADCB49B10040CABB2D2C61 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; name = "OpenSans-Regular.ttf"; path = "../src/assets/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0AA0DC3E513A445AA74A9B2E /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; name = "SourceSansPro-Regular.ttf"; path = "../src/assets/fonts/SourceSansPro-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +250,9 @@
 				BD9B00FADBFC42E99378D0E3 /* SourceSansPro-SemiBold.ttf */,
 				FD4C6F2EDD0C45EF9B39A596 /* SourceSansPro-SemiBoldItalic.ttf */,
 				2BA49B52ED914497A888406C /* SourceSansPro-Bold.ttf */,
+				6C0690342AAD46ABA72346E8 /* OpenSans-Bold.ttf */,
+				4BADCB49B10040CABB2D2C61 /* OpenSans-Regular.ttf */,
+				0AA0DC3E513A445AA74A9B2E /* SourceSansPro-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -413,6 +422,9 @@
 				94BD909C072A46E7A281DF4C /* SourceSansPro-SemiBold.ttf in Resources */,
 				1D7A51E34FE0419FA0F9F10E /* SourceSansPro-SemiBoldItalic.ttf in Resources */,
 				6DE0D979023E4C599DE0D378 /* SourceSansPro-Bold.ttf in Resources */,
+				F66D0954E34C4F23B2DE9254 /* OpenSans-Bold.ttf in Resources */,
+				880D5DEB0D684BA2A76BFEF8 /* OpenSans-Regular.ttf in Resources */,
+				C76F017F883C4B4EA99D83FD /* SourceSansPro-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,29 +1,19 @@
 import React from 'react';
 
 const Colors = {
-  black: '#000000',
+  black: '#05080D',
 
-  white: {
-    default: '#ffffff',
-  },
+  white: '#ffffff',
 
-  offWhite: {
-    default: '#FAF7F2',
-  },
+  offWhite: '#FAF7F2',
 
-  grey: {
-    default: '#6f7073',
-  },
+  grey: '#6f7073',
 
   lavender: '#9caaed',
 
-  aqua: {
-    default: '#7bcdc8',
-  },
+  aqua: '#7bcdc8',
 
-  peach: {
-    default: '#f3ad9f',
-  },
+  peach: '#f3ad9f',
 };
 
 export default Colors;

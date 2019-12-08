@@ -12,18 +12,32 @@ import {Carousel} from 'react-native-snap-carousel';
 import firebase from '../firebase/config';
 import {connect} from 'react-redux';
 import {signOut} from '../store/actions/authActions';
+import Styles from '../styles';
 
 class Welcome extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Hello</Text>
-        <Image style={styles.PngColor} source={require('../assets/icon.png')} />
-
-        <Button
-          title="Go Back"
-          onPress={() => this.props.navigation.navigate('Loading')}
-        />
+      <View>
+        <View style={[Styles.standardBlock, Styles.centerElement]}>
+          <Image
+            style={Styles.largeIcon}
+            source={require('../assets/icon.png')}
+          />
+        </View>
+        <View style={Styles.standardBlock}>
+          <Text style={Styles.welcomeTextGrey}>hello,</Text>
+          <Text style={Styles.welcomeTextBlack}>Username</Text>
+        </View>
+        <View style={Styles.wideBlock}>
+          <Text style={Styles.welcomeTextGrey}>hello,</Text>
+          <Text style={Styles.welcomeTextBlack}>Username</Text>
+        </View>
+        <View>
+          <Button
+            title="Go Back"
+            onPress={() => this.props.navigation.navigate('Loading')}
+          />
+        </View>
       </View>
     );
   }
@@ -35,7 +49,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Welcome);
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Welcome);
 
 const styles = StyleSheet.create({
   container: {
@@ -45,10 +62,5 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 42,
-  },
-  PngColor: {
-    tintColor: '#faf',
-    width: 50,
-    height: 50,
   },
 });
