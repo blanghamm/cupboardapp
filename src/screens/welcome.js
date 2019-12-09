@@ -55,10 +55,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(Welcome);
+export default connect(null, mapDispatchToProps)(Welcome);
 
 const styles = StyleSheet.create({
   container: {
