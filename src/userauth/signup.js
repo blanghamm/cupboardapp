@@ -2,6 +2,8 @@ import React from 'react';
 import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
 import {connect} from 'react-redux';
 import {signUp} from '../store/actions/authActions';
+import {firestoreConnect} from 'react-redux-firebase';
+import {compose} from 'redux';
 
 class SignUp extends React.Component {
   state = {displayName: '', email: '', password: '', errorMessage: null};
@@ -71,7 +73,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default compose(
+  firestoreConnect(['users']),
+  connect(mapStateToProps, mapDispatchToProps),
+)(SignUp);
 
 const styles = StyleSheet.create({
   container: {

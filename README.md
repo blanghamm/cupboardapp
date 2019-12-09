@@ -34,10 +34,12 @@ npm install --save feather-icons-react
 Currently only snap carousel is included but not displayed will update soon.
 
 npm install --save react-native-snap-carousel
+npm install react-native-modal
 
 //Firebase//
 
 npm install firebase --save
+npm install redux-firestore
 
 It's a lot. For windows use nodejs ver 10.16.3
 Also might have to clear npm cache (npm cache clear --force)

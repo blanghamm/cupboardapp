@@ -4,13 +4,13 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/Feather';
 
 import Welcome from '../screens/welcome.js';
-import Camera from '../screens/camera.js';
+import Modaloptions from '../utilities/modaloptions.js';
 import Cupboard from '../screens/cupboard.js';
 
 const Screens = createBottomTabNavigator(
   {
     Welcome,
-    Camera,
+    Modaloptions,
     Cupboard,
 
     Welcome: {
@@ -27,8 +27,8 @@ const Screens = createBottomTabNavigator(
         ),
       },
     },
-    Camera: {
-      screen: Camera,
+    Modaloptions: {
+      screen: Modaloptions,
       navigationOptions: {
         tabBarLabel: 'CAMERA',
         tabBarIcon: ({tintColor}) => (

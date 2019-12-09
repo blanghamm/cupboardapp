@@ -8,12 +8,19 @@ import {
   Image,
   Button,
 } from 'react-native';
-import {Carousel} from 'react-native-snap-carousel';
-import firebase from '../firebase/config';
+import Modal from 'react-native-modal';
 import {connect} from 'react-redux';
 import {signOut} from '../store/actions/authActions';
 
 class Welcome extends React.Component {
+  state = {
+    isModalVisible: false,
+  };
+
+  toggleModal = () => {
+    this.setState({isModalVisible: !this.state.isModalVisible});
+  };
+
   render() {
     return (
       <View style={styles.container}>

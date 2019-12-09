@@ -11,7 +11,9 @@ import {createFirestoreInstance, getFirestore} from 'redux-firestore';
 
 const store = createStore(
   rootReducer,
-  compose(applyMiddleware(thunk.withExtraArgument({getFirebase}))),
+  compose(
+    applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
+  ),
 );
 
 const rrfConfig = {
@@ -30,7 +32,10 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <ReactReduxFirebaseProvider {...rrfProps}>
+        <ReactReduxFirebaseProvider
+          {...rrfProps}
+          firebase={firebase}
+          createFirestoreInstance={createFirestoreInstance}>
           <NavStack />
         </ReactReduxFirebaseProvider>
       </Provider>

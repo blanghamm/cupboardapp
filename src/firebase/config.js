@@ -16,3 +16,4 @@ firebase.firestore();
 export default !firebase.apps.length
   ? firebase.initializeApp(config)
   : firebase.app();
+firebase.firestore();

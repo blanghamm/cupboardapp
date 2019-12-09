@@ -34,6 +34,7 @@ const AppContainer = createAppContainer(userauth);
 const mapStateToProps = state => {
   return {
     auth: state.firebase.auth,
+    profile: state.firebase.profile,
   };
 };
 
