@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
 
-class colors extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+const Colors = {
+  black: '#05080D',
 
-  render() {
-    return (
-      <View>
-        <Text> colors </Text>
-      </View>
-    );
-  }
-}
+  white: '#ffffff',
 
-export default colors;
+  offWhite: '#FAF7F2',
+
+  grey: '#6f7073',
+
+  lavender: '#9caaed',
+
+  aqua: '#7bcdc8',
+
+  peach: '#f3ad9f',
+};
+
+export default Colors;

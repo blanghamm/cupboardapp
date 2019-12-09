@@ -1,20 +1,13 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
 
-class typography extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+const Typography = {
+  titleBold: 'SourceSansPro-Bold',
 
-  render() {
-    return (
-      <View>
-        <Text> typography </Text>
-      </View>
-    );
-  }
-}
+  titleRegular: 'SourceSansPro-Regular',
 
-export default typography;
+  bodyBold: 'OpenSans-Bold',
+
+  bodyRegular: 'OpenSans-Regular',
+};
+
+export default Typography;
