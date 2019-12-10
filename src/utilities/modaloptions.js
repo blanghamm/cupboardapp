@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet, Button, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/Feather';
+import Styles from '../styles';
 
 class Modaloptions extends Component {
   state = {
-    isModalVisible: true,
+    isModalVisible: false,
   };
 
   toggleModal = () => {
@@ -17,21 +18,29 @@ class Modaloptions extends Component {
       <View style={styles.container}>
         <Button title="Show modal" onPress={this.toggleModal} />
         <Modal isVisible={this.state.isModalVisible}>
-          <View style={styles.content}>
+          <View style={Styles.scrim}>
             <Icon
-              style={styles.Icon}
+              style={Styles.scrimIcon}
               name="x"
               color="black"
               size={30}
               onPress={this.toggleModal}
             />
-            <Text style={styles.contentTitle}>Add a Recipe!</Text>
-            <TouchableOpacity
-              style={styles.modalmain}
-              onPress={this.toggleModal}>
-              <Text style={styles.buttonleft}>Add Manually</Text>
-              <Text style={styles.buttonright}>Take a Photo</Text>
-            </TouchableOpacity>
+            <View style={(Styles.centerElement, {paddingBottom: 20})}>
+              <Text style={Styles.scrimTitle}>Add a recipe</Text>
+            </View>
+            <View style={Styles.halfButtonBlock}>
+              <TouchableOpacity
+                style={[Styles.halfButton, Styles.greyButton]}
+                onPress={this.toggleModal}>
+                <Text style={Styles.buttonText}>View map</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[Styles.halfButton, Styles.peachButton]}
+                onPress={this.toggleModal}>
+                <Text style={Styles.buttonText}>Shopping List</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </Modal>
         <Text>Hello</Text>
@@ -42,51 +51,8 @@ class Modaloptions extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     padding: 50,
     alignItems: 'center',
-  },
-  content: {
-    backgroundColor: 'white',
-    margin: 30,
-    height: 200,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 8,
-    borderColor: 'rgba(0, 0, 0, 0.1)',
-  },
-  contentTitle: {
-    fontSize: 30,
-    fontFamily: 'SourceSansPro-Bold',
-  },
-  buttonleft: {
-    backgroundColor: '#6F7073',
-    fontFamily: 'SourceSansPro-Bold',
-    color: 'white',
-    fontSize: 20,
-    padding: 5,
-    margin: 10,
-    width: '50%',
-    textAlign: 'center',
-    borderRadius: 8,
-  },
-  buttonright: {
-    backgroundColor: '#F3AD9F',
-    fontFamily: 'SourceSansPro-Bold',
-    color: 'white',
-    fontSize: 20,
-    padding: 5,
-    margin: 10,
-    width: '50%',
-    textAlign: 'center',
-    borderRadius: 8,
-  },
-  modalmain: {
-    flexDirection: 'row',
-  },
-  Icon: {
-    alignSelf: 'flex-end',
-    margin: 10,
   },
 });
 

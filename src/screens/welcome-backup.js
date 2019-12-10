@@ -18,7 +18,7 @@ import {signOut} from '../store/actions/authActions';
 import Styles from '../styles';
 
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
-const screenWidthMargin = viewportWidth - 60;
+const screenWidthMargin = viewportWidth - 90;
 
 // class Welcome extends React.Component {
 
@@ -37,17 +37,14 @@ class Welcome extends React.Component {
       carouselItems: [
         {
           //id: (FROM DATABASE) ,
-          title: 'Spag Bol',
-          category: 'Italian',
+          title: 'Item 1',
           thumbnail: require('../assets/stock.png'),
         },
         {
           title: 'Item 2',
-          thumbnail: require('../assets/stock.png'),
         },
         {
           title: 'Item 3',
-          thumbnail: require('../assets/stock.png'),
         },
       ],
     };
@@ -57,13 +54,14 @@ class Welcome extends React.Component {
     return (
       <View
         style={{
-          justifyContent: 'center',
-          margin: 0,
-          marginRight: 20,
+          // justifyContent: 'center',
+          // alignItems: 'center',
+          backgroundColor: '#faf',
+          marginLeft: 0,
+          height: 200,
         }}>
-        <Image style={Styles.caraThumb} source={item.thumbnail} />
-        <Text style={Styles.caraTitle}>{item.title}</Text>
-        <Text style={Styles.caraSubTitle}>{item.category}</Text>
+        <Image style={{width: screenWidthMargin}} source={item.thumbnail} />
+        <Text style={{color: '#000000'}}>{item.title}</Text>
       </View>
     );
   }
@@ -105,24 +103,23 @@ class Welcome extends React.Component {
             <TouchableOpacity
               style={[Styles.halfButton, Styles.peachButton]}
               onPress={this.onPress}>
-              <Text style={Styles.buttonText}>Shopping List</Text>
+              <Text style={Styles.buttonText}>View map</Text>
             </TouchableOpacity>
           </View>
         </View>
         <View style={Styles.standardBlock}>
           <Text style={Styles.bodyTitle}>Your Recipes</Text>
         </View>
-        <SafeAreaView style={{paddingTop: 20}}>
+        <SafeAreaView style={{backgroundColor: 'lightblue', height: 200}}>
           <Carousel
             data={this.state.carouselItems}
             sliderWidth={viewportWidth}
             itemWidth={screenWidthMargin}
             layout={'default'}
-            inactiveSlideScale={1}
             renderItem={this._renderItem}
           />
         </SafeAreaView>
-        <View style={{paddingHorizontal: 30, paddingBottom: 30}}>
+        <View style={Styles.standardBlock}>
           <TouchableOpacity
             style={[Styles.fullButton, Styles.greyButton]}
             onPress={this.onPress}>
