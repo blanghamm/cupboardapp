@@ -10,27 +10,14 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import Modal from 'react-native-modal';
 import Carousel from 'react-native-snap-carousel';
-import SideSwipe from 'react-native-sideswipe';
 import {connect} from 'react-redux';
-import {signOut} from '../store/actions/authActions';
 import Styles from '../styles';
 
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
 const screenWidthMargin = viewportWidth - 60;
 
-// class Welcome extends React.Component {
-
 class Welcome extends React.Component {
-  state = {
-    isModalVisible: false,
-  };
-
-  toggleModal = () => {
-    this.setState({isModalVisible: !this.state.isModalVisible});
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -134,13 +121,16 @@ class Welcome extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    signOut: () => dispatch(signOut()),
+    modal: state.modalOpen,
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(Welcome);
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleModal: () => dispatch(toggleModal()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Welcome);

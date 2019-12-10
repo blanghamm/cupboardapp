@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/Feather';
 
 import Welcome from '../screens/welcome.js';
 import Modaloptions from '../utilities/modaloptions.js';
-import {recipeModal} from '../components/recipemodal';
 import Cupboard from '../screens/cupboard.js';
 
 const Screens = createBottomTabNavigator(
@@ -32,10 +31,8 @@ const Screens = createBottomTabNavigator(
       screen: Modaloptions,
       navigationOptions: {
         tabBarLabel: 'CAMERA',
-        tabBarOnPress: ({navigation}) => {
-          // navigation.navigate('hi');
-          console.log('Clicked');
-          recipeModal();
+        tabBarOnPress: () => {
+          console.log('hit');
         },
         tabBarIcon: ({tintColor}) => (
           <Icon
