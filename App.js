@@ -11,9 +11,7 @@ import {createFirestoreInstance, getFirestore} from 'redux-firestore';
 
 const store = createStore(
   rootReducer,
-  compose(
-    applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
-  ),
+  compose(applyMiddleware(thunk.withExtraArgument())),
 );
 
 const rrfConfig = {
