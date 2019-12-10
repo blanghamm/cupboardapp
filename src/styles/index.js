@@ -12,16 +12,16 @@ export default StyleSheet.create({
   standardBlock: {
     marginTop: Layout.standard,
     marginHorizontal: Layout.standard,
-    borderWidth: 1,
-    borderColor: 'grey',
+    // borderWidth: 1,
+    // borderColor: 'grey',
   },
   wideBlock: {
     marginTop: Layout.standard,
     alignItems: 'center',
     paddingHorizontal: Layout.standard,
     backgroundColor: Colors.offWhite,
-    borderWidth: 1,
-    borderColor: 'grey',
+    // borderWidth: 1,
+    // borderColor: 'grey',
   },
   bannerBlock: {
     height: 100,
@@ -51,7 +51,7 @@ export default StyleSheet.create({
   },
 
   halfButton: {
-    width: 150,
+    width: '45%',
     height: 40,
     borderRadius: 4,
     alignItems: 'center',
@@ -75,7 +75,7 @@ export default StyleSheet.create({
   },
 
   buttonText: {
-    fontFamily: Typography.bodyRegular,
+    fontFamily: Typography.bodyBold,
     textTransform: 'uppercase',
     fontSize: 12,
     color: Colors.white,
@@ -103,7 +103,6 @@ export default StyleSheet.create({
     lineHeight: 40,
   },
   bodyText: {
-    color: Colors.black,
     fontFamily: Typography.bodyRegular,
   },
   bodyTitle: {
@@ -116,5 +115,39 @@ export default StyleSheet.create({
     color: Colors.grey,
     fontFamily: Typography.bodyRegular,
     fontSize: 16,
+  },
+
+  //CAROUSEL
+
+  caraTitle: {
+    fontFamily: Typography.bodyRegular,
+    fontSize: 20,
+  },
+  caraSubTitle: {
+    fontFamily: Typography.bodyRegular,
+    fontSize: 12,
+    textTransform: 'uppercase',
+  },
+  caraThumb: {
+    width: '100%',
+    height: 180,
+  },
+
+  //SCRIM
+
+  scrim: {
+    backgroundColor: Colors.white,
+    width: '100%',
+    borderRadius: 10,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+    padding: 30,
+  },
+  scrimTitle: {
+    fontFamily: Typography.bodyBold,
+    fontSize: 20,
+    alignSelf: 'center',
+  },
+  scrimIcon: {
+    alignSelf: 'flex-end',
   },
 });
