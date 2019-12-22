@@ -13,6 +13,8 @@ import {
 import Carousel from 'react-native-snap-carousel';
 import {connect} from 'react-redux';
 import Styles from '../styles';
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
 const screenWidthMargin = viewportWidth - 60;
@@ -56,6 +58,7 @@ class Welcome extends React.Component {
   }
 
   render() {
+    const {navigate} = this.props.navigation;
     return (
       <ScrollView>
         <View style={[Styles.standardBlock, Styles.centerElement]}>
@@ -112,8 +115,8 @@ class Welcome extends React.Component {
         <View style={{paddingHorizontal: 30, paddingBottom: 30}}>
           <TouchableOpacity
             style={[Styles.fullButton, Styles.greyButton]}
-            onPress={this.onPress}>
-            <Text style={Styles.buttonText}>View map</Text>
+            onPress={() => this.props.navigation.navigate('Modal')}>
+            <Text style={Styles.buttonText}>View recipes</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -121,11 +124,11 @@ class Welcome extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    modal: state.modalOpen,
-  };
-};
+// _goToManual = () => {
+//   this.props.navigation.navigate('Manual');
+// };
+
+// const AppStack = createStackNavigator({Manual: Manual});
 
 const mapDispatchToProps = dispatch => {
   return {
