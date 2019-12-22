@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import Welcome from '../screens/welcome.js';
 import Modaloptions from '../utilities/modaloptions.js';
+import Manual from '../screens/manual-upload.js';
 import Cupboard from '../screens/cupboard.js';
 import Styles from '../styles';
 import Colors from '../styles/colors';
@@ -23,7 +24,7 @@ import Typography from '../styles/typography';
 const Screens = createBottomTabNavigator(
   {
     Welcome,
-    Modaloptions,
+    Manual,
     Cupboard,
 
     Welcome: {
@@ -40,35 +41,35 @@ const Screens = createBottomTabNavigator(
         ),
       },
     },
-    Modaloptions: {
-      screen: Modaloptions,
+    Manual: {
+      screen: Manual,
       navigationOptions: {
         tabBarLabel: 'CAMERA',
-        tabBarOnPress: ({navigation}) => {
-          console.log('Clicked');
-          Alert.alert(
-            'Add a recipe',
-            '',
-            [
-              {
-                text: 'Cancel',
-                onPress: () => console.log('Cancel clicked'),
-                style: 'cancel',
-              },
-              {
-                text: 'Manual',
-                onPress: () => alertPress(),
-              },
-              {
-                text: 'Camera',
-                onPress: () => console.log('Camera Pressed'),
-                style: 'positive',
-              },
-            ],
-            {cancelable: true},
-          );
-          // recipeModal();
-        },
+        // tabBarOnPress: ({navigation}) => {
+        //   console.log('Clicked');
+        //   Alert.alert(
+        //     'Add a recipe',
+        //     '',
+        //     [
+        //       {
+        //         text: 'Cancel',
+        //         onPress: () => console.log('Cancel clicked'),
+        //         style: 'cancel',
+        //       },
+        //       {
+        //         text: 'Manual',
+        //         // onPress: () => ,
+        //       },
+        //       {
+        //         text: 'Camera',
+        //         onPress: () => console.log('Camera Pressed'),
+        //         style: 'positive',
+        //       },
+        //     ],
+        //     {cancelable: true},
+        //   );
+        //   // recipeModal();
+        // },
         tabBarIcon: ({tintColor}) => (
           <Icon
             style={{marginBottom: 20}}
