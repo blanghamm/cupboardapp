@@ -50,3 +50,6 @@ npm install redux-thunk
 npm install react-redux-firebase
 npm install redux-firestore --save
 npm install redux-logger
+
+npm install formik
+npm install yup

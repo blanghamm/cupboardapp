@@ -7151,11 +7151,6 @@ react-native-screens@^2.0.0-alpha.7:
   dependencies:
     debounce "^1.2.0"
 
-react-native-sideswipe@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/react-native-sideswipe/-/react-native-sideswipe-1.5.0.tgz#f67014633456c7d1a44112b6126ee877f7202f50"
-  integrity sha512-1qI9qQrc+UwM24qtQN5Tk9cucvTRTpp3wnGxG3JjeATwaBxcIMQPtxbuosMFi+gXBH2p/ofmtD4jZc7w2bmGeg==
-
 react-native-snap-carousel@^3.8.4:
   version "3.8.4"
   resolved "https://registry.yarnpkg.com/react-native-snap-carousel/-/react-native-snap-carousel-3.8.4.tgz#4c749c6a714d46ed82de527233850cb5da41bc62"
@@ -7251,10 +7246,10 @@ react-navigation@^4.0.10:
     "@react-navigation/core" "^3.5.1"
     "@react-navigation/native" "^3.6.2"
 
-react-redux-firebase@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/react-redux-firebase/-/react-redux-firebase-3.0.5.tgz#94db123b80e0a4de1854f87e75bf15f36d516214"
-  integrity sha512-QEmzPTPFtxHoAvy8UJ1o76OrUv/a2hD04iVslnpecZSYcasjWjxpS2gu9HpbHGs/qjB92gF3BvrrDc8aDRkGeQ==
+react-redux-firebase@^2.0.0-rc.2:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/react-redux-firebase/-/react-redux-firebase-2.5.0.tgz#e0f9d99ae160bed5af94c924090261aff280dcbc"
+  integrity sha512-ZKX2jhRtnaaT04I3zQBVErhTZz7feBsvRmR/hoeefu+xC4ln4ZiHDC2UKsQ8iax3C8fDoZrLHAjjUPoMj6Mpaw==
   dependencies:
     hoist-non-react-statics "^3.3.0"
     lodash "^4.17.15"
