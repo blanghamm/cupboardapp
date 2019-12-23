@@ -1,7 +1,6 @@
 export const signIn = credentials => {
-  return (dispatch, getState, {getFirebase, getFirestore}) => {
+  return (dispatch, getState, {getFirebase}) => {
     const firebase = getFirebase();
-    const firestore = getFirestore();
     firebase
       .auth()
       .signInWithEmailAndPassword(credentials.email, credentials.password)
@@ -15,23 +14,20 @@ export const signIn = credentials => {
 };
 
 export const signUp = newUser => {
-  return (dispatch, getState, {getFirebase, getFirestore}) => {
+  return (dispatch, getState, {getFirebase}) => {
     const firebase = getFirebase();
-    const firestore = getFirestore();
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(newUser.email, newUser.password)
-      .then(resp => {
-        const user = {
-          uid: resp.user.uid,
-          email: email,
-        };
-        return firestore
-          .collection('users')
-          .doc(resp.user.uid)
-          .set(user);
-      })
+    firebase.auth().createUserWithEmailAndPassword(
+      // newUser.name,
+      newUser.email,
+      newUser.password,
+    );
 
+    return firebase
+      .collection()
+      .doc('users/')
+      .set({
+        email: newUser.email,
+      })
       .then(() => {
         dispatch({type: 'SIGNUP_SUCCESS'});
       })
@@ -42,10 +38,7 @@ export const signUp = newUser => {
 };
 
 export const signOut = () => {
-  return (dispatch, getState, {getFirebase, getFirestore}) => {
-    const firebase = getFirebase();
-    const firestore = getFirestore();
-
+  return (dispatch, getState, {getFirebase}) => {
     firebase
       .auth()
       .signOut()

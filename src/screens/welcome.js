@@ -9,12 +9,9 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import Modal from 'react-native-modal';
 import Carousel from 'react-native-snap-carousel';
 import Recipecarousel from '../components/recipe-carousel';
-import SideSwipe from 'react-native-sideswipe';
 import {connect} from 'react-redux';
-import {signOut} from '../store/actions/authActions';
 import Styles from '../styles';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
@@ -96,11 +93,11 @@ class Welcome extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    signOut: () => dispatch(signOut()),
+    toggleModal: () => dispatch(toggleModal()),
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(Welcome);
