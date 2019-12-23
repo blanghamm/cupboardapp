@@ -5,11 +5,13 @@ import {
   Button,
   TextInput,
   StyleSheet,
+  SafeAreaView,
   TouchableHighlight,
   Alert,
 } from 'react-native';
 import firebase from '../firebase/config';
 import Styles from '../styles';
+import Form from '../components/form';
 
 let addItem = item => {
   firebase
@@ -43,32 +45,34 @@ export default class camera extends Component {
     }
 
     return (
-      <View style={{flex: 1, backgroundColor: 'white', paddingTop: 0}}>
-        <Text style={{fontSize: 50}}>HELLO</Text>
-        <TextInput
-          style={styles.itemInput}
-          onChange={this.handleChange}
-          placeholder="Add Item"
-        />
-        <TouchableHighlight
-          style={styles.button}
-          underlayColor="white"
-          onPress={this.handleSubmit}>
-          <Text style={styles.buttonText}>Add</Text>
-        </TouchableHighlight>
-        <Text style={styles.title}>Add Item</Text>
-        <TextInput
-          style={styles.itemInput}
-          onChange={this.handleChange}
-          placeholder="Add Second Item"
-        />
-        <TouchableHighlight
-          style={styles.button}
-          underlayColor="white"
-          onPress={this.handleSubmit}>
-          <Text style={styles.buttonText}>Add</Text>
-        </TouchableHighlight>
-      </View>
+      // <View style={{flex: 1, backgroundColor: 'white', paddingTop: 0}}>
+      // <Text style={{fontSize: 50}}>Welcome</Text>
+      // <TextInput
+      //   style={styles.itemInput}
+      //   onChange={this.handleChange}
+      //   placeholder="Add Item"
+      // />
+      // <TouchableHighlight
+      //   style={styles.button}
+      //   underlayColor="white"
+      //   onPress={this.handleSubmit}>
+      //   <Text style={styles.buttonText}>Add</Text>
+      // </TouchableHighlight>
+      // <Text style={{fontSize: 20}}>Add Item</Text>
+      // <TextInput
+      //   style={{fontSize: 20}}
+      //   onChange={this.handleChange}
+      //   placeholder="Add Second Item"
+      // />
+      // <TouchableHighlight
+      //   style={Styles.button}
+      //   underlayColor="white"
+      //   onPress={this.handleSubmit}>
+      //   <Text style={{fontSize: 20}}>Add</Text>
+      // </TouchableHighlight>
+      // </View>
+
+      <Form />
     );
   }
 }
