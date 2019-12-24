@@ -24,6 +24,7 @@ const userauth = createSwitchNavigator(
       screen: Navigation,
     },
   },
+
   {
     initialRouteName: 'Loading',
   },

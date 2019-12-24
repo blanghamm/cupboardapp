@@ -23,7 +23,7 @@ let addItem = item => {
   console.log(item);
 };
 
-export default class camera extends Component {
+export default class manual extends Component {
   constructor(props) {
     super(props);
     this.state = {

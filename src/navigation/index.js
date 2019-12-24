@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 import Welcome from '../screens/welcome.js';
 import Modaloptions from '../utilities/modaloptions.js';
-import Manual from '../screens/manual-upload.js';
+import SplashNav from '../screens/add-splash-nav.js';
 import Cupboard from '../screens/cupboard.js';
 import Styles from '../styles';
 import Colors from '../styles/colors';
@@ -24,7 +24,7 @@ import Typography from '../styles/typography';
 const Screens = createBottomTabNavigator(
   {
     Welcome,
-    Manual,
+    SplashNav,
     Cupboard,
 
     Welcome: {
@@ -41,10 +41,10 @@ const Screens = createBottomTabNavigator(
         ),
       },
     },
-    Manual: {
-      screen: Manual,
+    SplashNav: {
+      screen: SplashNav,
       navigationOptions: {
-        tabBarLabel: 'CAMERA',
+        tabBarLabel: 'ADD',
         // tabBarOnPress: ({navigation}) => {
         //   console.log('Clicked');
         //   Alert.alert(
@@ -73,7 +73,7 @@ const Screens = createBottomTabNavigator(
         tabBarIcon: ({tintColor}) => (
           <Icon
             style={{marginBottom: 20}}
-            name="camera"
+            name="plus"
             color={tintColor}
             size={30}
           />
