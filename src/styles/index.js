@@ -150,4 +150,12 @@ export default StyleSheet.create({
   scrimIcon: {
     alignSelf: 'flex-end',
   },
+
+  //TEXT INPUT
+
+  textInput: {
+    fontSize: 20,
+    width: '80%',
+    fontFamily: Typography.bodyRegular,
+  },
 });

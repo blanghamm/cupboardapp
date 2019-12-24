@@ -10,7 +10,6 @@ import {
   Dimensions,
 } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
-import SideSwipe from 'react-native-sideswipe';
 import Styles from '../styles';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
