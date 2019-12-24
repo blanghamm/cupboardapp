@@ -71,8 +71,10 @@ export default class manual extends Component {
       //   <Text style={{fontSize: 20}}>Add</Text>
       // </TouchableHighlight>
       // </View>
-
-      <Form />
+      <View>
+        <Form />
+        <Form />
+      </View>
     );
   }
 }

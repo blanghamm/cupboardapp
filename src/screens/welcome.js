@@ -97,4 +97,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+<<<<<<< HEAD
 export default connect(null, mapDispatchToProps)(Welcome);
+=======
+export default connect()(Welcome);
+// mapStateToProps,
+// mapDispatchToProps,
+>>>>>>> 17e38c47bab1afad96b3590e579725f9ee10fc62
