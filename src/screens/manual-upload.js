@@ -6,11 +6,15 @@ import {
   TextInput,
   StyleSheet,
   SafeAreaView,
-  TouchableHighlight,
+  TouchableOpacity,
   Alert,
 } from 'react-native';
 import firebase from '../firebase/config';
 import Styles from '../styles';
+import FormEntry from '../components/form-entry-box';
+import NewEntry from '../components/new-form-entry';
+import Colors from '../styles/colors';
+import Icon from 'react-native-vector-icons/Feather';
 import Form from '../components/form';
 
 let addItem = item => {
@@ -23,7 +27,7 @@ let addItem = item => {
   console.log(item);
 };
 
-export default class manual extends Component {
+export default class Manual extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,34 +49,16 @@ export default class manual extends Component {
     }
 
     return (
-      // <View style={{flex: 1, backgroundColor: 'white', paddingTop: 0}}>
-      // <Text style={{fontSize: 50}}>Welcome</Text>
-      // <TextInput
-      //   style={styles.itemInput}
-      //   onChange={this.handleChange}
-      //   placeholder="Add Item"
-      // />
-      // <TouchableHighlight
-      //   style={styles.button}
-      //   underlayColor="white"
-      //   onPress={this.handleSubmit}>
-      //   <Text style={styles.buttonText}>Add</Text>
-      // </TouchableHighlight>
-      // <Text style={{fontSize: 20}}>Add Item</Text>
-      // <TextInput
-      //   style={{fontSize: 20}}
-      //   onChange={this.handleChange}
-      //   placeholder="Add Second Item"
-      // />
-      // <TouchableHighlight
-      //   style={Styles.button}
-      //   underlayColor="white"
-      //   onPress={this.handleSubmit}>
-      //   <Text style={{fontSize: 20}}>Add</Text>
-      // </TouchableHighlight>
-      // </View>
       <View>
-        <Form />
+        <TouchableOpacity onPress={this.onPressButton}>
+          <Icon
+            style={{padding: 30}}
+            name="arrow-left"
+            color={Colors.black}
+            size={30}
+            onPress={() => this.props.navigation.navigate('Splash')}
+          />
+        </TouchableOpacity>
         <Form />
       </View>
     );
