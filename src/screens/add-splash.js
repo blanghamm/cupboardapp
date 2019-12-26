@@ -11,15 +11,17 @@ class Splash extends Component {
     const {navigate} = this.props.navigation;
     return (
       <View>
-        <TouchableOpacity onPress={this.onPressButton}>
-          <Icon
-            style={{padding: 30}}
-            name="arrow-left"
-            color={Colors.black}
-            size={30}
-            onPress={() => this.props.navigation.navigate('Welcome')}
-          />
-        </TouchableOpacity>
+        <View style={{width: 100}}>
+          <TouchableOpacity onPress={this.onPressButton}>
+            <Icon
+              style={{padding: 30}}
+              name="arrow-left"
+              color={Colors.black}
+              size={30}
+              onPress={() => this.props.navigation.navigate('Welcome')}
+            />
+          </TouchableOpacity>
+        </View>
         <View style={Styles.standardBlock}>
           <Text style={[{paddingBottom: 30}, Styles.modalTitle]}>
             Add a recipe

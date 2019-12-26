@@ -49,15 +49,17 @@ export default class Manual extends Component {
 
     return (
       <View>
-        <TouchableOpacity onPress={this.onPressButton}>
-          <Icon
-            style={{padding: 30}}
-            name="arrow-left"
-            color={Colors.black}
-            size={30}
-            onPress={() => this.props.navigation.navigate('Splash')}
-          />
-        </TouchableOpacity>
+        <View style={{width: 100}}>
+          <TouchableOpacity onPress={this.onPressButton}>
+            <Icon
+              style={{padding: 30}}
+              name="arrow-left"
+              color={Colors.black}
+              size={30}
+              onPress={() => this.props.navigation.navigate('Splash')}
+            />
+          </TouchableOpacity>
+        </View>
         <Form />
       </View>
     );
