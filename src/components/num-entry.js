@@ -27,6 +27,8 @@ export default class Numentry extends React.Component {
       this.setState({
         quantVar: this.state.quantVar - 1,
       });
+
+      console.log(this.state.quantVar);
     }
   };
 
@@ -37,7 +39,7 @@ export default class Numentry extends React.Component {
   };
 
   render() {
-    const quantVar = this.state.quantVar;
+    let quantVar = this.state.quantVar;
     return (
       <SafeAreaView
         style={{
@@ -62,12 +64,4 @@ export default class Numentry extends React.Component {
       </SafeAreaView>
     );
   }
-
-  // minQ = () => {
-  //   this.setState(() => {
-  //     if (this.state.quantVar > 0) {
-  //       quantVar: this.state.quantVar - 1;
-  //     }
-  //   });
-  // };
 }

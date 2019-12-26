@@ -34,8 +34,9 @@ export default class Form extends React.Component {
   };
 
   nextEntry = () => {
-    console.log(this.state.ingredient);
-    console.log(this.state.quantVar);
+    console.log('Ingredient: ' + this.state.ingredient);
+    console.log('Quantity: ' + this.state.quantVar);
+    console.log();
     this.addTextInput(this.state.textInput.length);
     this.textInput;
   };
@@ -60,6 +61,7 @@ export default class Form extends React.Component {
     this.setState({textInput});
   };
   render() {
+    let quantVar = this.state.quantVar;
     return (
       <SafeAreaView
         style={{
