@@ -9,6 +9,11 @@ export default StyleSheet.create({
   centerElement: {
     alignItems: 'center',
   },
+  centerVertically: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#faf',
+  },
   standardBlock: {
     marginTop: Layout.standard,
     marginHorizontal: Layout.standard,
@@ -133,21 +138,21 @@ export default StyleSheet.create({
     height: 180,
   },
 
-  //SCRIM
+  //MODAL
 
-  scrim: {
+  modal: {
     backgroundColor: Colors.white,
     width: '100%',
     borderRadius: 10,
     borderColor: 'rgba(0, 0, 0, 0.1)',
     padding: 30,
   },
-  scrimTitle: {
+  modalTitle: {
     fontFamily: Typography.bodyBold,
     fontSize: 20,
     alignSelf: 'center',
   },
-  scrimIcon: {
+  modalIcon: {
     alignSelf: 'flex-end',
   },
 

@@ -17,6 +17,8 @@ import Welcome from '../screens/welcome.js';
 import Modaloptions from '../utilities/modaloptions.js';
 import SplashNav from '../screens/add-splash-nav.js';
 import Cupboard from '../screens/cupboard.js';
+import Manual from '../screens/manual-upload';
+import Camera from '../screens/camera-upload';
 import Styles from '../styles';
 import Colors from '../styles/colors';
 import Typography from '../styles/typography';
@@ -124,41 +126,11 @@ const Screens = createBottomTabNavigator(
   },
 );
 
-const Modal = () => {
-  return (
-    <Modal>
-      <View style={styles.container}>
-        <View style={Styles.scrim}>
-          <Icon style={Styles.scrimIcon} name="x" color="black" size={30} />
-          <View style={(Styles.centerElement, {paddingBottom: 20})}>
-            <Text style={Styles.scrimTitle}>Add a recipe</Text>
-          </View>
-          <View style={Styles.halfButtonBlock}>
-            <TouchableOpacity style={[Styles.halfButton, Styles.greyButton]}>
-              <Text style={Styles.buttonText}>View map</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[Styles.halfButton, Styles.peachButton]}>
-              <Text style={Styles.buttonText}>Shopping List</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-    </Modal>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 50,
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0)',
-  },
-});
-
 const rootNavigator = createStackNavigator(
   {
     Screens: {screen: Screens},
-    Modal: {screen: Modal},
+    Manual: {screen: Manual},
+    Camera: {screen: Camera},
   },
   {
     headerMode: 'none',

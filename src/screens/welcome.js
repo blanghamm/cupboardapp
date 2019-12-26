@@ -76,7 +76,7 @@ class Welcome extends React.Component {
         <View style={{paddingHorizontal: 30, paddingBottom: 30}}>
           <TouchableOpacity
             style={[Styles.fullButton, Styles.greyButton]}
-            onPress={() => this.props.navigation.navigate('Manual')}>
+            onPress={() => this.props.navigation.navigate('Recipes')}>
             <Text style={Styles.buttonText}>View recipes</Text>
           </TouchableOpacity>
         </View>
@@ -97,10 +97,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-<<<<<<< HEAD
-export default connect(null, mapDispatchToProps)(Welcome);
-=======
-export default connect()(Welcome);
-// mapStateToProps,
-// mapDispatchToProps,
->>>>>>> 17e38c47bab1afad96b3590e579725f9ee10fc62
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Welcome);
