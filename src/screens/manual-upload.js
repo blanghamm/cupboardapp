@@ -11,11 +11,10 @@ import {
 } from 'react-native';
 import firebase from '../firebase/config';
 import Styles from '../styles';
-import FormEntry from '../components/form-entry-box';
-import NewEntry from '../components/new-form-entry';
 import Colors from '../styles/colors';
 import Icon from 'react-native-vector-icons/Feather';
 import Form from '../components/form';
+import Numentry from '../components/num-entry';
 
 let addItem = item => {
   firebase

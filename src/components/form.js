@@ -15,6 +15,7 @@ import Styles from '../styles';
 import Typography from '../styles/typography';
 import Colors from '../styles/colors';
 import Icon from 'react-native-vector-icons/Feather';
+import Numentry from './num-entry';
 
 export default class Form extends React.Component {
   constructor(props) {
@@ -34,6 +35,7 @@ export default class Form extends React.Component {
 
   nextEntry = () => {
     console.log(this.state.ingredient);
+    console.log(this.state.quantVar);
     this.addTextInput(this.state.textInput.length);
     this.textInput;
   };
@@ -47,12 +49,13 @@ export default class Form extends React.Component {
         placeholder="Enter an ingredient"
         style={{
           fontSize: 20,
-          width: '80%',
+          minWidth: 200,
           fontFamily: Typography.bodyRegular,
         }}
         onChangeText={value => this.setState({ingredient: value})}
         onSubmitEditing={this.nextEntry}
       />,
+      <Numentry />,
     );
     this.setState({textInput});
   };
@@ -64,12 +67,19 @@ export default class Form extends React.Component {
           paddingHorizontal: 30,
           display: 'flex',
           flexDirection: 'column',
-          // justifyContent: 'space-between',
-          // alignItems: 'center',
         }}>
-        {this.state.textInput.map((value, index) => {
-          return value;
-        })}
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+          }}>
+          {this.state.textInput.map((value, index) => {
+            return value;
+          })}
+        </View>
         <TouchableOpacity
           onPress={this.nextEntry}
           style={{paddingTop: 20, alignSelf: 'center'}}>
