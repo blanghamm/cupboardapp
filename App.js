@@ -12,10 +12,7 @@ import {createFirestoreInstance} from 'redux-firestore';
 import 'firebase/auth';
 import 'firebase/firestore';
 
-const initialState = {};
-
 const store = createStore(
-  // initialState,
   rootReducer,
   compose(applyMiddleware(thunk.withExtraArgument({getFirebase}))),
 );
