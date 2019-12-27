@@ -10,7 +10,7 @@ class Splash extends Component {
   render() {
     const {navigate} = this.props.navigation;
     return (
-      <View>
+      <View style={{flex: 1}}>
         <View style={{width: 100}}>
           <TouchableOpacity onPress={this.onPressButton}>
             <Icon
@@ -22,7 +22,7 @@ class Splash extends Component {
             />
           </TouchableOpacity>
         </View>
-        <View style={Styles.standardBlock}>
+        <View style={[Styles.standardBlock, {paddingTop: '30%'}]}>
           <Text style={[{paddingBottom: 30}, Styles.modalTitle]}>
             Add a recipe
           </Text>

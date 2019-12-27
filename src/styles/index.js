@@ -20,6 +20,9 @@ export default StyleSheet.create({
     // borderWidth: 1,
     // borderColor: 'grey',
   },
+  standardPadding: {
+    marginHorizontal: Layout.standard,
+  },
   wideBlock: {
     marginTop: Layout.standard,
     alignItems: 'center',
@@ -107,8 +110,22 @@ export default StyleSheet.create({
     fontFamily: Typography.titleRegular,
     lineHeight: 40,
   },
-  bodyText: {
+  title: {
+    color: Colors.black,
+    fontFamily: Typography.bodyBold,
+    textTransform: 'uppercase',
+    fontSize: 24,
+  },
+  title: {
+    color: Colors.black,
+    fontFamily: Typography.bodyBold,
+    textTransform: 'uppercase',
+    fontSize: 24,
+  },
+  subTitle: {
+    color: Colors.grey,
     fontFamily: Typography.bodyRegular,
+    fontSize: 16,
   },
   bodyTitle: {
     color: Colors.black,
@@ -116,10 +133,8 @@ export default StyleSheet.create({
     textTransform: 'uppercase',
     fontSize: 20,
   },
-  bodySubTitle: {
-    color: Colors.grey,
+  bodyText: {
     fontFamily: Typography.bodyRegular,
-    fontSize: 16,
   },
 
   //CAROUSEL

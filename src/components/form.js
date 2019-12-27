@@ -15,38 +15,63 @@ import Styles from '../styles';
 import Typography from '../styles/typography';
 import Colors from '../styles/colors';
 import Icon from 'react-native-vector-icons/Feather';
-import Numentry from './num-entry';
+let count = -1;
 
 export default class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       textInput: [],
+      enteredText: [],
     };
   }
 
   componentDidMount() {
     this.addTextInput(this.state.textInput.length);
+    this.setState({
+      quantVar: 1,
+    });
   }
 
   state = {
     ingredient: '',
+    quantVar: 1,
+    quantSep: 1,
+  };
+
+  minQ = value => {
+    if (this.state.quantVar > 1) {
+      this.setState({
+        quantVar: this.state.quantVar - 1,
+      });
+    }
+  };
+
+  plusQ = value => {
+    this.setState({
+      quantVar: this.state.quantVar + 1,
+    });
   };
 
   nextEntry = () => {
     console.log('Ingredient: ' + this.state.ingredient);
     console.log('Quantity: ' + this.state.quantVar);
     console.log();
+    this.state.quantSep = this.state.quantVar;
     this.addTextInput(this.state.textInput.length);
     this.textInput;
+    this.displayText(this.state.enteredText.length);
+    this.enteredText;
   };
 
   addTextInput = key => {
+    count = count + 1;
+    this.state.textInput[count] = null;
+    this.state.quantVar = 1;
     let textInput = this.state.textInput;
     textInput.push(
       <TextInput
         key={key}
-        // value="ingredient"
         placeholder="Enter an ingredient"
         style={{
           fontSize: 20,
@@ -56,10 +81,32 @@ export default class Form extends React.Component {
         onChangeText={value => this.setState({ingredient: value})}
         onSubmitEditing={this.nextEntry}
       />,
-      <Numentry />,
     );
     this.setState({textInput});
   };
+
+  displayText = key2 => {
+    let enteredText = this.state.enteredText;
+    enteredText.push(
+      <View
+        style={{
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          paddingVertical: 10,
+        }}>
+        <Text style={{fontSize: 20, fontFamily: Typography.bodyBold}}>
+          {this.state.ingredient}
+        </Text>
+        <Text style={{fontSize: 20, fontFamily: Typography.bodyBold}}>
+          {this.state.quantSep}
+        </Text>
+      </View>,
+    );
+    this.setState({enteredText});
+  };
+
   render() {
     let quantVar = this.state.quantVar;
     return (
@@ -78,9 +125,33 @@ export default class Form extends React.Component {
             justifyContent: 'space-between',
             flexWrap: 'wrap',
           }}>
+          {this.state.enteredText.map((value, index) => {
+            return value;
+          })}
           {this.state.textInput.map((value, index) => {
             return value;
           })}
+          <SafeAreaView
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+            }}>
+            <TouchableOpacity onPress={this.minQ}>
+              <Icon style={{}} name="minus" color={Colors.grey} size={30} />
+            </TouchableOpacity>
+            <Text
+              style={[
+                Typography.bodyBold,
+                {fontSize: 20, color: Colors.grey, paddingHorizontal: 5},
+              ]}>
+              {this.state.quantVar}
+            </Text>
+            <TouchableOpacity onPress={this.plusQ}>
+              <Icon style={{}} name="plus" color={Colors.grey} size={30} />
+            </TouchableOpacity>
+          </SafeAreaView>
         </View>
         <TouchableOpacity
           onPress={this.nextEntry}

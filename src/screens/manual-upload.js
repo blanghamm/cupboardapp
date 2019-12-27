@@ -14,7 +14,6 @@ import Styles from '../styles';
 import Colors from '../styles/colors';
 import Icon from 'react-native-vector-icons/Feather';
 import Form from '../components/form';
-import Numentry from '../components/num-entry';
 
 let addItem = item => {
   firebase
@@ -59,6 +58,12 @@ export default class Manual extends Component {
               onPress={() => this.props.navigation.navigate('Splash')}
             />
           </TouchableOpacity>
+        </View>
+        <View style={[Styles.standardPadding, {paddingBottom: 30}]}>
+          <Text style={Styles.title}>Add Ingredients</Text>
+          <Text style={Styles.subTitle}>
+            Add the ingredients and the quantities to your recipe.
+          </Text>
         </View>
         <Form />
       </View>
