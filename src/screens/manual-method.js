@@ -6,6 +6,7 @@ import {
   TextInput,
   StyleSheet,
   SafeAreaView,
+  ScrollView,
   TouchableOpacity,
   Alert,
 } from 'react-native';
@@ -13,7 +14,7 @@ import firebase from '../firebase/config';
 import Styles from '../styles';
 import Colors from '../styles/colors';
 import Icon from 'react-native-vector-icons/Feather';
-import Form from '../components/form';
+import Methodform from '../components/method-form';
 
 let addItem = item => {
   firebase
@@ -25,7 +26,7 @@ let addItem = item => {
   console.log(item);
 };
 
-export default class Manual extends Component {
+export default class Manualmethod extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -47,7 +48,7 @@ export default class Manual extends Component {
     }
 
     return (
-      <View>
+      <ScrollView>
         <View style={{width: 100}}>
           <TouchableOpacity onPress={this.onPressButton}>
             <Icon
@@ -55,18 +56,25 @@ export default class Manual extends Component {
               name="arrow-left"
               color={Colors.black}
               size={30}
-              onPress={() => this.props.navigation.navigate('Splash')}
+              onPress={() =>
+                this.props.navigation.navigate('Manualingredients')
+              }
             />
           </TouchableOpacity>
         </View>
         <View style={[Styles.standardPadding, {paddingBottom: 30}]}>
-          <Text style={Styles.title}>Add Ingredients</Text>
-          <Text style={Styles.subTitle}>
-            Add the ingredients and the quantities to your recipe.
-          </Text>
+          <Text style={Styles.title}>Add Method</Text>
+          <Text style={Styles.subTitle}>Add each step to your recipe.</Text>
         </View>
-        <Form />
-      </View>
+        <Methodform />
+        <View style={{paddingHorizontal: 30, paddingVertical: 30}}>
+          <TouchableOpacity
+            style={[Styles.fullButton, Styles.greyButton]}
+            onPress={() => this.props.navigation.navigate('Recipes')}>
+            <Text style={Styles.buttonText}>Publish your recipe</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     );
   }
 }

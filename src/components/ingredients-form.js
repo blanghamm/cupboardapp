@@ -17,7 +17,7 @@ import Colors from '../styles/colors';
 import Icon from 'react-native-vector-icons/Feather';
 let count = -1;
 
-export default class Form extends React.Component {
+export default class Ingredientsform extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -62,6 +62,18 @@ export default class Form extends React.Component {
     this.textInput;
     this.displayText(this.state.enteredText.length);
     this.enteredText;
+  };
+
+  submitIngredients = () => {
+    console.log('Ingredient: ' + this.state.ingredient);
+    console.log('Quantity: ' + this.state.quantVar);
+    console.log();
+    this.state.quantSep = this.state.quantVar;
+    this.addTextInput(this.state.textInput.length);
+    this.textInput;
+    this.displayText(this.state.enteredText.length);
+    this.enteredText;
+    this.props.navigation.navigate('Manualmethod');
   };
 
   addTextInput = key => {
@@ -155,15 +167,31 @@ export default class Form extends React.Component {
         </View>
         <TouchableOpacity
           onPress={this.nextEntry}
-          style={{paddingTop: 20, alignSelf: 'center'}}>
+          style={{
+            paddingTop: 20,
+            alignSelf: 'center',
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}>
           <Icon
-            style={{}}
+            style={{paddingRight: 10}}
             name="plus"
             color={Colors.grey}
             size={30}
             onPress={this.nextEntry}
           />
+          <Text style={[Styles.bodyText, {color: Colors.grey}]}>
+            Add another ingredient
+          </Text>
         </TouchableOpacity>
+        <View style={{paddingHorizontal: 30, paddingVertical: 30}}>
+          <TouchableOpacity
+            style={[Styles.fullButton, Styles.greyButton]}
+            onPress={this.submitIngredients}>
+            <Text style={Styles.buttonText}>Add the method</Text>
+          </TouchableOpacity>
+        </View>
       </SafeAreaView>
     );
   }

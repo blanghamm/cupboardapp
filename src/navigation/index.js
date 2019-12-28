@@ -17,7 +17,8 @@ import Welcome from '../screens/welcome.js';
 import Modaloptions from '../utilities/modaloptions.js';
 import SplashNav from '../screens/add-splash-nav.js';
 import Cupboard from '../screens/cupboard.js';
-import Manual from '../screens/manual-upload';
+import Manualingredients from '../screens/manual-ingredients';
+import Manualmethod from '../screens/manual-method';
 import Camera from '../screens/camera-upload';
 import Styles from '../styles';
 import Colors from '../styles/colors';
@@ -129,7 +130,8 @@ const Screens = createBottomTabNavigator(
 const rootNavigator = createStackNavigator(
   {
     Screens: {screen: Screens},
-    Manual: {screen: Manual},
+    Manualingredients: {screen: Manualingredients},
+    Manualmethod: {screen: Manualmethod},
     Camera: {screen: Camera},
   },
   {
