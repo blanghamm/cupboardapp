@@ -6,6 +6,7 @@ import {
   Button,
   TextInput,
   SafeAreaView,
+  ScrollView,
   TouchableHighlight,
   TouchableOpacity,
   Alert,
@@ -60,8 +61,7 @@ export default class Ingredientsform extends React.Component {
     firebase
       .firestore()
       .collection('items')
-      .doc('ingredients')
-      .set({ingredients: this.state.ingredient});
+      .add({ingredient: [this.state.ingredient, this.state.quantVar]});
     this.state.quantSep = this.state.quantVar;
     this.addTextInput(this.state.textInput.length);
     this.textInput;
@@ -127,77 +127,78 @@ export default class Ingredientsform extends React.Component {
   render() {
     let quantVar = this.state.quantVar;
     return (
-      <SafeAreaView
+      <View
         style={{
-          // paddingTop: 30,
           paddingHorizontal: 30,
           display: 'flex',
           flexDirection: 'column',
         }}>
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-          }}>
-          {this.state.enteredText.map((value, index) => {
-            return value;
-          })}
-          {this.state.textInput.map((value, index) => {
-            return value;
-          })}
-          <SafeAreaView
+        <ScrollView>
+          <View
             style={{
               display: 'flex',
               flexDirection: 'row',
-              justifyContent: 'flex-start',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+            }}>
+            {this.state.enteredText.map((value, index) => {
+              return value;
+            })}
+            {this.state.textInput.map((value, index) => {
+              return value;
+            })}
+            <SafeAreaView
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'flex-start',
+                alignItems: 'center',
+              }}>
+              <TouchableOpacity onPress={this.minQ}>
+                <Icon style={{}} name="minus" color={Colors.grey} size={30} />
+              </TouchableOpacity>
+              <Text
+                style={[
+                  Typography.bodyBold,
+                  {fontSize: 20, color: Colors.grey, paddingHorizontal: 5},
+                ]}>
+                {this.state.quantVar}
+              </Text>
+              <TouchableOpacity onPress={this.plusQ}>
+                <Icon style={{}} name="plus" color={Colors.grey} size={30} />
+              </TouchableOpacity>
+            </SafeAreaView>
+          </View>
+          <TouchableOpacity
+            onPress={this.nextEntry}
+            style={{
+              paddingTop: 20,
+              alignSelf: 'center',
+              display: 'flex',
+              flexDirection: 'row',
               alignItems: 'center',
             }}>
-            <TouchableOpacity onPress={this.minQ}>
-              <Icon style={{}} name="minus" color={Colors.grey} size={30} />
-            </TouchableOpacity>
-            <Text
-              style={[
-                Typography.bodyBold,
-                {fontSize: 20, color: Colors.grey, paddingHorizontal: 5},
-              ]}>
-              {this.state.quantVar}
+            <Icon
+              style={{paddingRight: 10}}
+              name="plus"
+              color={Colors.grey}
+              size={30}
+              onPress={this.nextEntry}
+            />
+            <Text style={[Styles.bodyText, {color: Colors.grey}]}>
+              Add another ingredient
             </Text>
-            <TouchableOpacity onPress={this.plusQ}>
-              <Icon style={{}} name="plus" color={Colors.grey} size={30} />
-            </TouchableOpacity>
-          </SafeAreaView>
-        </View>
-        <TouchableOpacity
-          onPress={this.nextEntry}
-          style={{
-            paddingTop: 20,
-            alignSelf: 'center',
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-          }}>
-          <Icon
-            style={{paddingRight: 10}}
-            name="plus"
-            color={Colors.grey}
-            size={30}
-            onPress={this.nextEntry}
-          />
-          <Text style={[Styles.bodyText, {color: Colors.grey}]}>
-            Add another ingredient
-          </Text>
-        </TouchableOpacity>
-        <View style={{paddingHorizontal: 30, paddingVertical: 30}}>
+          </TouchableOpacity>
+        </ScrollView>
+        <View style={{paddingVertical: 30}}>
           <TouchableOpacity
             style={[Styles.fullButton, Styles.greyButton]}
             onPress={this.submitIngredients}>
             <Text style={Styles.buttonText}>Add the method</Text>
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
+      </View>
     );
   }
 }

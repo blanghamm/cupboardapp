@@ -34,9 +34,7 @@ class Splash extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               style={[Styles.halfButton, Styles.greyButton]}
-              onPress={() =>
-                this.props.navigation.navigate('Manualingredients')
-              }>
+              onPress={() => this.props.navigation.navigate('Manualname')}>
               <Text style={Styles.buttonText}>Manual Upload</Text>
             </TouchableOpacity>
           </View>

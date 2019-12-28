@@ -16,39 +16,10 @@ import Colors from '../styles/colors';
 import Icon from 'react-native-vector-icons/Feather';
 import Ingredientsform from '../components/ingredients-form';
 
-let addItem = item => {
-  firebase
-    .database()
-    .ref('/items')
-    .push({
-      name: item,
-    });
-  console.log(item);
-};
-
 export default class Manualingredients extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-    };
-  }
-  handleChange = e => {
-    this.setState({
-      name: e.nativeEvent.text,
-    });
-  };
-  handleSubmit = () => {
-    addItem(this.state.name);
-    Alert.alert('Item saved successfully');
-  };
-
   render() {
-    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
-    }
-
     return (
-      <ScrollView>
+      <View>
         <View style={{width: 100}}>
           <TouchableOpacity onPress={this.onPressButton}>
             <Icon
@@ -67,7 +38,7 @@ export default class Manualingredients extends Component {
           </Text>
         </View>
         <Ingredientsform />
-      </ScrollView>
+      </View>
     );
   }
 }
