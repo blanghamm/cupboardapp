@@ -57,6 +57,11 @@ export default class Ingredientsform extends React.Component {
     console.log('Ingredient: ' + this.state.ingredient);
     console.log('Quantity: ' + this.state.quantVar);
     console.log();
+    firebase
+      .firestore()
+      .collection('items')
+      .doc('ingredients')
+      .set({ingredients: this.state.ingredient});
     this.state.quantSep = this.state.quantVar;
     this.addTextInput(this.state.textInput.length);
     this.textInput;

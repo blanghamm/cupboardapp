@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
 import {connect} from 'react-redux';
 import {signUp} from '../store/actions/authActions';
-import {Formik} from 'formik';
+// import {Formik} from 'formik';
 
 class SignUp extends React.Component {
   state = {displayName: '', email: '', password: ''};
@@ -19,35 +19,33 @@ class SignUp extends React.Component {
       <View style={styles.container}>
         <Text>Sign Up</Text>
         {/* {authError ? <Text style={{color: 'red'}}>{authError}</Text> : null} */}
-        <Formik>
-          <TextInput
-            placeholder="Name"
-            autoCapitalize="none"
-            style={styles.textInput}
-            onChangeText={displayName => this.setState({displayName})}
-            value={this.state.displayName}
-          />
-          <TextInput
-            placeholder="Email"
-            autoCapitalize="none"
-            style={styles.textInput}
-            onChangeText={email => this.setState({email})}
-            value={this.state.email}
-          />
+        <TextInput
+          placeholder="Name"
+          autoCapitalize="none"
+          style={styles.textInput}
+          onChangeText={displayName => this.setState({displayName})}
+          value={this.state.displayName}
+        />
+        <TextInput
+          placeholder="Email"
+          autoCapitalize="none"
+          style={styles.textInput}
+          onChangeText={email => this.setState({email})}
+          value={this.state.email}
+        />
 
-          <TextInput
-            secureTextEntry
-            placeholder="Password"
-            autoCapitalize="none"
-            style={styles.textInput}
-            onChangeText={password =>
-              this.setState({
-                password,
-              })
-            }
-            value={this.state.password}
-          />
-        </Formik>
+        <TextInput
+          secureTextEntry
+          placeholder="Password"
+          autoCapitalize="none"
+          style={styles.textInput}
+          onChangeText={password =>
+            this.setState({
+              password,
+            })
+          }
+          value={this.state.password}
+        />
         <Button title="Sign Up" onPress={this.handleSignUp} />
         <Button
           title="Already have an account? Login"
@@ -74,7 +72,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SignUp);
 
 const styles = StyleSheet.create({
   container: {

@@ -16,18 +16,20 @@ export const signIn = credentials => {
 export const signUp = newUser => {
   return (dispatch, getState, {getFirebase}) => {
     const firebase = getFirebase();
-    firebase.auth().createUserWithEmailAndPassword(
-      // newUser.name,
-      newUser.email,
-      newUser.password,
-    );
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(
+        // newUser.name,
+        newUser.email,
+        newUser.password,
+      )
 
-    return firebase
-      .collection()
-      .doc('users/')
-      .set({
-        email: newUser.email,
-      })
+      // return firebase
+      //   .collection()
+      //   .doc('users/')
+      //   .set({
+      //     email: newUser.email,
+      //   })
       .then(() => {
         dispatch({type: 'SIGNUP_SUCCESS'});
       })
