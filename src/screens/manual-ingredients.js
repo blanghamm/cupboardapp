@@ -19,7 +19,7 @@ import Ingredientsform from '../components/ingredients-form';
 export default class Manualingredients extends Component {
   render() {
     return (
-      <View>
+      <View style={{flex: 1}}>
         <View style={{width: 100}}>
           <TouchableOpacity onPress={this.onPressButton}>
             <Icon
@@ -37,7 +37,7 @@ export default class Manualingredients extends Component {
             Add the ingredients and their quantities to your recipe.
           </Text>
         </View>
-        <Ingredientsform />
+        <Ingredientsform navigation={this.props.navigation} />
       </View>
     );
   }

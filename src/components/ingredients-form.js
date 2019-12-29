@@ -17,6 +17,7 @@ import Typography from '../styles/typography';
 import Colors from '../styles/colors';
 import Icon from 'react-native-vector-icons/Feather';
 let count = -1;
+let dataCount = 0;
 
 export default class Ingredientsform extends React.Component {
   constructor(props) {
@@ -55,13 +56,42 @@ export default class Ingredientsform extends React.Component {
   };
 
   nextEntry = () => {
+    dataCount = dataCount + 1;
     console.log('Ingredient: ' + this.state.ingredient);
     console.log('Quantity: ' + this.state.quantVar);
     console.log();
-    firebase
+    // firebase
+    //   .firestore()
+    //   .collection('items')
+    //   .doc('Test Recipe')
+    //   .add({ingredient[dataCount]: [this.state.ingredient, this.state.quantVar]});
+
+    var ingredientOp = this.state.ingredient;
+
+    var ref = firebase
       .firestore()
       .collection('items')
-      .add({ingredient: [this.state.ingredient, this.state.quantVar]});
+      .doc('Test Recipe');
+
+    var merge = ref.set(
+      {
+        ingredient1: {
+          ingredient: this.state.ingredient,
+          quantity: this.state.quantVar,
+        },
+      },
+      {merge: true},
+    );
+    // switch (dataCount) {
+    //   case 1:
+    //     var merge = ref.set(
+    //       {ingredient1: [this.state.ingredient, this.state.quantVar]},
+    //       {merge: true},
+    //     );
+    //     break;
+    //   default:
+    // }
+
     this.state.quantSep = this.state.quantVar;
     this.addTextInput(this.state.textInput.length);
     this.textInput;
@@ -132,6 +162,7 @@ export default class Ingredientsform extends React.Component {
           paddingHorizontal: 30,
           display: 'flex',
           flexDirection: 'column',
+          flex: 1,
         }}>
         <ScrollView>
           <View

@@ -89,22 +89,6 @@ export default class Manualname extends Component {
               (1/3)
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={[
-              Styles.fullButton,
-              Styles.greyButton,
-              {display: 'flex', flexDirection: 'row', alignItems: 'center'},
-            ]}
-            onPress={() => this.props.navigation.navigate('Manualingredients')}>
-            <Text style={Styles.buttonText}>Skip to next page</Text>
-            <Text
-              style={[
-                Styles.bodyText,
-                {color: Colors.white, fontSize: 12, paddingLeft: 5},
-              ]}>
-              (1/3)
-            </Text>
-          </TouchableOpacity>
         </View>
       </View>
     );
