@@ -20,6 +20,7 @@ import {connect} from 'react-redux'
 import {addtitle} from '../store/actions/stockActions'
 let count = -1;
 let dataCount = 0;
+let titlePrint = '';
 
 class Ingredientsform extends React.Component {
   constructor() {
@@ -41,6 +42,7 @@ class Ingredientsform extends React.Component {
     ingredient: '',
     quantVar: 1,
     quantSep: 1,
+    title: '',
   };
 
   minQ = value => {
@@ -58,6 +60,8 @@ class Ingredientsform extends React.Component {
   };
 
   nextEntry = () => {
+    this.props.addtitle(this.state.title);
+    // titlePrint = this.state.title.toString();
     dataCount = dataCount + 1;
     console.log('Ingredient: ' + this.state.ingredient);
     console.log('Quantity: ' + this.state.quantVar);
@@ -70,7 +74,11 @@ class Ingredientsform extends React.Component {
 
     var ingredientOp = this.state.ingredient;
 
-    const titlePrint = this.props.toString();
+    // keepTitle = () => {
+    //   this.props.addtitle(this.state.title);
+    // }
+
+    // const titlePrint = {keepTitle()};
 
     var ref = firebase
       .firestore()
@@ -239,7 +247,7 @@ class Ingredientsform extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  title: state.content
+  state: state.title
 })
 
 
