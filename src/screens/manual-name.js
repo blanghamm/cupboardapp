@@ -16,6 +16,7 @@ import Colors from '../styles/colors';
 import Typography from '../styles/typography';
 import Icon from 'react-native-vector-icons/Feather';
 let titlePrint = '';
+import {connect} from 'react-redux';
 
 export default class Manualname extends Component {
   state = {
