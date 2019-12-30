@@ -18,7 +18,6 @@ import Icon from 'react-native-vector-icons/Feather';
 import {connect} from 'react-redux';
 import {addtitle} from '../store/actions/stockActions';
 let titlePrint = '';
-import {connect} from 'react-redux';
 
 class Manualname extends Component {
 state = {
@@ -26,7 +25,8 @@ state = {
 }
 
   addTitle = () => {
-    this.props.addtitle(this.state);
+    this.props.addtitle(this.state.title);
+    // console.log(this.state.title)
     //console.log('Title: ' + this.state.title);
     titlePrint = this.state.title.toString();
     //console.log('Title2: ' + titlePrint);
