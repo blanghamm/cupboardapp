@@ -18,6 +18,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import {connect} from 'react-redux';
 import {addtitle} from '../store/actions/stockActions';
 let titlePrint = '';
+import {connect} from 'react-redux';
 
 class Manualname extends Component {
 state = {
