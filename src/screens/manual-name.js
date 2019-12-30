@@ -15,17 +15,20 @@ import Styles from '../styles';
 import Colors from '../styles/colors';
 import Typography from '../styles/typography';
 import Icon from 'react-native-vector-icons/Feather';
+import {connect} from 'react-redux';
+import {addtitle} from '../store/actions/stockActions';
 let titlePrint = '';
 
-export default class Manualname extends Component {
-  state = {
-    title: '',
-  };
+class Manualname extends Component {
+state = {
+  title: '',
+}
 
   addTitle = () => {
-    console.log('Title: ' + this.state.title);
+    this.props.addtitle(this.state);
+    //console.log('Title: ' + this.state.title);
     titlePrint = this.state.title.toString();
-    console.log('Title2: ' + titlePrint);
+    //console.log('Title2: ' + titlePrint);
     firebase
       .firestore()
       .collection('items')
@@ -104,3 +107,17 @@ const styles = StyleSheet.create({
     padding: 0,
   },
 });
+
+const mapStateToProps = state => ({
+    title: state.title
+});
+
+// const mapDispatchToProps = dispatch =>{
+//   return {
+//     addtitle: content => dispatch(addtitle(content)),
+//   }
+// }
+
+
+export default connect(mapStateToProps, {addtitle})(Manualname)
+
