@@ -1,17 +1,14 @@
 const initialState = {
-  stocknumber: 0,
 };
 
 function stockReducer(state = initialState, action) {
-  switch (action.type) {
-    case 'INCREMENT':
-      console.log('+1');
-      return {...state, count: state.stocknumber + 1};
-    case 'DECREMENT':
-      console.log('-1');
-      return {...state, count: state.stocknumber - 1};
+  switch (action.type) {  
+    case 'ADD_TITLE':
+      const {content} = action.payload;
+      console.log(content);
+      
+      return {...state, content};
     default:
-      console.log(state);
       return state;
   }
 }

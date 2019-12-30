@@ -16,12 +16,14 @@ import Styles from '../styles';
 import Typography from '../styles/typography';
 import Colors from '../styles/colors';
 import Icon from 'react-native-vector-icons/Feather';
+import {connect} from 'react-redux'
+import {addtitle} from '../store/actions/stockActions'
 let count = -1;
 let dataCount = 0;
 
-export default class Ingredientsform extends React.Component {
-  constructor(props) {
-    super(props);
+class Ingredientsform extends React.Component {
+  constructor() {
+    super();
     this.state = {
       textInput: [],
       enteredText: [],
@@ -68,10 +70,12 @@ export default class Ingredientsform extends React.Component {
 
     var ingredientOp = this.state.ingredient;
 
+    const titlePrint = this.props.toString();
+
     var ref = firebase
       .firestore()
       .collection('items')
-      .doc('Test Recipe');
+      .doc(titlePrint);
 
     var merge = ref.set(
       {
@@ -233,3 +237,10 @@ export default class Ingredientsform extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  title: state.content
+})
+
+
+export default connect(mapStateToProps, {addtitle})(Ingredientsform)

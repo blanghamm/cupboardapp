@@ -1,2 +1,10 @@
-export const increment = () => ({type: 'INCREMENT'});
-export const decrement = () => ({type: 'DECREMENT'});
+import {ADD_TITLE} from '../actiontypes/actionTypes';
+
+export const addtitle = content => {
+    return (dispatch, getState) => {
+        dispatch({type: ADD_TITLE, payload: {content}})
+    }
+  };
+
+
+  
