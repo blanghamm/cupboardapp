@@ -1,75 +1,7 @@
-// export const signIn = credentials => {
-//   return (dispatch, getState, {getFirebase}) => {
-//     const firebase = getFirebase();
-//     firebase
-//       .auth()
-//       .signInWithEmailAndPassword(credentials.email, credentials.password)
-//       .then(() => {
-//         dispatch({type: 'LOGIN_SUCCESS'});
-//       })
-//       .catch(err => {
-//         dispatch({type: 'LOGIN_ERROR', err});
-//       });
-//   };
-// };
-
-// export const signUp = newUser => {
-//   return (dispatch, getState, {getFirebase}) => {
-//     const firebase = getFirebase();
-//     firebase
-//       .auth()
-//       .createUserWithEmailAndPassword(
-//         // newUser.name,
-//         newUser.email,
-//         newUser.password,
-//       )
-
-//       // return firebase
-//       //   .collection()
-//       //   .doc('users/')
-//       //   .set({
-//       //     email: newUser.email,
-//       //   })
-//       .then(() => {
-//         dispatch({type: 'SIGNUP_SUCCESS'});
-//       })
-//       .catch(err => {
-//         dispatch({type: 'SIGNUP_ERROR', err});
-//       });
-//   };
-// };
-
-// export const signOut = () => {
-//   return (dispatch, getState, {getFirebase}) => {
-//     firebase
-//       .auth()
-//       .signOut()
-//       .then(() => {
-//         dispatch({type: 'SIGNOUT_SUCCESS'});
-//       });
-//   };
-// };
-
 import firebase, {db} from '../../firebase/config';
 
-export const UPDATE_EMAIL = 'UPDATE_EMAIL';
-export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
 export const LOGIN = 'LOGIN';
 export const SIGNUP = 'SIGNUP';
-
-export const updateEmail = email => {
-  return {
-    type: UPDATE_EMAIL,
-    payload: email,
-  };
-};
-
-export const updatePassword = password => {
-  return {
-    type: UPDATE_PASSWORD,
-    payload: password,
-  };
-};
 
 export const signup = newUser => {
   return async (dispatch, getState) => {
@@ -81,11 +13,26 @@ export const signup = newUser => {
         const user = {
           uid: response.user.uid,
           email: newUser.email,
+          name: newUser.displayName,
         };
 
         db.collection('users')
           .doc(response.user.uid)
+          .collection('user data')
+          .doc('basic')
           .set(user);
+
+        db.collection('users')
+          .doc(response.user.uid)
+          .collection('user data')
+          .doc('recipe')
+          .set({Recipe: true});
+
+        db.collection('users')
+          .doc(response.user.uid)
+          .collection('user data')
+          .doc('items')
+          .set({Tomato: true});
 
         dispatch({type: SIGNUP, payload: user});
       }

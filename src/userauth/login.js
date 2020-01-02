@@ -2,22 +2,11 @@ import React from 'react';
 import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {
-  updateEmail,
-  updatePassword,
-  login,
-  getUser,
-} from '../store/actions/authActions';
+import {login, getUser} from '../store/actions/authActions';
 import firebase from '../firebase/config';
 
 class Login extends React.Component {
   state = {email: '', password: ''};
-
-  // handleLogin = e => {
-  //   e.preventDefault();
-  //   this.props.signIn(this.state);
-  //   console.log(this.state);
-  // };
 
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
@@ -30,11 +19,6 @@ class Login extends React.Component {
     });
   };
 
-  // handleLogin = () => {
-  //   this.props.login();
-  //   this.props.navigation.navigate('Welcome');
-  // };
-
   render() {
     return (
       <View style={styles.container}>
@@ -43,7 +27,7 @@ class Login extends React.Component {
           style={styles.textInput}
           autoCapitalize="none"
           placeholder="Email"
-          onChangeText={email => this.props.updateEmail(email)}
+          onChangeText={email => this.setState({email})}
           value={this.props.email}
         />
         <TextInput
@@ -51,7 +35,7 @@ class Login extends React.Component {
           style={styles.textInput}
           autoCapitalize="none"
           placeholder="Password"
-          onChangeText={password => this.props.updatePassword(password)}
+          onChangeText={password => this.setState({password})}
           value={this.props.password}
         />
         <Button
@@ -75,10 +59,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators(
-    {updateEmail, updatePassword, login, getUser},
-    dispatch,
-  );
+  return bindActionCreators({login, getUser}, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

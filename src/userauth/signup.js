@@ -5,35 +5,48 @@ import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import firebase from '../firebase/config';
-import {
-  updateEmail,
-  updatePassword,
-  signup,
-} from '../store/actions/authActions';
-// import {Formik} from 'formik';
+import {signup} from '../store/actions/authActions';
+import {Formik, ErrorMessage} from 'formik';
+
+const hasValid = values => {
+  let errors = {};
+  let {email, password} = values;
+  if (!email) {
+    errors.email = 'Email is required!';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
+    errors.email = 'Invalid email address';
+  }
+  if (!password) {
+    errors.password = 'Password is required!';
+  } else if (/^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*)$/i.test(password)) {
+    errors.password =
+      'Password has to be at least 8 characters, one letter and one number';
+  }
+  return errors;
+};
 
 class SignUp extends React.Component {
   state = {displayName: '', email: '', password: ''};
 
   handleSignUp = e => {
     e.preventDefault();
-    this.props.signup(this.state);
-    this.props.navigation.navigate('Welcome');
-    console.log(this.state);
+    if (this.props.signup(this.state)) {
+      this.props.navigation.navigate('Welcome');
+      return;
+    }
   };
 
   render() {
     return (
       <View style={styles.container}>
         <Text>Sign Up</Text>
-        {/* {authError ? <Text style={{color: 'red'}}>{authError}</Text> : null} */}
-        {/* <TextInput
+        <TextInput
           placeholder="Name"
           autoCapitalize="none"
           style={styles.textInput}
           onChangeText={displayName => this.setState({displayName})}
           value={this.state.displayName}
-        /> */}
+        />
         <TextInput
           placeholder="Email"
           autoCapitalize="none"
@@ -65,7 +78,7 @@ class SignUp extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({updateEmail, updatePassword, signup}, dispatch);
+  return bindActionCreators({signup}, dispatch);
 };
 
 const mapStateToProps = state => {

@@ -19,14 +19,6 @@ import {createStackNavigator} from 'react-navigation-stack';
 // class Welcome extends React.Component {
 
 class Welcome extends React.Component {
-  state = {
-    isModalVisible: false,
-  };
-
-  toggleModal = () => {
-    this.setState({isModalVisible: !this.state.isModalVisible});
-  };
-
   render() {
     const {navigate} = this.props.navigation;
     return (
@@ -39,7 +31,7 @@ class Welcome extends React.Component {
         </View>
         <View style={Styles.standardBlock}>
           <Text style={Styles.welcomeTextGrey}>hello,</Text>
-          <Text style={Styles.welcomeTextBlack}>Username</Text>
+          <Text style={Styles.welcomeTextBlack}>{this.props.displayName}</Text>
         </View>
         <View style={Styles.wideBlock}>
           <View style={Styles.bannerBlock}>
@@ -85,19 +77,10 @@ class Welcome extends React.Component {
   }
 }
 
-// _goToManual = () => {
-//   this.props.navigation.navigate('Manual');
-// };
-
-// const AppStack = createStackNavigator({Manual: Manual});
-
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    toggleModal: () => dispatch(toggleModal()),
+    user: state.user,
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(Welcome);
+export default connect(mapStateToProps)(Welcome);

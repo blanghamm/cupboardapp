@@ -12,8 +12,8 @@ import {connect} from 'react-redux';
 
 class Loading extends React.Component {
   componentDidMount() {
-    firebase.auth().onAuthStateChanged(auth => {
-      this.props.navigation.navigate({auth} ? 'Loading' : 'SignUp');
+    firebase.auth().onAuthStateChanged(user => {
+      this.props.navigation.navigate(user ? 'Main' : 'SignUp');
     });
   }
 
@@ -30,12 +30,6 @@ class Loading extends React.Component {
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    // auth: state.firebase.auth,
-  };
-};
 
 export default Loading;
 
