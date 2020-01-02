@@ -1,11 +1,11 @@
-import authReducer from './authReducer';
+import user from './authReducer';
 import {combineReducers} from 'redux';
-import {firebaseReducer} from 'react-redux-firebase';
+// import {firebaseReducer} from 'react-redux-firebase';
 import stockReducer from './stockReducer';
 
 const rootReducer = combineReducers({
-  auth: authReducer,
-  firebase: firebaseReducer,
+  auth: user,
+  //firebase: firebaseReducer,
   stock: stockReducer,
 });
 

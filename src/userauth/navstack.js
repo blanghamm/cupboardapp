@@ -32,11 +32,11 @@ const userauth = createSwitchNavigator(
 
 const AppContainer = createAppContainer(userauth);
 
-const mapStateToProps = state => {
-  return {
-    auth: state.firebase.auth,
-    profile: state.firebase.profile,
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     auth: state.firebase.auth,
+//     profile: state.firebase.profile,
+//   };
+// };
 
-export default connect(mapStateToProps)(AppContainer);
+export default AppContainer;

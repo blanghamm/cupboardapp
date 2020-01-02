@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import firebase from '../firebase/config.js';
 import {connect} from 'react-redux';
-import {signOut} from '../store/actions/authActions';
 
 class Loading extends React.Component {
   componentDidMount() {
@@ -25,7 +24,7 @@ class Loading extends React.Component {
         <Text style={styles.textformat}>CUPBOARD</Text>
         <Button
           title="Login"
-          onPress={() => this.props.navigation.navigate('Login')}
+          onPress={() => this.props.navigation.navigate('Signup')}
         />
       </View>
     );
@@ -34,11 +33,11 @@ class Loading extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    auth: state.firebase.auth,
+    // auth: state.firebase.auth,
   };
 };
 
-export default connect(mapStateToProps)(Loading);
+export default Loading;
 
 const styles = StyleSheet.create({
   container: {

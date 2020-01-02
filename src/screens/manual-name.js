@@ -20,22 +20,22 @@ import {addtitle} from '../store/actions/stockActions';
 let titlePrint = '';
 
 class Manualname extends Component {
-state = {
-  title: '',
-}
+// state = {
+//   title: '',
+// }
 
   addTitle = () => {
-    this.props.addtitle(this.state.title);
-    // console.log(this.state.title)
-    //console.log('Title: ' + this.state.title);
-    titlePrint = this.state.title.toString();
+    this.props.addtitle(this.state);
+    //console.log(this.state)
+    // //console.log('Title: ' + this.state.title);
+    // titlePrint = this.props.title.toString();
     //console.log('Title2: ' + titlePrint);
-    firebase
-      .firestore()
-      .collection('items')
-      .doc(titlePrint)
-      .set({title: titlePrint});
-    this.props.navigation.navigate('Manualingredients');
+    // firebase
+    //   .firestore()
+    //   .collection('items')
+    //   .doc(titlePrint)
+    //   .set({title: titlePrint});
+    //this.props.navigation.navigate('Manualingredients');
   };
 
   render() {
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-    title: state.title
+    content: state.content
 });
 
 // const mapDispatchToProps = dispatch =>{

@@ -41,7 +41,6 @@ class Ingredientsform extends React.Component {
     ingredient: '',
     quantVar: 1,
     quantSep: 1,
-    title: '',
   };
 
   minQ = value => {
@@ -60,10 +59,11 @@ class Ingredientsform extends React.Component {
 
   nextEntry = () => {
     this.props.addtitle(this.state.title)
+    //console.log(this.props);
     dataCount = dataCount + 1;
     console.log('Ingredient: ' + this.state.ingredient);
     console.log('Quantity: ' + this.state.quantVar);
-    console.log(this.state.title);
+    
     // firebase
     //   .firestore()
     //   .collection('items')

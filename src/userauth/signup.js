@@ -1,7 +1,15 @@
 import React from 'react';
 import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
+// import {connect} from 'react-redux';
+// import {signUp} from '../store/actions/authActions';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {signUp} from '../store/actions/authActions';
+import firebase from '../firebase/config';
+import {
+  updateEmail,
+  updatePassword,
+  signup,
+} from '../store/actions/authActions';
 // import {Formik} from 'formik';
 
 class SignUp extends React.Component {
@@ -9,23 +17,23 @@ class SignUp extends React.Component {
 
   handleSignUp = e => {
     e.preventDefault();
-    this.props.signUp(this.state);
+    this.props.signup(this.state);
+    this.props.navigation.navigate('Welcome');
     console.log(this.state);
   };
 
   render() {
-    // const {authError} = this.props;
     return (
       <View style={styles.container}>
         <Text>Sign Up</Text>
         {/* {authError ? <Text style={{color: 'red'}}>{authError}</Text> : null} */}
-        <TextInput
+        {/* <TextInput
           placeholder="Name"
           autoCapitalize="none"
           style={styles.textInput}
           onChangeText={displayName => this.setState({displayName})}
           value={this.state.displayName}
-        />
+        /> */}
         <TextInput
           placeholder="Email"
           autoCapitalize="none"
@@ -39,11 +47,7 @@ class SignUp extends React.Component {
           placeholder="Password"
           autoCapitalize="none"
           style={styles.textInput}
-          onChangeText={password =>
-            this.setState({
-              password,
-            })
-          }
+          onChangeText={password => this.setState({password})}
           value={this.state.password}
         />
         <Button title="Sign Up" onPress={this.handleSignUp} />
@@ -60,22 +64,17 @@ class SignUp extends React.Component {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({updateEmail, updatePassword, signup}, dispatch);
+};
+
 const mapStateToProps = state => {
   return {
-    authError: state.auth.authError,
+    user: state.user,
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    signUp: newUser => dispatch(signUp(newUser)),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
 
 const styles = StyleSheet.create({
   container: {

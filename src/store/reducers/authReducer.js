@@ -1,39 +1,23 @@
-const initState = {
-  authError: null,
-};
+import {
+  LOGIN,
+  SIGNUP,
+  UPDATE_EMAIL,
+  UPDATE_PASSWORD,
+} from '../actions/authActions';
 
-const authReducer = (state = initState, action) => {
+const user = (state = {}, action) => {
   switch (action.type) {
-    case 'LOGIN_ERROR':
-      console.log('login error');
-      return {
-        ...state,
-        authError: 'Login failed',
-      };
-    case 'LOGIN_SUCCESS':
-      console.log('login sucess');
-      return {
-        ...state,
-        authError: null,
-      };
-    case 'SIGNUP_SUCCESS':
-      console.log('signup sucess');
-      return {
-        ...state,
-        authError: null,
-      };
-    case ' SIGNUP_ERROR':
-      console.log('signup error');
-      return {
-        ...state,
-        authError: action.err.message,
-      };
-    case 'SIGNOUT_SUCCESS':
-      console.log('signout success');
-      return state;
+    case LOGIN:
+      return {...state, login: action.payload};
+    case SIGNUP:
+      return {...state, signup: action.payload};
+    case UPDATE_EMAIL:
+      return {...state, email: action.payload};
+    case UPDATE_PASSWORD:
+      return {...state, password: action.payload};
     default:
       return state;
   }
 };
 
-export default authReducer;
+export default user;
