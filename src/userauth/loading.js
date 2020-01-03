@@ -11,11 +11,11 @@ import firebase from '../firebase/config.js';
 import {connect} from 'react-redux';
 
 class Loading extends React.Component {
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged(user => {
-      this.props.navigation.navigate(user ? 'Main' : 'SignUp');
-    });
-  }
+  // componentDidMount() {
+  //   firebase.auth().onAuthStateChanged(user => {
+  //     this.props.navigation.navigate(user ? 'Signup' : 'Main');
+  //   });
+  // }
 
   render() {
     return (

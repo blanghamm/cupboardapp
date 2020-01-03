@@ -14,7 +14,6 @@ import {
   Alert,
 } from 'react-native';
 import Welcome from '../screens/welcome.js';
-import Modaloptions from '../utilities/modaloptions.js';
 import SplashNav from '../screens/add-splash-nav.js';
 import Cupboard from '../screens/cupboard.js';
 import Manualname from '../screens/manual-name';

@@ -9,13 +9,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {connect} from 'react-redux';
+import {signup} from '../store/actions/authActions';
 import {bindActionCreators} from 'redux';
-import {login, getUser} from '../store/actions/authActions';
+import {Formik} from 'formik';
 import Styles from '../styles';
 import * as yup from 'yup';
-import {Formik} from 'formik';
 
-const Login = ({login, navigation}) => {
+const SignUp = ({signup, navigation}) => {
   return (
     <View style={[Styles.standardBlock, Styles.centerElement]}>
       <Image
@@ -23,12 +23,19 @@ const Login = ({login, navigation}) => {
         source={require('../assets/icon.png')}></Image>
       <Formik
         enableReinitialize={true}
-        initialValues={{email: '', password: ''}}
+        initialValues={{displayName: '', email: '', password: ''}}
         onSubmit={async (values, {setSubmitting}) => {
-          await login(values), setSubmitting(false);
+          await signup(values);
+          console.log(values);
           navigation.navigate('Welcome');
+          setSubmitting(false);
         }}
         validationSchema={yup.object().shape({
+          displayName: yup
+            .string()
+            .required('Nickname is required.')
+            .min(3, 'Too short')
+            .max(25, 'Too long.'),
           email: yup
             .string()
             .email('Invalid email')
@@ -49,6 +56,19 @@ const Login = ({login, navigation}) => {
           handleSubmit,
         }) => (
           <Fragment>
+            <TextInput
+              value={values.displayName}
+              style={styles.textInput}
+              autoCapitalize="words"
+              onChangeText={handleChange('displayName')}
+              placeholder="Name"
+              onBlur={() => setFieldTouched('displayName')}
+            />
+            {touched.displayName && errors.displayName && (
+              <Text style={{fontSize: 10, color: 'red'}}>
+                {errors.displayName}
+              </Text>
+            )}
             <TextInput
               value={values.email}
               style={styles.textInput}
@@ -73,13 +93,13 @@ const Login = ({login, navigation}) => {
               </Text>
             )}
             <Button
-              title="Login"
+              title="Sign Up"
               disabled={!isValid || isSubmitting}
               onPress={handleSubmit}
             />
             <Button
-              title="Sign Up"
-              onPress={() => navigation.navigate('Signup')}
+              title="Already have an account? Login"
+              onPress={() => navigation.navigate('Login')}
             />
           </Fragment>
         )}
@@ -88,17 +108,17 @@ const Login = ({login, navigation}) => {
   );
 };
 
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({signup}, dispatch);
+};
+
 const mapStateToProps = state => {
   return {
     user: state.user,
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({login, getUser}, dispatch);
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
 
 const styles = StyleSheet.create({
   container: {

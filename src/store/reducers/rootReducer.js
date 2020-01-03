@@ -6,7 +6,7 @@ import stockReducer from './stockReducer';
 const rootReducer = combineReducers({
   auth: user,
   //firebase: firebaseReducer,
-  stock: stockReducer,
+  // stock: stockReducer,
 });
 
 export default rootReducer;

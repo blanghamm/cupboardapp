@@ -2,18 +2,21 @@ import React, {Component} from 'react';
 import {View, Text} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {createSwitchNavigator} from 'react-navigation';
+import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
 import {connect} from 'react-redux';
+import {Transition} from 'react-native-reanimated';
 
 import Loading from './loading';
 import Login from './login';
-import Signup from './signup';
+import Signup from './signup copy';
 import Navigation from '../navigation/index';
 
-const userauth = createSwitchNavigator(
+const userauth = createAnimatedSwitchNavigator(
   {
     Loading: {
       screen: Loading,
     },
+
     Login: {
       screen: Login,
     },
@@ -24,6 +27,18 @@ const userauth = createSwitchNavigator(
       screen: Navigation,
     },
   },
+  {
+    transition: (
+      <Transition.Together>
+        <Transition.Out
+          type="fade"
+          durationMs={400}
+          interpolation="easeInOut"
+        />
+        <Transition.In type="fade" durationMs={400} interpolation="easeInOut" />
+      </Transition.Together>
+    ),
+  },
 
   {
     initialRouteName: 'Loading',
@@ -31,12 +46,5 @@ const userauth = createSwitchNavigator(
 );
 
 const AppContainer = createAppContainer(userauth);
-
-// const mapStateToProps = state => {
-//   return {
-//     auth: state.firebase.auth,
-//     profile: state.firebase.profile,
-//   };
-// };
 
 export default AppContainer;
