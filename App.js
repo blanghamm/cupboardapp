@@ -3,15 +3,32 @@ import NavStack from './src/userauth/navstack.js';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import configureStore from './configureStore';
+import {ReactReduxFirebaseProvider} from 'react-redux-firebase';
+import {createFirestoreInstance} from 'redux-firestore';
+import firebase from './src/firebase/config';
 
 const {persistor, store} = configureStore();
+
+const rrfConfig = {
+  userProfile: 'users',
+  useFirestoreForProfile: true,
+};
+
+const rrfProps = {
+  firebase,
+  config: rrfConfig,
+  dispatch: store.dispatch,
+  createFirestoreInstance,
+};
 
 export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <NavStack />
+          <ReactReduxFirebaseProvider {...rrfProps}>
+            <NavStack />
+          </ReactReduxFirebaseProvider>
         </PersistGate>
       </Provider>
     );

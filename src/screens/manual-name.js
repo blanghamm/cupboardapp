@@ -123,7 +123,11 @@ const mapStateToProps = state => ({
 //   }
 // }
 
+<<<<<<< HEAD
 export default connect(
   mapStateToProps,
   {addtitle},
 )(Manualname);
+=======
+export default connect(mapStateToProps)(Manualname);
+>>>>>>> f822f18b67eed40c13cd98b80a2e564ef893e46c

@@ -131,13 +131,10 @@ class Welcome extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    signOut: () => dispatch(signOut()),
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     signOut: () => dispatch(signOut()),
+//   };
+// };
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(Welcome);
+export default Welcome;
