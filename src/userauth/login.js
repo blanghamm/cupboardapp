@@ -14,8 +14,10 @@ import {login, getUser} from '../store/actions/authActions';
 import Styles from '../styles';
 import * as yup from 'yup';
 import {Formik} from 'formik';
+import {isLoaded, isEmpty} from 'react-redux-firebase';
+import {AsyncStorage} from '@react-native-community/async-storage';
 
-const Login = ({login, navigation, authError}) => {
+const Login = ({login, navigation, auth}) => {
   return (
     <View style={[Styles.standardBlock, Styles.centerElement]}>
       <Image
@@ -25,8 +27,20 @@ const Login = ({login, navigation, authError}) => {
         enableReinitialize={true}
         initialValues={{email: '', password: ''}}
         onSubmit={async (values, {setSubmitting}) => {
-          await login(values), setSubmitting(false);
-          navigation.navigate('Welcome');
+          setSubmitting(false);
+          login(values)
+            .then(() => {
+              isLoaded(auth);
+            })
+            .then(() => {
+              console.log('Hi');
+              navigation.navigate('Welcome');
+            })
+            .catch(err => {
+              console.log('error', err);
+            });
+
+          // navigation.navigate('Welcome');
         }}
         validationSchema={yup.object().shape({
           email: yup
@@ -91,6 +105,7 @@ const Login = ({login, navigation, authError}) => {
 const mapStateToProps = state => {
   return {
     authError: state.auth.authError,
+    auth: state.firebase.auth,
   };
 };
 

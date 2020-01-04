@@ -1,4 +1,4 @@
-import firebase, {db} from '../../firebase/config';
+// import firebase, {db} from '../../firebase/config';
 
 export const LOGIN = 'LOGIN';
 export const SIGNUP = 'SIGNUP';
@@ -7,7 +7,8 @@ export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
 export const SIGNOUT_SUCCESS = 'SIGNOUT_SUCCESS';
 
 export const signup = newUser => {
-  return async (dispatch, getState, {getFirestore}) => {
+  return async (dispatch, getState, {getFirebase, getFirestore}) => {
+    const firebase = getFirebase();
     const firestore = getFirestore();
     firebase
       .auth()
@@ -32,8 +33,9 @@ export const signup = newUser => {
 };
 
 export const login = data => {
-  return async (dispatch, getState, {getFirestore}) => {
-    const firestore = getFirestore();
+  return async (dispatch, getState, {getFirebase}) => {
+    // const firestore = getFirestore();
+    const firebase = getFirebase();
     firebase
       .auth()
       .signInWithEmailAndPassword(data.email, data.password)
@@ -47,7 +49,8 @@ export const login = data => {
 };
 
 export const signout = data => {
-  return async (dispatch, getState) => {
+  return async (dispatch, getState, {getFirebase}) => {
+    const firebase = getFirebase();
     firebase
       .auth()
       .signOut()

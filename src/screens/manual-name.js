@@ -80,7 +80,7 @@ class Manualname extends Component {
 }
 
 const mapStateToProps = state => ({
-  content: state.content,
+  auth: state.firebase.auth,
 });
 
 export default Manualname;

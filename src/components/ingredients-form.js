@@ -17,7 +17,6 @@ import Typography from '../styles/typography';
 import Colors from '../styles/colors';
 import Icon from 'react-native-vector-icons/Feather';
 import {connect} from 'react-redux';
-import {addtitle} from '../store/actions/stockActions';
 let count = -1;
 let dataCount = 0;
 
@@ -68,10 +67,12 @@ class Ingredientsform extends React.Component {
 
     var docName = this.state.title;
 
+    var uid = this.props.uid;
+
     var ref = firebase
       .firestore()
       .collection('users')
-      .doc('Vlu5Ofjf6raPw7Kr9b2pLzOZxB43') //please change this to a dynamic UID
+      .doc(uid) //please change this to a dynamic UID
       .collection('recipes')
       .doc(docName)
       .collection('ingredients')
@@ -230,10 +231,7 @@ class Ingredientsform extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  title: state.title,
+  uid: state.firebase.auth.uid,
 });
 
-export default connect(
-  mapStateToProps,
-  {addtitle},
-)(Ingredientsform);
+export default connect(mapStateToProps)(Ingredientsform);

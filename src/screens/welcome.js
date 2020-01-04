@@ -23,7 +23,10 @@ const Welcome = ({navigation, profile, signout}) => {
       <View style={[Styles.standardBlock, Styles.centerElement]}>
         <Button
           title="Sign Out"
-          onPress={signout}
+          onPress={() => {
+            signout();
+            navigation.navigate('Login');
+          }}
           // onPress={navigation.navigate('Login')}
         />
         <Image
@@ -60,7 +63,7 @@ const Welcome = ({navigation, profile, signout}) => {
         </View>
       </View>
       <View style={Styles.standardBlock}>
-        <Text style={Styles.bodyTitle}>Your Recipes</Text>
+        <Text style={Styles.bodyTitle}>Recipes</Text>
       </View>
       <Recipecarousel />
       <View style={{paddingHorizontal: 30, paddingBottom: 30}}>

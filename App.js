@@ -14,19 +14,16 @@ const rrfConfig = {
   useFirestoreForProfile: true,
 };
 
-const rrfProps = {
-  firebase,
-  config: rrfConfig,
-  dispatch: store.dispatch,
-  createFirestoreInstance,
-};
-
 export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <ReactReduxFirebaseProvider {...rrfProps}>
+          <ReactReduxFirebaseProvider
+            firebase={firebase}
+            config={rrfConfig}
+            dispatch={store.dispatch}
+            createFirestoreInstance={createFirestoreInstance}>
             <NavStack />
           </ReactReduxFirebaseProvider>
         </PersistGate>
