@@ -23,23 +23,25 @@ export default class Methodform extends React.Component {
     this.state = {
       textInput: [],
       enteredText: [],
+      title: props.navigation.state.params.title,
     };
   }
 
   componentDidMount() {
-    this.addTextInput(this.state.textInput.length);
     this.setState({
+      docStepCount: 0,
       stepCount: 1,
     });
+    this.addTextInput(this.state.textInput.length);
   }
 
   state = {
     step: '',
-    stepCount: 1,
     stepCountDisplay: 1,
   };
 
   nextEntry = () => {
+    this.state.docStepCount = this.state.docStepCount + 1;
     console.log('Step: ' + this.state.stepCount);
     console.log(this.state.step);
     console.log();
@@ -48,6 +50,26 @@ export default class Methodform extends React.Component {
     this.textInput;
     this.displayText(this.state.enteredText.length);
     this.enteredText;
+
+    var stepDesc = this.state.step;
+    var docName = this.state.title;
+    var docStepCount = this.state.docStepCount.toString();
+
+    var ref = firebase
+      .firestore()
+      .collection('users')
+      .doc('Vlu5Ofjf6raPw7Kr9b2pLzOZxB43') //please change this to a dynamic UID
+      .collection('recipes')
+      .doc(docName)
+      .collection('method')
+      .doc(docStepCount);
+
+    var merge = ref.set(
+      {
+        stepDesc: this.state.step,
+      },
+      {merge: true},
+    );
   };
 
   addTextInput = key => {

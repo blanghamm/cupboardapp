@@ -27,7 +27,7 @@ export default class Manualingredients extends Component {
               name="arrow-left"
               color={Colors.black}
               size={30}
-              onPress={() => this.props.navigation.navigate('manualname')}
+              onPress={() => this.props.navigation.goBack()}
             />
           </TouchableOpacity>
         </View>

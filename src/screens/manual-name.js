@@ -20,22 +20,26 @@ import {addtitle} from '../store/actions/stockActions';
 let titlePrint = '';
 
 class Manualname extends Component {
-// state = {
-//   title: '',
-// }
+  // state = {
+  //   title: '',
+  // }
 
   addTitle = () => {
-    this.props.addtitle(this.state);
+    // this.props.addtitle(this.state);
     //console.log(this.state)
     // //console.log('Title: ' + this.state.title);
-    // titlePrint = this.props.title.toString();
+    titlePrint = this.state.title;
     //console.log('Title2: ' + titlePrint);
-    // firebase
-    //   .firestore()
-    //   .collection('items')
-    //   .doc(titlePrint)
-    //   .set({title: titlePrint});
-    //this.props.navigation.navigate('Manualingredients');
+    firebase
+      .firestore()
+      .collection('items')
+      .doc(titlePrint)
+      .set({title: titlePrint});
+    console.log('manual name form :' + this.state.title);
+
+    this.props.navigation.navigate('Manualingredients', {
+      title: this.state.title,
+    });
   };
 
   render() {
@@ -48,7 +52,7 @@ class Manualname extends Component {
               name="arrow-left"
               color={Colors.black}
               size={30}
-              onPress={() => this.props.navigation.navigate('Splash')}
+              onPress={() => this.props.navigation.goBack()}
             />
           </TouchableOpacity>
         </View>
@@ -110,7 +114,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-    content: state.content
+  content: state.content,
 });
 
 // const mapDispatchToProps = dispatch =>{
@@ -119,6 +123,7 @@ const mapStateToProps = state => ({
 //   }
 // }
 
-
-export default connect(mapStateToProps, {addtitle})(Manualname)
-
+export default connect(
+  mapStateToProps,
+  {addtitle},
+)(Manualname);
