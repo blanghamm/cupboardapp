@@ -17,7 +17,7 @@ import {Formik} from 'formik';
 import {isLoaded, isEmpty} from 'react-redux-firebase';
 import {AsyncStorage} from '@react-native-community/async-storage';
 
-const Login = ({login, navigation, auth}) => {
+const Login = ({login, navigation}) => {
   return (
     <View style={[Styles.standardBlock, Styles.centerElement]}>
       <Image
@@ -27,20 +27,10 @@ const Login = ({login, navigation, auth}) => {
         enableReinitialize={true}
         initialValues={{email: '', password: ''}}
         onSubmit={async (values, {setSubmitting}) => {
+          await login(values);
           setSubmitting(false);
-          login(values)
-            .then(() => {
-              isLoaded(auth);
-            })
-            .then(() => {
-              console.log('Hi');
-              navigation.navigate('Welcome');
-            })
-            .catch(err => {
-              console.log('error', err);
-            });
 
-          // navigation.navigate('Welcome');
+          navigation.navigate('Loading');
         }}
         validationSchema={yup.object().shape({
           email: yup

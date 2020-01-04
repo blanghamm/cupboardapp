@@ -11,11 +11,11 @@ import firebase from '../firebase/config.js';
 import {connect} from 'react-redux';
 
 class Loading extends React.Component {
-  // componentDidMount() {
-  //   firebase.auth().onAuthStateChanged(user => {
-  //     this.props.navigation.navigate(user ? 'Signup' : 'Main');
-  //   });
-  // }
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      this.props.navigation.navigate(user ? 'Loading' : 'Main');
+    });
+  }
 
   render() {
     return (
@@ -31,7 +31,11 @@ class Loading extends React.Component {
   }
 }
 
-export default Loading;
+const mapStateToProps = state => ({
+  auth: state.firebase.auth,
+});
+
+export default connect(mapStateToProps)(Loading);
 
 const styles = StyleSheet.create({
   container: {
