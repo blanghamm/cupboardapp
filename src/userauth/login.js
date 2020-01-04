@@ -15,7 +15,7 @@ import Styles from '../styles';
 import * as yup from 'yup';
 import {Formik} from 'formik';
 
-const Login = ({login, navigation}) => {
+const Login = ({login, navigation, authError}) => {
   return (
     <View style={[Styles.standardBlock, Styles.centerElement]}>
       <Image
@@ -90,12 +90,14 @@ const Login = ({login, navigation}) => {
 
 const mapStateToProps = state => {
   return {
-    user: state.user,
+    authError: state.auth.authError,
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({login, getUser}, dispatch);
+  return {
+    login: data => dispatch(login(data)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

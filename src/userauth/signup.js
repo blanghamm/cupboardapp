@@ -60,17 +60,13 @@ class SignUp extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({signup}, dispatch);
-};
-
 const mapStateToProps = state => {
   return {
     user: state.user,
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps)(SignUp);
 
 const styles = StyleSheet.create({
   container: {

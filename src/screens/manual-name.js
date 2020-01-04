@@ -20,9 +20,9 @@ import {addtitle} from '../store/actions/stockActions';
 let titlePrint = '';
 
 class Manualname extends Component {
-// state = {
-//   title: '',
-// }
+  // state = {
+  //   title: '',
+  // }
 
   addTitle = () => {
     this.props.addtitle(this.state);
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-    content: state.content
+  content: state.content,
 });
 
 // const mapDispatchToProps = dispatch =>{
@@ -119,6 +119,4 @@ const mapStateToProps = state => ({
 //   }
 // }
 
-
-export default connect(mapStateToProps, {addtitle})(Manualname)
-
+export default connect(mapStateToProps)(Manualname);

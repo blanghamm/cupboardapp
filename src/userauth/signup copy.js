@@ -109,7 +109,9 @@ const SignUp = ({signup, navigation}) => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({signup}, dispatch);
+  return {
+    signup: newUser => dispatch(signup(newUser)),
+  };
 };
 
 const mapStateToProps = state => {
