@@ -1,42 +1,18 @@
 import React, {Component} from 'react';
-import {
-  View,
-  Text,
-  Button,
-  TextInput,
-  StyleSheet,
-  SafeAreaView,
-  ScrollView,
-  TouchableOpacity,
-  Alert,
-} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import firebase from '../firebase/config';
 import Styles from '../styles';
 import Colors from '../styles/colors';
 import Typography from '../styles/typography';
 import Icon from 'react-native-vector-icons/Feather';
-import {connect} from 'react-redux';
-import {addtitle} from '../store/actions/stockActions';
-let titlePrint = '';
 
 class Manualname extends Component {
-  // state = {
-  //   title: '',
-  // }
+  state = {
+    title: '',
+  };
 
   addTitle = () => {
-    // this.props.addtitle(this.state);
-    //console.log(this.state)
-    // //console.log('Title: ' + this.state.title);
-    titlePrint = this.state.title;
-    //console.log('Title2: ' + titlePrint);
-    firebase
-      .firestore()
-      .collection('items')
-      .doc(titlePrint)
-      .set({title: titlePrint});
-    console.log('manual name form :' + this.state.title);
-
+    let titlePrint = this.state.title;
     this.props.navigation.navigate('Manualingredients', {
       title: this.state.title,
     });
@@ -103,31 +79,8 @@ class Manualname extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#131420',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 0,
-  },
-});
-
 const mapStateToProps = state => ({
   content: state.content,
 });
 
-// const mapDispatchToProps = dispatch =>{
-//   return {
-//     addtitle: content => dispatch(addtitle(content)),
-//   }
-// }
-
-<<<<<<< HEAD
-export default connect(
-  mapStateToProps,
-  {addtitle},
-)(Manualname);
-=======
-export default connect(mapStateToProps)(Manualname);
->>>>>>> f822f18b67eed40c13cd98b80a2e564ef893e46c
+export default Manualname;
