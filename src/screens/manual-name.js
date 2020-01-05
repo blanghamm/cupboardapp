@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
-import firebase from '../firebase/config';
+import firebase, {db} from '../firebase/config';
 import Styles from '../styles';
 import Colors from '../styles/colors';
 import Typography from '../styles/typography';
 import Icon from 'react-native-vector-icons/Feather';
+import {connect} from 'react-redux';
 
 class Manualname extends Component {
   state = {
@@ -12,10 +13,25 @@ class Manualname extends Component {
   };
 
   addTitle = () => {
-    let titlePrint = this.state.title;
-    this.props.navigation.navigate('Manualingredients', {
-      title: this.state.title,
-    });
+    var uid = this.props.uid;
+    var titlePrint = this.state.title;
+    db.collection('users')
+      .doc(uid)
+      .collection('recipes')
+      .get()
+      .then(function(querySnapshot) {
+        console.log('size: ' + querySnapshot.size);
+        var recipeAmount = querySnapshot.size;
+        var recipeAmount = recipeAmount + 1;
+        var docName = recipeAmount.toString();
+        db.collection('users')
+          .doc(uid)
+          .collection('recipes')
+          .doc(docName)
+          .set({title: titlePrint});
+      });
+
+    this.props.navigation.navigate('Manualingredients');
   };
 
   render() {
@@ -49,14 +65,7 @@ class Manualname extends Component {
           onChangeText={value => this.setState({title: value})}
           onSubmitEditing={this.addTitle}
         />
-        <View
-          style={{
-            paddingHorizontal: 30,
-            paddingVertical: 30,
-            width: '100%',
-            flex: 1,
-            justifyContent: 'flex-end',
-          }}>
+        <View style={Styles.bigBottomButton}>
           <TouchableOpacity
             style={[
               Styles.fullButton,
@@ -80,7 +89,7 @@ class Manualname extends Component {
 }
 
 const mapStateToProps = state => ({
-  auth: state.firebase.auth,
+  uid: state.firebase.auth.uid,
 });
 
-export default Manualname;
+export default connect(mapStateToProps)(Manualname);

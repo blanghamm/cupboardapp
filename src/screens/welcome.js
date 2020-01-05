@@ -17,8 +17,7 @@ import {signout} from '../store/actions/authActions';
 
 // class Welcome extends React.Component {
 
-const Welcome = ({navigation, profile, signout}) => {
-  console.log('profile.user= ' + profile.Name);
+const Welcome = ({navigation, profile}) => {
   return (
     <ScrollView>
       <View style={[Styles.standardBlock, Styles.centerElement]}>

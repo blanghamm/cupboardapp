@@ -19,7 +19,7 @@ import Methodform from '../components/method-form';
 export default class Manualmethod extends Component {
   render() {
     return (
-      <ScrollView>
+      <View style={{flex: 1}}>
         <View style={{width: 100}}>
           <TouchableOpacity onPress={this.onPressButton}>
             <Icon
@@ -36,14 +36,7 @@ export default class Manualmethod extends Component {
           <Text style={Styles.subTitle}>Add each step to your recipe.</Text>
         </View>
         <Methodform navigation={this.props.navigation} />
-        <View style={{paddingHorizontal: 30, paddingVertical: 30}}>
-          <TouchableOpacity
-            style={[Styles.fullButton, Styles.greyButton]}
-            onPress={() => this.props.navigation.navigate('Recipes')}>
-            <Text style={Styles.buttonText}>Publish your recipe</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+      </View>
     );
   }
 }

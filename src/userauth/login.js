@@ -28,7 +28,7 @@ const Login = ({login, navigation}) => {
           await login(values);
           setSubmitting(false);
 
-          navigation.navigate('Loading');
+          navigation.navigate('Loadinglogin');
         }}
         validationSchema={yup.object().shape({
           email: yup

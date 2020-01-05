@@ -8,9 +8,10 @@ import {
   SafeAreaView,
   TouchableHighlight,
   TouchableOpacity,
+  ScrollView,
   Alert,
 } from 'react-native';
-import firebase from '../firebase/config';
+import firebase, {db} from '../firebase/config';
 import Styles from '../styles';
 import Typography from '../styles/typography';
 import Colors from '../styles/colors';
@@ -24,7 +25,6 @@ class Methodform extends React.Component {
     this.state = {
       textInput: [],
       enteredText: [],
-      title: props.navigation.state.params.title,
     };
   }
 
@@ -43,35 +43,34 @@ class Methodform extends React.Component {
 
   nextEntry = () => {
     this.state.docStepCount = this.state.docStepCount + 1;
-    console.log('Step: ' + this.state.stepCount);
-    console.log(this.state.step);
-    console.log();
+
+    var uid = this.props.uid;
+    console.log(uid);
+    var docStepCount = this.state.docStepCount.toString();
+    var stepDesc = this.state.step;
+
+    db.collection('users')
+      .doc(uid)
+      .collection('recipes')
+      .get()
+      .then(function(querySnapshot) {
+        var recipeAmount = querySnapshot.size;
+        console.log(recipeAmount);
+        var docName = recipeAmount.toString();
+        db.collection('users')
+          .doc(uid)
+          .collection('recipes')
+          .doc(docName)
+          .collection('method')
+          .doc(docStepCount)
+          .set({stepDesc: stepDesc});
+      });
+
     this.state.stepCountDisplay = this.state.stepCount;
     this.addTextInput(this.state.textInput.length);
     this.textInput;
     this.displayText(this.state.enteredText.length);
     this.enteredText;
-
-    var uid = this.props.uid;
-    var stepDesc = this.state.step;
-    var docName = this.state.title;
-    var docStepCount = this.state.docStepCount.toString();
-
-    var ref = firebase
-      .firestore()
-      .collection('users')
-      .doc(uid)
-      .collection('recipes')
-      .doc(docName)
-      .collection('method')
-      .doc(docStepCount);
-
-    var merge = ref.set(
-      {
-        stepDesc: this.state.step,
-      },
-      {merge: true},
-    );
   };
 
   addTextInput = key => {
@@ -125,49 +124,58 @@ class Methodform extends React.Component {
   render() {
     let stepCount = this.state.stepCount;
     return (
-      <SafeAreaView
-        style={{
-          // paddingTop: 30,
-          paddingHorizontal: 30,
-          display: 'flex',
-          flexDirection: 'column',
-        }}>
-        <View
+      <View style={{flexDirection: 'column', flex: 1}}>
+        <ScrollView
           style={{
+            paddingHorizontal: 30,
             display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
+            flexDirection: 'column',
           }}>
-          {this.state.enteredText.map((value, index) => {
-            return value;
-          })}
-          {this.state.textInput.map((value, index) => {
-            return value;
-          })}
-        </View>
-        <TouchableOpacity
-          onPress={this.nextEntry}
-          style={{
-            paddingTop: 20,
-            alignSelf: 'center',
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-          }}>
-          <Icon
-            style={{paddingRight: 10}}
-            name="plus"
-            color={Colors.grey}
-            size={30}
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+            }}>
+            {this.state.enteredText.map((value, index) => {
+              return value;
+            })}
+            {this.state.textInput.map((value, index) => {
+              return value;
+            })}
+          </View>
+          <TouchableOpacity
             onPress={this.nextEntry}
-          />
-          <Text style={[Styles.bodyText, {color: Colors.grey}]}>
-            Add another step
-          </Text>
-        </TouchableOpacity>
-      </SafeAreaView>
+            style={{
+              paddingTop: 20,
+              alignSelf: 'center',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              paddingBottom: 30,
+            }}>
+            <Icon
+              style={{paddingRight: 10}}
+              name="plus"
+              color={Colors.grey}
+              size={30}
+              onPress={this.nextEntry}
+            />
+            <Text style={[Styles.bodyText, {color: Colors.grey}]}>
+              Add another step
+            </Text>
+          </TouchableOpacity>
+        </ScrollView>
+        <View style={Styles.bigBottomButton}>
+          <TouchableOpacity
+            style={[Styles.fullButton, Styles.greyButton]}
+            onPress={this.submitIngredients}>
+            <Text style={Styles.buttonText}>Add the method</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     );
   }
 }

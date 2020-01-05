@@ -17,7 +17,7 @@ import Icon from 'react-native-vector-icons/Feather';
 
 const Settings = ({navigation, profile, signout}) => {
   return (
-    <View style={{flex: 1}}>
+    <View style={{flexDirection: 'column', flex: 1}}>
       <View style={{width: 100}}>
         <TouchableOpacity>
           <Icon
@@ -30,15 +30,17 @@ const Settings = ({navigation, profile, signout}) => {
         </TouchableOpacity>
       </View>
       <View style={Styles.centerElement}>
-        <Text style={[Styles.titleLower, {paddingTop: 10}]}>Account</Text>
+        <Image
+          source={require('../assets/user.png')}
+          style={{width: 110, height: 110, borderRadius: 400 / 2}}
+        />
+        <Text style={[Styles.titleLower, {paddingTop: 20}]}>My Account</Text>
         <Text style={[Styles.subTitle, {color: Colors.black}]}>
-          Name: {profile.Name}
+          {profile.Email}
         </Text>
-        <Text style={[Styles.subTitle, {color: Colors.black}]}>
-          Email: {profile.Email}
-        </Text>
-
-        <TouchableOpacity style={[Styles.halfButton, Styles.aquaButton]}>
+      </View>
+      <View style={Styles.bigBottomButton}>
+        <TouchableOpacity style={[Styles.fullButton, Styles.greyButton]}>
           <Text
             style={[Styles.buttonText, {color: Colors.offWhite}]}
             onPress={() => {
