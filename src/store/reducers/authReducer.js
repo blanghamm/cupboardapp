@@ -1,32 +1,42 @@
 import {
-  LOGIN,
-  SIGNUP,
+  LOGIN_SUCCESS,
+  SIGNUP_SUCCESS,
   LOGIN_FAILURE,
   SIGNUP_FAILURE,
   SIGNOUT_SUCCESS,
+  AUTH_END,
+  AUTH_START,
 } from '../actions/authActions';
 const initState = {
   authError: null,
+  loading: false,
 };
 
 const user = (state = initState, action) => {
   switch (action.type) {
+    case AUTH_START:
+      return {...state, loading: true};
+
+    case AUTH_END:
+      return {...state, loading: false};
+
     case LOGIN_FAILURE:
       return {
         ...state,
-        loginfailure: action.payload,
-        authError: 'Login_Failed',
+        authError: action.payload,
       };
-    case LOGIN:
-      return {...state, login: action.payload};
+
+    case LOGIN_SUCCESS:
+      return {...state, authError: false};
+
     case SIGNUP_FAILURE:
       return {
         ...state,
-        signupfailure: action.payload,
-        authError: 'Signup Failed',
+        authError: action.payload,
       };
-    case SIGNUP:
-      return {...state, signup: action.payload};
+    case SIGNUP_SUCCESS:
+      return {...state, authError: false};
+
     case SIGNOUT_SUCCESS:
       return state;
     default:

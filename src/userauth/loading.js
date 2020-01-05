@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -10,26 +10,41 @@ import {
 import firebase from '../firebase/config.js';
 import {connect} from 'react-redux';
 
-class Loading extends React.Component {
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged(user => {
-      this.props.navigation.navigate(user ? 'Loading' : 'Main');
-    });
+const Loading = ({navigation}) => {
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+  // firebase.auth().onAuthStateChanged(user => {
+  //   this.props.navigation.navigate(user ? 'Welcome' : 'Signup');
+  console.log(user);
+
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
   }
 
-  render() {
+  useEffect(() => {
+    const subscriber = firebase.auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
+  if (initializing) return null;
+
+  //this.props.navigation.navigate(user ? 'Main' : 'Loading');
+  if (!user) {
     return (
       <View style={styles.container}>
         <Image style={styles.logosize} source={require('../assets/icon.png')} />
         <Text style={styles.textformat}>CUPBOARD</Text>
-        <Button
-          title="Login"
-          onPress={() => this.props.navigation.navigate('Signup')}
-        />
+        <Button title="Login" onPress={() => navigation.navigate('Signup')} />
       </View>
     );
   }
-}
+  return (
+    <View>
+      <Text>{navigation.navigate('Welcome')}</Text>
+    </View>
+  );
+};
 
 const mapStateToProps = state => ({
   auth: state.firebase.auth,

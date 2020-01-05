@@ -11,11 +11,12 @@ import {
 import {connect} from 'react-redux';
 import {signup} from '../store/actions/authActions';
 import {bindActionCreators} from 'redux';
+import {isLoaded, isEmpty} from 'react-redux-firebase';
 import {Formik} from 'formik';
 import Styles from '../styles';
 import * as yup from 'yup';
 
-const SignUp = ({signup, navigation}) => {
+const SignUp = ({signup, navigation, auth}) => {
   return (
     <View style={[Styles.standardBlock, Styles.centerElement]}>
       <Image
@@ -26,9 +27,9 @@ const SignUp = ({signup, navigation}) => {
         initialValues={{displayName: '', email: '', password: ''}}
         onSubmit={async (values, {setSubmitting}) => {
           await signup(values);
-          console.log(values);
-          navigation.navigate('Welcome');
           setSubmitting(false);
+          isLoaded(auth);
+          navigation.navigate('Loading');
         }}
         validationSchema={yup.object().shape({
           displayName: yup
@@ -116,7 +117,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    user: state.user,
+    authError: state.auth.authError,
+    auth: state.firebase.auth,
   };
 };
 
