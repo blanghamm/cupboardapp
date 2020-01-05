@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import {Transition} from 'react-native-reanimated';
 
 import Loading from './loading';
+import LoadingStart from './loadingstartup';
 import Login from './login';
 import Signup from './signup copy';
 import Navigation from '../navigation/index';
@@ -16,7 +17,6 @@ const userauth = createAnimatedSwitchNavigator(
     Loading: {
       screen: Loading,
     },
-
     Login: {
       screen: Login,
     },
@@ -41,7 +41,7 @@ const userauth = createAnimatedSwitchNavigator(
   },
 
   {
-    initialRouteName: 'Loading',
+    initialRouteName: 'Login',
   },
 );
 

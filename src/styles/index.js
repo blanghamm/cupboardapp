@@ -17,8 +17,6 @@ export default StyleSheet.create({
   standardBlock: {
     marginTop: Layout.standard,
     marginHorizontal: Layout.standard,
-    // borderWidth: 1,
-    // borderColor: 'grey',
   },
   standardPadding: {
     marginHorizontal: Layout.standard,
@@ -28,8 +26,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: Layout.standard,
     backgroundColor: Colors.offWhite,
-    // borderWidth: 1,
-    // borderColor: 'grey',
   },
   bannerBlock: {
     height: 100,
@@ -46,6 +42,16 @@ export default StyleSheet.create({
     marginTop: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  itemContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderWidth: 1,
+    borderColor: 'grey',
+    height: 50,
+    marginTop: 10,
+    borderTopRightRadius: 400 / 2,
+    borderBottomRightRadius: 400 / 2,
   },
 
   //BUTTONS
@@ -97,6 +103,11 @@ export default StyleSheet.create({
     height: 50,
   },
 
+  itemImage: {
+    alignSelf: 'center',
+    paddingRight: 15,
+  },
+
   //TEXT
 
   welcomeTextGrey: {
@@ -116,10 +127,15 @@ export default StyleSheet.create({
     textTransform: 'uppercase',
     fontSize: 24,
   },
-  title: {
-    color: Colors.black,
+  cupboardTitle: {
+    color: Colors.grey,
     fontFamily: Typography.bodyBold,
     textTransform: 'uppercase',
+    fontSize: 20,
+  },
+  titleLower: {
+    color: Colors.black,
+    fontFamily: Typography.titleBold,
     fontSize: 24,
   },
   subTitle: {
@@ -135,6 +151,13 @@ export default StyleSheet.create({
   },
   bodyText: {
     fontFamily: Typography.bodyRegular,
+  },
+  itemText: {
+    fontFamily: Typography.bodyRegular,
+    paddingLeft: 15,
+    alignSelf: 'center',
+    fontSize: 20,
+    color: Colors.grey,
   },
 
   //CAROUSEL

@@ -20,9 +20,6 @@ import Manualname from '../screens/manual-name';
 import Manualingredients from '../screens/manual-ingredients';
 import Manualmethod from '../screens/manual-method';
 import Camera from '../screens/camera-upload';
-import Styles from '../styles';
-import Colors from '../styles/colors';
-import Typography from '../styles/typography';
 
 const Screens = createBottomTabNavigator(
   {

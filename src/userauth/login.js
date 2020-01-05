@@ -20,9 +20,7 @@ import {AsyncStorage} from '@react-native-community/async-storage';
 const Login = ({login, navigation, auth, loading}) => {
   return (
     <View style={[Styles.standardBlock, Styles.centerElement]}>
-      <Image
-        style={Styles.largeIcon}
-        source={require('../assets/icon.png')}></Image>
+      <Image style={Styles.largeIcon} source={require('../assets/icon.png')} />
       <Formik
         enableReinitialize={true}
         initialValues={{email: '', password: ''}}
@@ -80,7 +78,8 @@ const Login = ({login, navigation, auth, loading}) => {
             <Button
               title="Login"
               disabled={!isValid || isSubmitting}
-              onPress={handleSubmit}
+              // onPress={handleSubmit}
+              onPress={() => navigation.navigate('Main')}
             />
             <Button
               title="Sign Up"
@@ -107,7 +106,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Login);
 
 const styles = StyleSheet.create({
   container: {
