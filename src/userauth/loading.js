@@ -15,7 +15,6 @@ const Loading = ({navigation}) => {
   const [user, setUser] = useState();
   // firebase.auth().onAuthStateChanged(user => {
   //   this.props.navigation.navigate(user ? 'Welcome' : 'Signup');
-  console.log(user);
 
   function onAuthStateChanged(user) {
     setUser(user);

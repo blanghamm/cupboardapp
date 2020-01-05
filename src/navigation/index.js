@@ -14,12 +14,13 @@ import {
   Alert,
 } from 'react-native';
 import Welcome from '../screens/welcome.js';
-import SplashNav from '../screens/add-splash-nav.js';
 import Cupboard from '../screens/cupboard.js';
 import Manualname from '../screens/manual-name';
 import Manualingredients from '../screens/manual-ingredients';
 import Manualmethod from '../screens/manual-method';
 import Camera from '../screens/camera-upload';
+import Settings from '../screens/settings';
+import SplashNav from '../screens/add-splash';
 
 const Screens = createBottomTabNavigator(
   {
@@ -130,6 +131,7 @@ const rootNavigator = createStackNavigator(
     Manualname: {screen: Manualname},
     Manualingredients: {screen: Manualingredients},
     Manualmethod: {screen: Manualmethod},
+    Settings: {screen: Settings},
   },
   {
     headerMode: 'none',

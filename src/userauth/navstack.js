@@ -16,7 +16,6 @@ const userauth = createAnimatedSwitchNavigator(
     Loading: {
       screen: Loading,
     },
-
     Login: {
       screen: Login,
     },

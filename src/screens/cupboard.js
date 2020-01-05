@@ -29,7 +29,7 @@ const Cupboard = ({navigation, profile, signout}) => {
         }}>
         <TouchableOpacity
           onPress={() => {
-            console.log('settings cog pressed');
+            navigation.navigate('Settings');
           }}>
           <Icon style={{}} name="settings" color={Colors.black} size={30} />
         </TouchableOpacity>
