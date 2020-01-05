@@ -7,8 +7,11 @@ import {ReactReduxFirebaseProvider} from 'react-redux-firebase';
 import {createFirestoreInstance} from 'redux-firestore';
 import firebase from './src/firebase/config';
 import Loading from './src/userauth/loading';
+import {YellowBox} from 'react-native';
 
 const {persistor, store} = configureStore();
+
+YellowBox.ignoreWarnings(['Setting a timer']);
 
 const rrfConfig = {
   userProfile: 'users',

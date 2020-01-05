@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import firebase from '../firebase/config';
+import firebase, {db} from '../firebase/config';
 import Styles from '../styles';
 import Typography from '../styles/typography';
 import Colors from '../styles/colors';
@@ -19,6 +19,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import {connect} from 'react-redux';
 let count = -1;
 let dataCount = 0;
+var recipeAmount = 0;
 
 class Ingredientsform extends React.Component {
   constructor(props) {
@@ -26,12 +27,11 @@ class Ingredientsform extends React.Component {
     this.state = {
       textInput: [],
       enteredText: [],
-      title: props.navigation.state.params.title,
+      docCount: 0,
     };
   }
 
   componentDidMount() {
-    console.log('ingredients form :' + this.state.title);
     this.addTextInput(this.state.textInput.length);
     this.setState({
       quantVar: 1,
@@ -42,6 +42,7 @@ class Ingredientsform extends React.Component {
     ingredient: '',
     quantVar: 1,
     quantSep: 1,
+    docCount: 0,
   };
 
   minQ = value => {
@@ -59,33 +60,38 @@ class Ingredientsform extends React.Component {
   };
 
   nextEntry = () => {
-    dataCount = dataCount + 1;
-    console.log('Ingredient: ' + this.state.ingredient);
-    console.log('Quantity: ' + this.state.quantVar);
-
-    var ingredientOp = this.state.ingredient;
-
-    var docName = this.state.title;
-
+    this.state.docCount = this.state.docCount + 1;
     var uid = this.props.uid;
+    var ingredientOp = this.state.ingredient;
+    var category = this.state.ingredient;
+    var quantity = this.state.quantVar;
 
-    var ref = firebase
-      .firestore()
-      .collection('users')
+    var docCountVar = this.state.docCount.toString();
+
+    db.collection('users')
       .doc(uid)
       .collection('recipes')
-      .doc(docName)
-      .collection('ingredients')
-      .doc(ingredientOp);
+      .get()
+      .then(function(querySnapshot) {
+        var recipeAmount = querySnapshot.size;
+        var docName = recipeAmount.toString();
+        var ref = db
+          .collection('users')
+          .doc(uid)
+          .collection('recipes')
+          .doc(docName)
+          .collection('ingredients')
+          .doc(docCountVar);
+        var merge = ref.set(
+          {
+            category: category,
+            quantity: quantity,
+          },
+          {merge: true},
+        );
+      });
 
-    var merge = ref.set(
-      {
-        category: this.state.ingredient,
-        quantity: this.state.quantVar,
-      },
-      {merge: true},
-    );
-
+    dataCount = dataCount + 1;
     this.state.quantSep = this.state.quantVar;
     this.addTextInput(this.state.textInput.length);
     this.textInput;
@@ -102,9 +108,7 @@ class Ingredientsform extends React.Component {
     this.textInput;
     this.displayText(this.state.enteredText.length);
     this.enteredText;
-    this.props.navigation.navigate('Manualmethod', {
-      title: this.state.title,
-    });
+    this.props.navigation.navigate('Manualmethod');
   };
 
   addTextInput = key => {
@@ -155,12 +159,10 @@ class Ingredientsform extends React.Component {
     return (
       <View
         style={{
-          paddingHorizontal: 30,
-          display: 'flex',
           flexDirection: 'column',
           flex: 1,
         }}>
-        <ScrollView>
+        <ScrollView style={{paddingHorizontal: 30}}>
           <View
             style={{
               display: 'flex',
@@ -205,6 +207,7 @@ class Ingredientsform extends React.Component {
               display: 'flex',
               flexDirection: 'row',
               alignItems: 'center',
+              paddingBottom: 30,
             }}>
             <Icon
               style={{paddingRight: 10}}
@@ -218,7 +221,7 @@ class Ingredientsform extends React.Component {
             </Text>
           </TouchableOpacity>
         </ScrollView>
-        <View style={{paddingVertical: 30}}>
+        <View style={Styles.bigBottomButton}>
           <TouchableOpacity
             style={[Styles.fullButton, Styles.greyButton]}
             onPress={this.submitIngredients}>

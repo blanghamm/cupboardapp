@@ -8,7 +8,8 @@ import {Transition} from 'react-native-reanimated';
 
 import Loading from './loading';
 import Login from './login';
-import Signup from './signup copy';
+import Signup from './signup';
+import Loadinglogin from './loading-login';
 import Navigation from '../navigation/index';
 
 const userauth = createAnimatedSwitchNavigator(
@@ -21,6 +22,9 @@ const userauth = createAnimatedSwitchNavigator(
     },
     Signup: {
       screen: Signup,
+    },
+    Loadinglogin: {
+      screen: Loadinglogin,
     },
     Main: {
       screen: Navigation,

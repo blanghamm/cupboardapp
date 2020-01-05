@@ -95,6 +95,14 @@ export default StyleSheet.create({
     color: Colors.white,
   },
 
+  bigBottomButton: {
+    paddingHorizontal: 30,
+    paddingVertical: 30,
+    width: '100%',
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+
   //ICONS
 
   largeIcon: {

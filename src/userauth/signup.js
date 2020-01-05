@@ -1,64 +1,116 @@
-import React from 'react';
-import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
-// import {connect} from 'react-redux';
-// import {signUp} from '../store/actions/authActions';
-import {bindActionCreators} from 'redux';
+import React, {Fragment} from 'react';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  Button,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import {connect} from 'react-redux';
-import firebase from '../firebase/config';
 import {signup} from '../store/actions/authActions';
-import {Formik, ErrorMessage} from 'formik';
+import {bindActionCreators} from 'redux';
+import {Formik} from 'formik';
+import Styles from '../styles';
+import * as yup from 'yup';
 
-class SignUp extends React.Component {
-  state = {displayName: '', email: '', password: ''};
+const SignUp = ({signup, navigation}) => {
+  return (
+    <View style={[Styles.standardBlock, Styles.centerElement]}>
+      <Image style={Styles.largeIcon} source={require('../assets/icon.png')} />
+      <Formik
+        enableReinitialize={true}
+        initialValues={{displayName: '', email: '', password: ''}}
+        onSubmit={async (values, {setSubmitting}) => {
+          await signup(values);
+          console.log(values);
+          navigation.navigate('Loadinglogin');
+          setSubmitting(false);
+        }}
+        validationSchema={yup.object().shape({
+          displayName: yup
+            .string()
+            .required('Nickname is required.')
+            .min(3, 'Too short')
+            .max(25, 'Too long.'),
+          email: yup
+            .string()
+            .email('Invalid email')
+            .required('Email is required'),
+          password: yup
+            .string()
+            .min(6)
+            .required('Password is required'),
+        })}>
+        {({
+          values,
+          isSubmitting,
+          handleChange,
+          errors,
+          setFieldTouched,
+          touched,
+          isValid,
+          handleSubmit,
+        }) => (
+          <Fragment>
+            <TextInput
+              value={values.displayName}
+              style={styles.textInput}
+              autoCapitalize="words"
+              onChangeText={handleChange('displayName')}
+              placeholder="Name"
+              onBlur={() => setFieldTouched('displayName')}
+            />
+            {touched.displayName && errors.displayName && (
+              <Text style={{fontSize: 10, color: 'red'}}>
+                {errors.displayName}
+              </Text>
+            )}
+            <TextInput
+              value={values.email}
+              style={styles.textInput}
+              onChangeText={handleChange('email')}
+              placeholder="Email"
+              onBlur={() => setFieldTouched('email')}
+            />
+            {touched.email && errors.email && (
+              <Text style={{fontSize: 10, color: 'red'}}>{errors.email}</Text>
+            )}
+            <TextInput
+              value={values.password}
+              style={styles.textInput}
+              onChangeText={handleChange('password')}
+              placeholder="Password"
+              secureTextEntry={true}
+              onBlur={() => setFieldTouched('password')}
+            />
+            {touched.password && errors.password && (
+              <Text style={{fontSize: 10, color: 'red'}}>
+                {errors.password}
+              </Text>
+            )}
+            <Button
+              title="Sign Up"
+              disabled={!isValid || isSubmitting}
+              onPress={handleSubmit}
+            />
+            <Button
+              title="Already have an account? Login"
+              onPress={() => navigation.navigate('Login')}
+            />
+          </Fragment>
+        )}
+      </Formik>
+    </View>
+  );
+};
 
-  handleSignUp = e => {
-    e.preventDefault();
-    if (this.props.signup(this.state)) {
-      this.props.navigation.navigate('Welcome');
-      return;
-    }
+const mapDispatchToProps = dispatch => {
+  return {
+    signup: newUser => dispatch(signup(newUser)),
   };
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Sign Up</Text>
-        <TextInput
-          placeholder="Name"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={displayName => this.setState({displayName})}
-          value={this.state.displayName}
-        />
-        <TextInput
-          placeholder="Email"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={email => this.setState({email})}
-          value={this.state.email}
-        />
-
-        <TextInput
-          secureTextEntry
-          placeholder="Password"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={password => this.setState({password})}
-          value={this.state.password}
-        />
-        <Button title="Sign Up" onPress={this.handleSignUp} />
-        <Button
-          title="Already have an account? Login"
-          onPress={() => this.props.navigation.navigate('Login')}
-        />
-        <Button
-          title="Skip This"
-          onPress={() => this.props.navigation.navigate('Welcome')}
-        />
-      </View>
-    );
-  }
-}
+};
 
 const mapStateToProps = state => {
   return {
@@ -66,7 +118,10 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(SignUp);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SignUp);
 
 const styles = StyleSheet.create({
   container: {

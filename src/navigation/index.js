@@ -12,6 +12,7 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   Alert,
+  Image,
 } from 'react-native';
 import Welcome from '../screens/welcome.js';
 import Cupboard from '../screens/cupboard.js';
@@ -21,6 +22,10 @@ import Manualmethod from '../screens/manual-method';
 import Camera from '../screens/camera-upload';
 import Settings from '../screens/settings';
 import SplashNav from '../screens/add-splash';
+import Colors from '../styles/colors';
+
+var cupboardCount = 0;
+var tintColorPng = Colors.grey;
 
 const Screens = createBottomTabNavigator(
   {
@@ -46,31 +51,6 @@ const Screens = createBottomTabNavigator(
       screen: SplashNav,
       navigationOptions: {
         tabBarLabel: 'ADD',
-        // tabBarOnPress: ({navigation}) => {
-        //   console.log('Clicked');
-        //   Alert.alert(
-        //     'Add a recipe',
-        //     '',
-        //     [
-        //       {
-        //         text: 'Cancel',
-        //         onPress: () => console.log('Cancel clicked'),
-        //         style: 'cancel',
-        //       },
-        //       {
-        //         text: 'Manual',
-        //         // onPress: () => ,
-        //       },
-        //       {
-        //         text: 'Camera',
-        //         onPress: () => console.log('Camera Pressed'),
-        //         style: 'positive',
-        //       },
-        //     ],
-        //     {cancelable: true},
-        //   );
-        //   // recipeModal();
-        // },
         tabBarIcon: ({tintColor}) => (
           <Icon
             style={{marginBottom: 20}}
@@ -86,11 +66,15 @@ const Screens = createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: 'CUPBOARD',
         tabBarIcon: ({tintColor}) => (
-          <Icon
-            style={{marginBottom: 20}}
-            name="coffee"
-            color={tintColor}
-            size={30}
+          <Image
+            source={require('../assets/icon.png')}
+            style={{
+              width: 25,
+              height: 25,
+              alignSelf: 'center',
+              marginBottom: 20,
+              tintColor: {tintColor}.tintColor,
+            }}
           />
         ),
       },
@@ -109,8 +93,8 @@ const Screens = createBottomTabNavigator(
     tabBarOptions: {
       height: 20,
       showLabel: false,
-      tintColor: '#2e4057',
-      activeTintColor: '#e08dac',
+      tintColor: Colors.grey,
+      activeTintColor: Colors.peach,
       tabStyle: {
         paddingBottom: 10,
         paddingVertical: 30,
@@ -120,6 +104,7 @@ const Screens = createBottomTabNavigator(
         borderTopWidth: 0,
         shadowOffset: {width: 5, height: 10},
         shadowColor: 'black',
+        height: 60,
       },
     },
   },
