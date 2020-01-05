@@ -13,7 +13,7 @@ import {connect} from 'react-redux';
 class Loading extends React.Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
-      this.props.navigation.navigate(user ? 'Loading' : 'Main');
+      // this.props.navigation.navigate(user ? 'Loading' : 'Main');
     });
   }
 

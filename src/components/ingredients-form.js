@@ -72,7 +72,7 @@ class Ingredientsform extends React.Component {
     var ref = firebase
       .firestore()
       .collection('users')
-      .doc(uid) //please change this to a dynamic UID
+      .doc(uid)
       .collection('recipes')
       .doc(docName)
       .collection('ingredients')
