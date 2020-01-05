@@ -28,7 +28,7 @@ const Login = ({login, navigation, auth, loading}) => {
           await login(values);
           setSubmitting(false);
           isLoaded(loading);
-          navigation.navigate(auth ? 'Loading' : 'Welcome');
+          navigation.navigate('Loading');
           // navigation.navigate(LOGIN_SUCCESS, 'Welcome');
         }}
         validationSchema={yup.object().shape({
@@ -106,10 +106,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
 
 const styles = StyleSheet.create({
   container: {

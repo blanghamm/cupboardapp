@@ -43,8 +43,10 @@ export const login = data => {
     try {
       await firebase
         .auth()
-        .signInWithEmailAndPassword(data.email, data.password);
-      dispatch({type: LOGIN_SUCCESS});
+        .signInWithEmailAndPassword(data.email, data.password)
+        .then(() => {
+          dispatch({type: LOGIN_SUCCESS});
+        });
     } catch (err) {
       dispatch({type: LOGIN_FAILURE, payload: err.message});
     }
