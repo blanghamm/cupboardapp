@@ -27,8 +27,6 @@ const Loading = ({navigation}) => {
   }, []);
 
   if (initializing) return null;
-
-  //this.props.navigation.navigate(user ? 'Main' : 'Loading');
   if (!user) {
     return (
       <View style={styles.container}>

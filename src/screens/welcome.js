@@ -22,14 +22,6 @@ const Welcome = ({navigation, profile, signout}) => {
   return (
     <ScrollView>
       <View style={[Styles.standardBlock, Styles.centerElement]}>
-        <Button
-          title="Sign Out"
-          onPress={() => {
-            signout();
-            navigation.navigate('Login');
-          }}
-          // onPress={navigation.navigate('Login')}
-        />
         <Image
           style={Styles.largeIcon}
           source={require('../assets/icon.png')}
@@ -70,7 +62,7 @@ const Welcome = ({navigation, profile, signout}) => {
       <View style={{paddingHorizontal: 30, paddingBottom: 30}}>
         <TouchableOpacity
           style={[Styles.fullButton, Styles.greyButton]}
-          onPress={() => navigation.navigate('Recipes')}>
+          onPress={() => navigation.navigate('Recipedisplay')}>
           <Text style={Styles.buttonText}>View recipes</Text>
         </TouchableOpacity>
       </View>
@@ -88,7 +80,4 @@ const mapDispatchToProps = dispatch => {
   return {signout: () => dispatch(signout())};
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Welcome);
+export default connect(mapStateToProps, mapDispatchToProps)(Welcome);

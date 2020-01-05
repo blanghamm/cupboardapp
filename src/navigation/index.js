@@ -21,6 +21,7 @@ import Manualmethod from '../screens/manual-method';
 import Camera from '../screens/camera-upload';
 import Settings from '../screens/settings';
 import SplashNav from '../screens/add-splash';
+import Recipedisplay from '../screens/recipedisplay/recipe-display';
 
 const Screens = createBottomTabNavigator(
   {
@@ -132,6 +133,7 @@ const rootNavigator = createStackNavigator(
     Manualingredients: {screen: Manualingredients},
     Manualmethod: {screen: Manualmethod},
     Settings: {screen: Settings},
+    Recipedisplay: {screen: Recipedisplay},
   },
   {
     headerMode: 'none',

@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
 import {createAppContainer} from 'react-navigation';
-import {createSwitchNavigator} from 'react-navigation';
 import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
-import {connect} from 'react-redux';
 import {Transition} from 'react-native-reanimated';
 
 import Loading from './loading';

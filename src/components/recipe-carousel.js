@@ -13,30 +13,64 @@ import Carousel from 'react-native-snap-carousel';
 import Styles from '../styles';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
+import {db} from '../firebase/config';
+import {connect} from 'react-redux';
 
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
 const screenWidthMargin = viewportWidth - 60;
+var fireInfo;
+var fireInfoIng = '';
+var fireInfoTitle;
 
-export default class Recipecarousel extends React.Component {
+class Recipecarousel extends React.Component {
+  componentDidMount() {
+    var uid = this.props.uid;
+    var docRef = db
+      .collection('users')
+      .doc(uid)
+      .collection('recipes')
+      .doc('bacon bap'); //Needs to be set as document count number
+    //then ingredients collection, follow by document ingredient
+    var item1 = docRef
+      .get()
+      .then(function(doc) {
+        if (doc.exists) {
+          fireInfo = doc.data();
+          fireInfoIng = fireInfo.ingredient;
+          fireInfoTitle = fireInfo.title;
+        } else {
+          console.log('No Document');
+        }
+      })
+      .then(() => {
+        this.setState({
+          carouselItems: [
+            {
+              //id: (FROM DATABASE) ,
+              title: fireInfoIng,
+              category: 'Italian',
+              thumbnail: require('../assets/stock.png'),
+            },
+            {
+              title: 'Item 2',
+              thumbnail: require('../assets/stock.png'),
+            },
+            {
+              title: 'Item 3',
+              thumbnail: require('../assets/stock.png'),
+            },
+          ],
+        });
+      })
+      .catch(function(error) {
+        console.log('Error');
+      });
+  }
+
   constructor(props) {
     super(props);
     this.state = {
-      carouselItems: [
-        {
-          //id: (FROM DATABASE) ,
-          title: 'Spag Bol',
-          category: 'Italian',
-          thumbnail: require('../assets/stock.png'),
-        },
-        {
-          title: 'Item 2',
-          thumbnail: require('../assets/stock.png'),
-        },
-        {
-          title: 'Item 3',
-          thumbnail: require('../assets/stock.png'),
-        },
-      ],
+      carouselItems: [],
     };
   }
 
@@ -70,3 +104,8 @@ export default class Recipecarousel extends React.Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  uid: state.firebase.auth.uid,
+});
+
+export default connect(mapStateToProps)(Recipecarousel);

@@ -35,7 +35,7 @@ const SignUp = ({signup, navigation}) => {
             .string()
             .required('Nickname is required.')
             .min(3, 'Too short')
-            .max(25, 'Too long.'),
+            .max(10, 'Too long.'),
           email: yup
             .string()
             .email('Invalid email')
