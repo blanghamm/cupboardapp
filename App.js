@@ -6,7 +6,7 @@ import configureStore from './configureStore';
 import {ReactReduxFirebaseProvider} from 'react-redux-firebase';
 import {createFirestoreInstance} from 'redux-firestore';
 import firebase from './src/firebase/config';
-import Loading from './src/userauth/loadingstartup';
+import Loading from './src/userauth/loading';
 
 const {persistor, store} = configureStore();
 
@@ -19,7 +19,7 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+        <PersistGate loading={<Loading />} persistor={persistor}>
           <ReactReduxFirebaseProvider
             firebase={firebase}
             config={rrfConfig}

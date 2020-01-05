@@ -10,14 +10,14 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {login} from '../store/actions/authActions';
+import {login, getUser} from '../store/actions/authActions';
 import Styles from '../styles';
 import * as yup from 'yup';
 import {Formik} from 'formik';
 import {isLoaded, isEmpty} from 'react-redux-firebase';
 import {AsyncStorage} from '@react-native-community/async-storage';
 
-const Login = ({login, navigation, auth, loading}) => {
+const Login = ({login, navigation}) => {
   return (
     <View style={[Styles.standardBlock, Styles.centerElement]}>
       <Image style={Styles.largeIcon} source={require('../assets/icon.png')} />
@@ -27,9 +27,8 @@ const Login = ({login, navigation, auth, loading}) => {
         onSubmit={async (values, {setSubmitting}) => {
           await login(values);
           setSubmitting(false);
-          isLoaded(loading);
+
           navigation.navigate('Loading');
-          // navigation.navigate(LOGIN_SUCCESS, 'Welcome');
         }}
         validationSchema={yup.object().shape({
           email: yup
@@ -78,8 +77,7 @@ const Login = ({login, navigation, auth, loading}) => {
             <Button
               title="Login"
               disabled={!isValid || isSubmitting}
-              // onPress={handleSubmit}
-              onPress={() => navigation.navigate('Main')}
+              onPress={handleSubmit}
             />
             <Button
               title="Sign Up"
@@ -96,7 +94,6 @@ const mapStateToProps = state => {
   return {
     authError: state.auth.authError,
     auth: state.firebase.auth,
-    loading: state.auth.loading,
   };
 };
 
@@ -106,7 +103,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Login);
 
 const styles = StyleSheet.create({
   container: {

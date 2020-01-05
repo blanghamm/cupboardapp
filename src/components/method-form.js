@@ -15,9 +15,10 @@ import Styles from '../styles';
 import Typography from '../styles/typography';
 import Colors from '../styles/colors';
 import Icon from 'react-native-vector-icons/Feather';
+import {connect} from 'react-redux';
 let count = -1;
 
-export default class Methodform extends React.Component {
+class Methodform extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -51,6 +52,7 @@ export default class Methodform extends React.Component {
     this.displayText(this.state.enteredText.length);
     this.enteredText;
 
+    var uid = this.props.uid;
     var stepDesc = this.state.step;
     var docName = this.state.title;
     var docStepCount = this.state.docStepCount.toString();
@@ -58,7 +60,7 @@ export default class Methodform extends React.Component {
     var ref = firebase
       .firestore()
       .collection('users')
-      .doc('Vlu5Ofjf6raPw7Kr9b2pLzOZxB43') //please change this to a dynamic UID
+      .doc(uid)
       .collection('recipes')
       .doc(docName)
       .collection('method')
@@ -169,3 +171,9 @@ export default class Methodform extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  uid: state.firebase.auth.uid,
+});
+
+export default connect(mapStateToProps)(Methodform);
