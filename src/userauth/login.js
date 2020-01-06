@@ -19,8 +19,17 @@ import {AsyncStorage} from '@react-native-community/async-storage';
 
 const Login = ({login, navigation}) => {
   return (
-    <View style={[Styles.standardBlock, Styles.centerElement]}>
-      <Image style={Styles.largeIcon} source={require('../assets/icon.png')} />
+    <View
+      style={[
+        Styles.centerElement,
+        {flex: 1, flexDirection: 'column', justifyContent: 'space-between'},
+      ]}>
+      <View style={{paddingTop: '30%'}}>
+        <Image
+          style={Styles.largeIcon}
+          source={require('../assets/icon.png')}
+        />
+      </View>
       <Formik
         enableReinitialize={true}
         initialValues={{email: '', password: ''}}
@@ -51,38 +60,60 @@ const Login = ({login, navigation}) => {
           handleSubmit,
         }) => (
           <Fragment>
-            <TextInput
-              value={values.email}
-              style={styles.textInput}
-              onChangeText={handleChange('email')}
-              placeholder="Email"
-              onBlur={() => setFieldTouched('email')}
-            />
-            {touched.email && errors.email && (
-              <Text style={{fontSize: 10, color: 'red'}}>{errors.email}</Text>
-            )}
-            <TextInput
-              value={values.password}
-              style={styles.textInput}
-              onChangeText={handleChange('password')}
-              placeholder="Password"
-              secureTextEntry={true}
-              onBlur={() => setFieldTouched('password')}
-            />
-            {touched.password && errors.password && (
-              <Text style={{fontSize: 10, color: 'red'}}>
-                {errors.password}
-              </Text>
-            )}
-            <Button
-              title="Login"
-              disabled={!isValid || isSubmitting}
-              onPress={handleSubmit}
-            />
-            <Button
-              title="Sign Up"
-              onPress={() => navigation.navigate('Signup')}
-            />
+            <View style={[styles.textInputContainer, {paddingTop: 60}]}>
+              <TextInput
+                value={values.email}
+                style={[styles.box1, styles.textInput, {height: 45}]}
+                onChangeText={handleChange('email')}
+                placeholder="Email"
+                onBlur={() => setFieldTouched('email')}
+              />
+              {touched.email && errors.email && (
+                <Text style={{fontSize: 10, color: 'red'}}>{errors.email}</Text>
+              )}
+            </View>
+            <View style={styles.textInputContainer}>
+              <TextInput
+                value={values.password}
+                style={[styles.box2, styles.textInput, {height: 45}]}
+                onChangeText={handleChange('password')}
+                placeholder="Password"
+                secureTextEntry={true}
+                onBlur={() => setFieldTouched('password')}
+              />
+              {touched.password && errors.password && (
+                <Text style={{fontSize: 10, color: 'red'}}>
+                  {errors.password}
+                </Text>
+              )}
+            </View>
+            <View
+              style={{
+                paddingHorizontal: 30,
+                paddingVertical: 30,
+                width: '100%',
+                flex: 1,
+              }}>
+              <TouchableOpacity
+                disabled={!isValid || isSubmitting}
+                onPress={handleSubmit}
+                style={[
+                  Styles.fullButton,
+                  Styles.greyButton,
+                  {display: 'flex', flexDirection: 'row', alignItems: 'center'},
+                ]}>
+                <Text style={Styles.buttonText}>Log in</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Signup')}
+                style={[
+                  Styles.fullButton,
+                  Styles.reverseButton,
+                  {display: 'flex', flexDirection: 'row', alignItems: 'center'},
+                ]}>
+                <Text style={Styles.reverseButtonText}>Sign up</Text>
+              </TouchableOpacity>
+            </View>
           </Fragment>
         )}
       </Formik>
@@ -114,11 +145,26 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  textInputContainer: {
+    width: '100%',
+    paddingHorizontal: 30,
+    paddingVertical: 5,
+  },
   textInput: {
-    height: 40,
-    width: '90%',
     borderColor: 'gray',
     borderWidth: 1,
-    marginTop: 8,
+    marginTop: 10,
+    paddingLeft: 20,
+    borderColor: 'grey',
+    height: 40,
+    marginTop: 10,
+  },
+  box1: {
+    borderTopRightRadius: 400 / 2,
+    borderBottomRightRadius: 400 / 2,
+  },
+  box2: {
+    borderTopLeftRadius: 400 / 2,
+    borderBottomLeftRadius: 400 / 2,
   },
 });

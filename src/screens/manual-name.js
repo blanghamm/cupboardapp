@@ -74,13 +74,6 @@ class Manualname extends Component {
             ]}
             onPress={this.addTitle}>
             <Text style={Styles.buttonText}>Add ingredients</Text>
-            <Text
-              style={[
-                Styles.bodyText,
-                {color: Colors.white, fontSize: 12, paddingLeft: 5},
-              ]}>
-              (1/3)
-            </Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -94,6 +94,33 @@ class Methodform extends React.Component {
     this.setState({textInput});
   };
 
+  submitMethod = () => {
+    this.state.docStepCount = this.state.docStepCount + 1;
+
+    var uid = this.props.uid;
+    console.log(uid);
+    var docStepCount = this.state.docStepCount.toString();
+    var stepDesc = this.state.step;
+
+    db.collection('users')
+      .doc(uid)
+      .collection('recipes')
+      .get()
+      .then(function(querySnapshot) {
+        var recipeAmount = querySnapshot.size;
+        console.log(recipeAmount);
+        var docName = recipeAmount.toString();
+        db.collection('users')
+          .doc(uid)
+          .collection('recipes')
+          .doc(docName)
+          .collection('method')
+          .doc(docStepCount)
+          .set({stepDesc: stepDesc});
+      });
+    this.props.navigation.navigate('Cupboard');
+  };
+
   displayText = key2 => {
     let enteredText = this.state.enteredText;
     enteredText.push(
@@ -171,8 +198,8 @@ class Methodform extends React.Component {
         <View style={Styles.bigBottomButton}>
           <TouchableOpacity
             style={[Styles.fullButton, Styles.greyButton]}
-            onPress={this.submitIngredients}>
-            <Text style={Styles.buttonText}>Add the method</Text>
+            onPress={this.submitMethod}>
+            <Text style={Styles.buttonText}>Publish recipe</Text>
           </TouchableOpacity>
         </View>
       </View>

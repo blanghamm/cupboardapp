@@ -53,7 +53,6 @@ export default StyleSheet.create({
     borderTopRightRadius: 400 / 2,
     borderBottomRightRadius: 400 / 2,
   },
-
   //BUTTONS
 
   fullButton: {
@@ -88,11 +87,24 @@ export default StyleSheet.create({
     backgroundColor: Colors.lavender,
   },
 
+  reverseButton: {
+    borderWidth: 1,
+    borderColor: Colors.grey,
+    backgroundColor: Colors.white,
+  },
+
   buttonText: {
     fontFamily: Typography.bodyBold,
     textTransform: 'uppercase',
     fontSize: 12,
     color: Colors.white,
+  },
+
+  reverseButtonText: {
+    fontFamily: Typography.bodyBold,
+    textTransform: 'uppercase',
+    fontSize: 12,
+    color: Colors.grey,
   },
 
   bigBottomButton: {

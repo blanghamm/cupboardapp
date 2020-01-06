@@ -100,6 +100,36 @@ class Ingredientsform extends React.Component {
   };
 
   submitIngredients = () => {
+    this.state.docCount = this.state.docCount + 1;
+    var uid = this.props.uid;
+    var ingredientOp = this.state.ingredient;
+    var category = this.state.ingredient;
+    var quantity = this.state.quantVar;
+
+    var docCountVar = this.state.docCount.toString();
+
+    db.collection('users')
+      .doc(uid)
+      .collection('recipes')
+      .get()
+      .then(function(querySnapshot) {
+        var recipeAmount = querySnapshot.size;
+        var docName = recipeAmount.toString();
+        var ref = db
+          .collection('users')
+          .doc(uid)
+          .collection('recipes')
+          .doc(docName)
+          .collection('ingredients')
+          .doc(docCountVar);
+        var merge = ref.set(
+          {
+            category: category,
+            quantity: quantity,
+          },
+          {merge: true},
+        );
+      });
     console.log('Ingredient: ' + this.state.ingredient);
     console.log('Quantity: ' + this.state.quantVar);
     console.log();
