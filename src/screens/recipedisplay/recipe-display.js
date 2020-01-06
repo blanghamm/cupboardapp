@@ -1,32 +1,83 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  SafeAreaView,
+  StyleSheet,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import Styles from '../../styles';
 import Colors from '../../styles/colors';
+import {db} from '../../firebase/config';
+import {connect} from 'react-redux';
+import {useState, useEffect} from 'react';
+import Carousel from 'react-native-snap-carousel';
 
-class Recipedisplay extends Component {
-  render() {
+const Recipedisplay = ({navigation, uid}) => {
+  const [recipes, setRecipes] = useState(null);
+
+  useEffect(() => {
+    listenForRecipes();
+  }, []);
+
+  const listenForRecipes = () => {
+    db.collection('users')
+      .doc(uid)
+      .collection('recipes')
+      .onSnapshot(
+        snapshot => {
+          const allRecipes = [];
+          snapshot.forEach(doc => allRecipes.push(doc.data()));
+          setRecipes(allRecipes);
+          console.log(allRecipes);
+        },
+        error => console.error(error),
+      );
+  };
+
+  function Item({title}) {
     return (
-      <View style={{flex: 1}}>
-        <View style={{width: 100}}>
-          <TouchableOpacity onPress={this.onPressButton}>
-            <Icon
-              style={{padding: 30}}
-              name="arrow-left"
-              color={Colors.black}
-              size={30}
-              onPress={() => this.props.navigation.goBack()}
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={[Styles.standardPadding, {paddingBottom: 30}]}>
-          <Text style={Styles.title}>Your Recipes</Text>
-          <Text style={Styles.subTitle}>Ingredients</Text>
-          <Text style={Styles.subTitle}>Method</Text>
-        </View>
+      <View style={styles.item}>
+        <Text style={styles.title}>{title}</Text>
       </View>
     );
   }
-}
 
-export default Recipedisplay;
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={recipes}
+        renderItem={({item}) => <Item title={item.title} />}
+        keyExtractor={item => item.id}
+      />
+    </SafeAreaView>
+  );
+};
+
+const mapStateToProps = state => {
+  return {
+    profile: state.firebase.profile,
+    cupboard: state.firestore.cupboard,
+    uid: state.firebase.auth.uid,
+  };
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
+  },
+});
+
+export default connect(mapStateToProps)(Recipedisplay);

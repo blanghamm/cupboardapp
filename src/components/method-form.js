@@ -171,8 +171,8 @@ class Methodform extends React.Component {
         <View style={Styles.bigBottomButton}>
           <TouchableOpacity
             style={[Styles.fullButton, Styles.greyButton]}
-            onPress={this.submitIngredients}>
-            <Text style={Styles.buttonText}>Add the method</Text>
+            onPress={() => this.props.navigation.navigate('Cupboard')}>
+            <Text style={Styles.buttonText}>Publish recipe</Text>
           </TouchableOpacity>
         </View>
       </View>

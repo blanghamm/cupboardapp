@@ -26,27 +26,33 @@ class ItemCategoryBox extends React.Component {
     db.collection('users')
       .doc(uid)
       .collection('recipes')
-      .doc('bacon bap') //Set as cupboard count number
-      .collection('ingredients')
-      .doc('bacon')
       .get()
-      .then(function(doc) {
-        if (doc.exists) {
-          firestoreInfo = doc.data();
-          firestoreInfoEmail = firestoreInfo.category;
-        } else {
-          console.log('No Document');
-        }
-      })
-      .then(() => {
-        console.log(firestoreInfoEmail);
+      .then(function(querySnapshot) {
+        var recipeAmount = querySnapshot.size;
+        var docName = recipeAmount.toString();
+        db.collection('users')
+          .doc(uid)
+          .collection('recipes')
+          .doc(docName)
+          .get()
+          .then(function(doc) {
+            if (doc.exists) {
+              firestoreInfo = doc.data();
+              firestoreInfoEmail = firestoreInfo.category;
+            } else {
+              console.log('No Document');
+            }
+          })
+          .then(() => {
+            console.log(firestoreInfoEmail);
 
-        this.setState({
-          ingredientsList: [],
-        });
-      })
-      .catch(function(error) {
-        console.log('Error', error);
+            this.setState({
+              ingredientsList: [],
+            });
+          })
+          .catch(function(error) {
+            console.log('Error', error);
+          });
       });
   }
   constructor(props) {
