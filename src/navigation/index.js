@@ -23,6 +23,7 @@ import Camera from '../screens/camera-upload';
 import Settings from '../screens/settings';
 import SplashNav from '../screens/add-splash';
 import Recipedisplay from '../screens/recipedisplay/recipe-display';
+import Recipedisplaymain from '../screens/recipedisplay/recipes-inner-display';
 import Colors from '../styles/colors';
 
 var cupboardCount = 0;
@@ -119,6 +120,7 @@ const rootNavigator = createStackNavigator(
     Manualmethod: {screen: Manualmethod},
     Settings: {screen: Settings},
     Recipedisplay: {screen: Recipedisplay},
+    Recipedisplaymain: {screen: Recipedisplaymain},
   },
   {
     headerMode: 'none',

@@ -15,6 +15,7 @@ import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import {db} from '../firebase/config';
 import {connect} from 'react-redux';
+import {useState, useEffect} from 'react';
 
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
 const screenWidthMargin = viewportWidth - 60;
@@ -22,90 +23,85 @@ var fireInfo;
 var fireInfoIng = '';
 var fireInfoTitle;
 
-class Recipecarousel extends React.Component {
-  componentDidMount() {
-    var uid = this.props.uid;
-    var docRef = db
-      .collection('users')
+const Recipecarousel = ({navigation, uid}) => {
+  const [recipes, setRecipes] = useState(null);
+
+  useEffect(() => {
+    listenForRecipes();
+  }, []);
+
+  const listenForRecipes = () => {
+    db.collection('users')
       .doc(uid)
       .collection('recipes')
-      .doc('bacon bap'); //Needs to be set as document count number
-    //then ingredients collection, follow by document ingredient
-    var item1 = docRef
-      .get()
-      .then(function(doc) {
-        if (doc.exists) {
-          fireInfo = doc.data();
-          fireInfoIng = fireInfo.ingredient;
-          fireInfoTitle = fireInfo.title;
-        } else {
-          console.log('No Document');
-        }
-      })
-      .then(() => {
-        this.setState({
-          carouselItems: [
-            {
-              //id: (FROM DATABASE) ,
-              title: fireInfoIng,
-              category: 'Italian',
-              thumbnail: require('../assets/stock.png'),
-            },
-            {
-              title: 'Item 2',
-              thumbnail: require('../assets/stock.png'),
-            },
-            {
-              title: 'Item 3',
-              thumbnail: require('../assets/stock.png'),
-            },
-          ],
-        });
-      })
-      .catch(function(error) {
-        console.log('Error');
-      });
-  }
+      .onSnapshot(
+        snapshot => {
+          const allRecipes = [];
+          snapshot.forEach(doc => allRecipes.push(doc.data()));
+          setRecipes(allRecipes);
+          console.log(allRecipes);
+        },
+        error => console.error(error),
+      );
+  };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      carouselItems: [],
-    };
-  }
-
-  _renderItem({item, index}) {
+  // _renderItem({item, index}) {
+  //   return (
+  //     <View
+  //       style={{
+  //         justifyContent: 'center',
+  //         margin: 0,
+  //         marginRight: 20,
+  //       }}>
+  //       <Image style={Styles.caraThumb} source={item.thumbnail} />
+  //       <Text style={Styles.caraTitle}>{item.title}</Text>
+  //       <Text style={Styles.caraSubTitle}>{item.category}</Text>
+  //     </View>
+  //   );
+  // }
+  function Item({title}) {
     return (
-      <View
-        style={{
-          justifyContent: 'center',
-          margin: 0,
-          marginRight: 20,
-        }}>
-        <Image style={Styles.caraThumb} source={item.thumbnail} />
-        <Text style={Styles.caraTitle}>{item.title}</Text>
-        <Text style={Styles.caraSubTitle}>{item.category}</Text>
+      <View style={{paddingRight: 20}}>
+        <Image
+          style={Styles.caraThumb}
+          source={require('../assets/recipe-illustation.png')}
+        />
+        <Text style={Styles.caraTitle}>{title}</Text>
       </View>
     );
   }
 
-  render() {
-    return (
-      <SafeAreaView style={{paddingTop: 20}}>
-        <Carousel
-          data={this.state.carouselItems}
-          sliderWidth={viewportWidth}
-          itemWidth={screenWidthMargin}
-          layout={'default'}
-          inactiveSlideScale={1}
-          renderItem={this._renderItem}
-        />
-      </SafeAreaView>
-    );
-  }
-}
+  return (
+    <SafeAreaView style={{paddingTop: 20}}>
+      <Carousel
+        data={recipes}
+        sliderWidth={viewportWidth}
+        itemWidth={screenWidthMargin}
+        layout={'default'}
+        inactiveSlideScale={1}
+        renderItem={({item}) => <Item title={item.title} />}
+      />
+    </SafeAreaView>
+  );
+};
 const mapStateToProps = state => ({
   uid: state.firebase.auth.uid,
+});
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
+  },
 });
 
 export default connect(mapStateToProps)(Recipecarousel);
