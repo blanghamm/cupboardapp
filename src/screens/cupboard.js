@@ -16,6 +16,7 @@ import Styles from '../styles';
 import Colors from '../styles/colors';
 import Icon from 'react-native-vector-icons/Feather';
 import ItemCategoryBox from '../components/item-category-box';
+import Recipedisplay from './recipedisplay/recipe-display';
 
 const Cupboard = ({navigation, profile, signout}) => {
   return (
@@ -44,7 +45,7 @@ const Cupboard = ({navigation, profile, signout}) => {
       </View>
       <View style={Styles.standardBlock}>
         <Text style={Styles.cupboardTitle}>INGREDIENTS</Text>
-        <ItemCategoryBox />
+        <Recipedisplay />
         <View style={Styles.halfButtonBlock}>
           <TouchableOpacity style={[Styles.halfButton, Styles.greyButton]}>
             <Text style={Styles.buttonText}>View map</Text>
@@ -72,7 +73,4 @@ const mapDispatchToProps = dispatch => {
   return {signout: () => dispatch(signout())};
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Cupboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Cupboard);

@@ -198,7 +198,11 @@ class Methodform extends React.Component {
         <View style={Styles.bigBottomButton}>
           <TouchableOpacity
             style={[Styles.fullButton, Styles.greyButton]}
+<<<<<<< HEAD
             onPress={this.submitMethod}>
+=======
+            onPress={() => this.props.navigation.navigate('Cupboard')}>
+>>>>>>> c46a2c639d0b679f9e540a87b793c88befa37dac
             <Text style={Styles.buttonText}>Publish recipe</Text>
           </TouchableOpacity>
         </View>

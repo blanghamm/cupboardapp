@@ -61,7 +61,7 @@ const Welcome = ({navigation, profile}) => {
       <View style={{paddingHorizontal: 30, paddingBottom: 30}}>
         <TouchableOpacity
           style={[Styles.fullButton, Styles.greyButton]}
-          onPress={() => navigation.navigate('Recipes')}>
+          onPress={() => navigation.navigate('Recipedisplay')}>
           <Text style={Styles.buttonText}>View recipes</Text>
         </TouchableOpacity>
       </View>
@@ -79,7 +79,4 @@ const mapDispatchToProps = dispatch => {
   return {signout: () => dispatch(signout())};
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Welcome);
+export default connect(mapStateToProps, mapDispatchToProps)(Welcome);
