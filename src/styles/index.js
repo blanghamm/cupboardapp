@@ -1,4 +1,14 @@
-import React from 'react';
+/*
+App: Cupboard
+Page Type: Styling
+Page Name: Index styling
+
+Contains all styling properties for our application,
+these can now be called anywhere in our app once imported into 
+the specified component.
+
+*/
+
 import {StyleSheet} from 'react-native';
 import Colors from './colors';
 import Layout from './layout';

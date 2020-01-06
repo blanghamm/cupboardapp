@@ -1,3 +1,13 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Method Form
+
+This component works the same as the ingredients form, allowing users to add multiple steps in a form and then post them to
+firestore under the users uid.
+
+*/
+
 import React, {Component} from 'react';
 import {
   AppRegistry,

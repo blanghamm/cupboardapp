@@ -1,4 +1,11 @@
-import React, {Component} from 'react';
+/*
+App: Cupboard
+Page Type: Styling
+Page Name: Layout
+
+Main layout styling
+
+*/
 
 const Layout = {
   standard: 30,

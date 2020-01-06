@@ -1,3 +1,16 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Loading
+
+This page is when the app first loads up, it looks similar to 
+laodng-login but this only displays for 2.5 seconds and then displays 
+the login screen. This is just so when the app is booting it's not just
+a blank screen.
+
+
+*/
+
 import React from 'react';
 import {View, Text, StyleSheet, Image, Button} from 'react-native';
 

@@ -1,3 +1,15 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Recipe Display
+
+This component is used on the cupboard page and displays 
+the title of a users recipes in a list, it's an array so updates when
+a user adds more information. It queries firestore for users personal
+recipes and brings them back.
+
+*/
+
 import React, {Component} from 'react';
 import {
   View,
@@ -21,9 +33,11 @@ const screenWidthMargin = viewportWidth - 60;
 
 const Recipedisplay = ({navigation, uid}) => {
   const [recipes, setRecipes] = useState(null);
+  // const [ingredients, setIngredients] = useState(null);
 
   useEffect(() => {
     listenForRecipes();
+    // listenForIngredients();
   }, []);
 
   const listenForRecipes = () => {
@@ -35,11 +49,26 @@ const Recipedisplay = ({navigation, uid}) => {
           const allRecipes = [];
           snapshot.forEach(doc => allRecipes.push(doc.data()));
           setRecipes(allRecipes);
-          console.log(allRecipes);
+          // console.log(allRecipes);
         },
         error => console.error(error),
       );
   };
+  // const listenForIngredients = () => {
+  //   db.collection('users')
+  //     .doc(uid)
+  //     .collection('recipes')
+  //     .doc('1')
+  //     .onSnapshot(
+  //       snapshot => {
+  //         const allIngredients = [];
+  //         snapshot.forEach(doc => allIngredients.push(doc.data()));
+  //         setIngredients(allIngredients);
+  //         console.log(allIngredients);
+  //       },
+  //       error => console.error(error),
+  //     );
+  // };
 
   function Item({title}) {
     return (

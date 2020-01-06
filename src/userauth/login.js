@@ -1,3 +1,20 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Login
+
+Contains login form for use to input details, it also contains
+form validation and requires your email to be formatted 
+correctly and your password has a min character length. 
+
+It then uses the redux action creator function to make a call
+to the firebase database and match user data. Once this has 
+all been completed it navigates to the loading screen to check
+that firebase has been initialised and then logs you in.
+
+
+*/
+
 import React, {Fragment} from 'react';
 import {
   StyleSheet,

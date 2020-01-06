@@ -1,3 +1,15 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Manual Name
+
+When adding a new recipe this is the screen that is
+shown to the user first, it allows for them to add a recipe name,
+which is written to the database when submitted. It also queries the
+database size and assigns each new recipe title a number for easier querying.
+
+*/
+
 import React, {Component} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import firebase, {db} from '../firebase/config';

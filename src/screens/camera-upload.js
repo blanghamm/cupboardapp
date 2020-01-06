@@ -1,3 +1,13 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Camera Upload
+
+Currently not in use but would be for ML Kit implmentation.
+
+
+*/
+
 import React, {Component} from 'react';
 import {
   View,

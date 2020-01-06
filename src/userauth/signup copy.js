@@ -1,3 +1,20 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Sign up
+
+Similar to login, contains a form that allows the user to signup
+then dispatches an action creator function from the redux store
+and signs the user up for an account. Then navigates to the
+loading-login screen to check if firebase is initialised and moves 
+to the welcome screen if it has. 
+
+Also contains a form with validation and will only accept correct characters and
+correctly formatted email addresses.
+
+
+*/
+
 import React, {Fragment} from 'react';
 import {
   StyleSheet,

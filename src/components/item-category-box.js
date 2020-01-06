@@ -1,3 +1,12 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Item Category
+
+Not used
+
+*/
+
 import React from 'react';
 import {
   View,

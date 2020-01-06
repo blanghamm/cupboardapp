@@ -1,3 +1,17 @@
+/*
+App: Cupboard
+Page Type: Navigation
+Page Name: Navigation - index
+
+Navigation routes with tab bar properties, the page displays the navigation bottom bar
+it is routed in the stack navigator at the bottom which allows us to jump from screens.
+
+Screens only displays the main three screens and they are only accessible from the tab
+bar. All of our pages in the main app are imported here to allow the user to navigate when clicking on buttons.
+
+
+*/
+
 import React, {Component} from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';

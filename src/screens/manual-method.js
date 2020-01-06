@@ -1,3 +1,15 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Manual Method
+
+Similar to Manual Ingredients, this is simply a display component that
+contains the method form, it renders the form component and has styling
+applied to basic elements.
+
+
+*/
+
 import React, {Component} from 'react';
 import {
   View,

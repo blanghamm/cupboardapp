@@ -1,3 +1,15 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Manual Ingredients
+
+Component used for displaying ingredients form component.
+It displays text and styling but the main component is called from
+ingredients form.
+
+
+*/
+
 import React, {Component} from 'react';
 import {
   View,

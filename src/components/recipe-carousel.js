@@ -1,3 +1,17 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Recipe Carousel
+
+This component renders a recipecarousel which is 
+displayed on the welcome screen, it is scrollable 
+and updates when a user
+adds another recipe. 
+It passes an array to the rendered 
+item and then updates when it recieves new information from firestore.
+
+*/
+
 import React, {Component} from 'react';
 import {
   View,
@@ -45,20 +59,6 @@ const Recipecarousel = ({navigation, uid}) => {
       );
   };
 
-  // _renderItem({item, index}) {
-  //   return (
-  //     <View
-  //       style={{
-  //         justifyContent: 'center',
-  //         margin: 0,
-  //         marginRight: 20,
-  //       }}>
-  //       <Image style={Styles.caraThumb} source={item.thumbnail} />
-  //       <Text style={Styles.caraTitle}>{item.title}</Text>
-  //       <Text style={Styles.caraSubTitle}>{item.category}</Text>
-  //     </View>
-  //   );
-  // }
   function Item({title}) {
     return (
       <View style={{paddingRight: 20}}>

@@ -1,3 +1,15 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Splash 
+
+This page is displayed when the user clicks on the plus
+it will ask how you would like to upload a recipe, currently 
+we are only able to add a recipe manually but future implmentation
+would use Ml kit to take a picture of a handwritten recipe and add it.
+
+*/
+
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import Styles from '../styles';

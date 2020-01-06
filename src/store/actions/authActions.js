@@ -1,4 +1,16 @@
-// import firebase, {db} from '../../firebase/config';
+/*
+App: Cupboard
+Page Type: Action
+Page Name: authActions
+
+Action creator, that allows use to pass a function 
+that can now be called anywhere in the app as it is stored
+in our top component {App.js}. These actions are used for 
+user creation and user login. They are used in the signup/login screens.
+
+
+
+*/
 
 export const LOGIN = 'LOGIN';
 export const SIGNUP = 'SIGNUP';

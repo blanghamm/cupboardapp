@@ -1,3 +1,13 @@
+/*
+App: Cupboard
+Page Type: Styling
+Page Name: Colors
+
+Colors styling for app
+
+
+*/
+
 import React from 'react';
 
 const Colors = {

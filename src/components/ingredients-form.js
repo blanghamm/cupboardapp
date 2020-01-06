@@ -1,3 +1,17 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: IngredientForm
+
+This component makes database pushes to firestore from user input, it displays a form that users can type ingredients into,
+it then allows you to a quantity to the ingredient. When a new form is rendered it saves the first ingredient to firestore
+with a quanity and category property.
+
+This is then called into the app to be displayed.
+
+
+*/
+
 import React, {Component} from 'react';
 import {
   AppRegistry,

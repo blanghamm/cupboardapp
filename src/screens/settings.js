@@ -1,3 +1,19 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Settings
+
+Settings page which contains an action creator
+from the redux store to allow the user to logout,
+it also displays basic information such as user email.
+
+This has been passed down to the component as properties via
+the redux store, allows us to retrieve the users information and
+also pass actions from a higher order component. 
+
+
+*/
+
 import React, {Component} from 'react';
 import {
   View,
@@ -65,7 +81,4 @@ const mapDispatchToProps = dispatch => {
   return {signout: () => dispatch(signout())};
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Settings);
+export default connect(mapStateToProps, mapDispatchToProps)(Settings);

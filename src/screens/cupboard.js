@@ -1,3 +1,18 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Cupboard
+
+Cupboard page which can be navigated to via the tab navigator,
+displays the users name and profile and then pulls in recipes display 
+component to show your current recipes.
+
+Also pulls in the users profile name from redux state and allows us to
+display it depending on which user is signed in.
+
+
+*/
+
 import React, {Component} from 'react';
 import {
   View,
@@ -61,7 +76,4 @@ const mapDispatchToProps = dispatch => {
   return {signout: () => dispatch(signout())};
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Cupboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Cupboard);

@@ -1,4 +1,12 @@
-import React from 'react';
+/*
+App: Cupboard
+Page Type: Styling
+Page Name: Typography Styling
+
+Contains properties for text, these can be applied to any
+component.
+
+*/
 
 const Typography = {
   titleBold: 'SourceSansPro-Bold',

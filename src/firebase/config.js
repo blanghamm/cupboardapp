@@ -1,3 +1,14 @@
+/*
+App: Cupboard
+Page Type: Config
+Page Name: Firebase/Config
+
+Config page for firebase, allows us to access the correct
+database with the right credientials.
+
+
+*/
+
 import firebase from 'firebase';
 import 'firebase/firestore';
 import 'firebase/auth';

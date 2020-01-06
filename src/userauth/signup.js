@@ -1,3 +1,13 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Signup backup
+
+Just a backup, not in use.
+
+
+*/
+
 import React, {Fragment} from 'react';
 import {
   StyleSheet,
@@ -153,10 +163,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
 
 const styles = StyleSheet.create({
   container: {

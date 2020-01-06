@@ -1,3 +1,19 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Loading
+
+This page is setup for when the user first logs in.
+When the user first logs in it will navigate to this
+page first to check if firebase isInitialising, if login has
+failed or their detials are wrong it will bounce you back to the
+login screen. If the detials are correct it will wait until 
+firebase data has been read or written and then navigate the
+user to the welcome screen.
+
+
+*/
+
 import React, {useEffect, useState} from 'react';
 import {
   View,

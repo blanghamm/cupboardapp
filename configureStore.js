@@ -1,3 +1,15 @@
+/*
+App: Cupboard
+Page Type: Config
+Page Name: Config
+
+Config for all the properites passed in app.js, allows redux to 
+access async storage and keep the state stored so when coming back 
+to the application the user would still be logged in.
+
+
+*/
+
 import thunkMiddleware from 'redux-thunk';
 import {createStore, applyMiddleware, compose} from 'redux';
 import rootReducer from './src/store/reducers/rootReducer';

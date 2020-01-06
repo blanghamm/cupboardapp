@@ -1,3 +1,13 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Recipes Display Inner
+
+This page is not in use. In it's current state is a 
+copy of Recipe Display
+
+*/
+
 import React, {Component} from 'react';
 import {
   View,

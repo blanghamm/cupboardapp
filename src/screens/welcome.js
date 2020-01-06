@@ -1,3 +1,21 @@
+/*
+App: Cupboard
+Page Type: Component
+Page Name: Welcome
+
+
+When a user logs in this is the initial page 
+they are greeted by, it displays their nickname
+which has been gathered from the database. This has 
+been passed down via properties using the redux store.
+
+It also imports the recipe carousel component and displays 
+a card view with recipe titles, this updates when recipes are 
+added to the users collection.
+
+
+*/
+
 import React, {Component} from 'react';
 import {
   View,
