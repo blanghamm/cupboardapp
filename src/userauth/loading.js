@@ -2,8 +2,9 @@ import React from 'react';
 import {View, Text, StyleSheet, Image, Button} from 'react-native';
 
 const Loading = ({navigation}) => {
-  setTimeout(() => {}, 2500);
-  navigation.navigate('Login');
+  setTimeout(() => {
+    navigation.navigate('Login');
+  }, 2500);
   return (
     <View style={styles.container}>
       <Image style={styles.logosize} source={require('../assets/icon.png')} />

@@ -8,7 +8,9 @@ import {createStackNavigator} from 'react-navigation-stack';
 
 class Splash extends Component {
   render() {
-    const {navigate} = this.props.navigation;
+    // setTimeout(() => {
+    //   this.props.navigation.navigate('Manualname');
+    // }, 50);
     return (
       <View style={{flex: 1}}>
         <View style={{width: 100}}>

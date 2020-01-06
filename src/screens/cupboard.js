@@ -44,21 +44,9 @@ const Cupboard = ({navigation, profile, signout}) => {
         <Text style={Styles.subTitle}>{profile.Name}</Text>
       </View>
       <View style={Styles.standardBlock}>
-        <Text style={Styles.cupboardTitle}>INGREDIENTS</Text>
+        <Text style={Styles.cupboardTitle}>Recipes</Text>
         <Recipedisplay />
-        <View style={Styles.halfButtonBlock}>
-          <TouchableOpacity style={[Styles.halfButton, Styles.greyButton]}>
-            <Text style={Styles.buttonText}>View map</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={[Styles.halfButton, Styles.peachButton]}>
-            <Text style={Styles.buttonText}>Shopping List</Text>
-          </TouchableOpacity>
-        </View>
       </View>
-      <View style={Styles.standardBlock}>
-        <Text style={Styles.bodyTitle}>Recipes</Text>
-      </View>
-      <Recipecarousel />
     </ScrollView>
   );
 };
@@ -73,4 +61,7 @@ const mapDispatchToProps = dispatch => {
   return {signout: () => dispatch(signout())};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cupboard);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Cupboard);

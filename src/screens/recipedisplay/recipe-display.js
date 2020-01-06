@@ -6,6 +6,7 @@ import {
   FlatList,
   SafeAreaView,
   StyleSheet,
+  Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import Styles from '../../styles';
@@ -14,6 +15,9 @@ import {db} from '../../firebase/config';
 import {connect} from 'react-redux';
 import {useState, useEffect} from 'react';
 import Carousel from 'react-native-snap-carousel';
+
+const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
+const screenWidthMargin = viewportWidth - 60;
 
 const Recipedisplay = ({navigation, uid}) => {
   const [recipes, setRecipes] = useState(null);
@@ -67,16 +71,20 @@ const mapStateToProps = state => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   item: {
-    backgroundColor: '#f9c2ff',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: Colors.grey,
+    borderTopRightRadius: 400 / 2,
+    borderBottomRightRadius: 400 / 2,
+    marginTop: 10,
+    width: screenWidthMargin,
   },
   title: {
-    fontSize: 32,
+    fontSize: 20,
+    color: Colors.grey,
   },
 });
 
